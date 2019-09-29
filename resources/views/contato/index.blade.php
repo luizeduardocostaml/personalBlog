@@ -13,7 +13,7 @@
     <ul class="list-group">
         <li class="list-group-item list-group-item-secondary">
             <div class="row">
-                <div class="col-sm border-right">Nome</div>
+                <div class="col-sm border-right border-dark">Nome</div>
                 <div class="col-sm-8">Assunto</div>
             </div>
         </li>

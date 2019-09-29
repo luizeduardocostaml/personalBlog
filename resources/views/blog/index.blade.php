@@ -14,14 +14,14 @@
         <ul class="list-group">
             <li class="list-group-item list-group-item-secondary">
                 <div class="row">
-                    <div class="col-sm border-right">Título</div>
-                    <div class="col-sm-8">Texto</div>
+                    <div class="col-sm border-right border-dark">Título</div>
+                    <div class="col-sm-10">Texto</div>
                 </div>
             </li>
             @foreach($posts as $post)
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-sm">{{$post->title}}</div>
+                        <div class="col-sm border-right">{{$post->title}}</div>
                         <div class="col-sm-10">{{$post->text}}</div>
                     </div>
                 </li>

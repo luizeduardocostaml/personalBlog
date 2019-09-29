@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\storeMessage;
 use App\Message;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,11 @@ class ContatoController extends Controller
         return view('contato.index', ['messages' => $messages]);
     }
 
-    public function store(Request $request)
+    public function store(storeMessage $request)
     {
+
+        $request->validated();
+
         $mensagem = new Message();
 
         $mensagem->name = $request->name;

@@ -10,7 +10,7 @@
     <title>@yield('pageTitle')</title>
 </head>
 <body>
-    <div class="container">
+    <div class="container mb-5 pb-3">
         <div class="jumbotron">
             <h1 class="display-4">Luiz Eduardo Costa</h1>
             <p class="lead">Desenvolvedor Web PHP/Laravel</p>
@@ -21,7 +21,7 @@
             </a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Início <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{route('painelAdmin')}}">Início <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Blog</a>
@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-dark p-1 mt-1 position-relative fixed-bottom"><p class="text-white text-center">Todos os direitos reservados.</p></div>
+    <div class="bg-dark p-1 position-fixed fixed-bottom"><p class="text-white text-center">Todos os direitos reservados.</p></div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
