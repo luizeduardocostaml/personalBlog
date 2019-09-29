@@ -31,4 +31,11 @@ class ContatoController extends Controller
 
         return redirect()->route('enviarMensagem');
     }
+
+    public function destroy($id)
+    {
+        Message::destroy($id);
+
+        return redirect()->route('painelContato');
+    }
 }

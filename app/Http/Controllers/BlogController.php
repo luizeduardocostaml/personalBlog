@@ -23,10 +23,18 @@ class BlogController extends Controller
         $post = new Post;
 
         $post->title = $request->title;
+        $post->resume = $request->resume;
         $post->text = $request->text;
 
         $post->save();
 
+
+        return redirect()->route('painelBlog');
+    }
+
+    public function destroy($id)
+    {
+        Post::destroy($id);
 
         return redirect()->route('painelBlog');
     }

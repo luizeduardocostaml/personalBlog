@@ -25,6 +25,7 @@ class storePost extends FormRequest
     {
         return [
             'title' => 'required',
+            'resume' => 'required',
             'text' => 'required',
         ];
     }
@@ -33,6 +34,7 @@ class storePost extends FormRequest
     {
         return [
             'title.required' => 'O campo Título é obrigatório.',
+            'resume.required' => 'O campo Resumo é obrigatório.',
             'text.required' => 'O campo Texto é obrigatório.',
         ];
     }

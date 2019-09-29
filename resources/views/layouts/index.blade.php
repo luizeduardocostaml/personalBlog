@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container mb-5 pb-3">
-        <div class="jumbotron">
+        <div class="jumbotron shadow">
             <h1 class="display-4">Luiz Eduardo Costa</h1>
             <p class="lead">Desenvolvedor Web PHP/Laravel</p>
         </div>
@@ -31,8 +31,11 @@
                 </li>
             </ul>
         </nav>
-        <div>
-            <h1 class="m-2">@yield('title')</h1>
+        <div class="bg-light border rounded-bottom p-3 shadow">
+            <div class="container-fluid">
+                <h1 class="font-weight-light">@yield('title')</h1>
+            </div>
+            <div class="dropdown-divider"></div>
             <div class="container-fluid">
                 @yield('content')
             </div>

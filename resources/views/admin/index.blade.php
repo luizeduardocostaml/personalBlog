@@ -11,7 +11,7 @@
 @section('content')
     <div class="row">
         <div class="col-sm-6">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-body">
                     <h5 class="card-title">Posts</h5>
                     <p class="card-text">Gerenciar os posts e nóticias</p>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card">
+            <div class="card shadow">
                 <div class="card-body">
                     <h5 class="card-title">Mensagens</h5>
                     <p class="card-text">Gerenciar as mensagens de contato</p>
