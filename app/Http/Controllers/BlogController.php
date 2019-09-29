@@ -23,6 +23,6 @@ class BlogController extends Controller
 
         $post->save();
 
-        return \redirect()->route('painelBlog');
+        return redirect()->route('painelBlog');
     }
 }

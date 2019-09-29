@@ -27,18 +27,18 @@
                     <a class="nav-link" href="#">Blog</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Contato</a>
+                    <a class="nav-link" href="{{route('enviarMensagem')}}">Contato</a>
                 </li>
             </ul>
         </nav>
         <div>
             <h1 class="m-2">@yield('title')</h1>
-            <div class="container">
+            <div class="container-fluid">
                 @yield('content')
             </div>
         </div>
     </div>
-    <div class="bg-dark p-1 fixed-bottom"><p class="text-white text-center">Todos os direitos reservados.</p></div>
+    <div class="bg-dark p-1 mt-1 position-relative fixed-bottom"><p class="text-white text-center">Todos os direitos reservados.</p></div>
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

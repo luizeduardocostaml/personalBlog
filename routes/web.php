@@ -26,4 +26,9 @@ Route::post('/cadastrarPost', 'BlogController@store')->name('registrarPost');
 Route::view('/painelAdmin', 'admin.index')->name('painelAdmin');
 
 
-Route::view('/painelContato', 'contato.index')->name('painelContato');
+Route::get('/painelContato', 'ContatoController@index')->name('painelContato');
+Route::post('/contato', 'ContatoController@store')->name('registrarMensagem');
+
+
+Route::view('/contato', 'contato.contato')->name('enviarMensagem');
+
