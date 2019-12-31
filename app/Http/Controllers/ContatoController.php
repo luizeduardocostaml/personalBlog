@@ -38,4 +38,11 @@ class ContatoController extends Controller
 
         return redirect()->route('painelContato');
     }
+
+    public function getMessage($id)
+    {
+        $message = Message::find($id);
+
+        return view('contato.message', ['message'=> $message]);
+    }
 }
