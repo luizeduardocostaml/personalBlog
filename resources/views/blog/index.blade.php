@@ -30,7 +30,7 @@
                         </div>
                         <div class="col col-lg-2 d-flex">
                             <a href="/deletePost/{{$post->id}}" class="btn btn-danger mr-1" title="Apagar Post"><i class="fas fa-trash-alt"></i></a>
-                            <a href="" class="btn btn-primary mr-1" title="Editar Post"><i class="fas fa-edit"></i></a>
+                            <a href="/editPost/{{$post->id}}" class="btn btn-primary mr-1 pr-2" title="Editar Post"><i class="fas fa-edit"></i></a>
                             <a href="" class="btn btn-primary" title="Visualizar Post"><i class="fas fa-eye"></i></a>
                         </div>
                     </div>

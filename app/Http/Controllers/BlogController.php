@@ -38,4 +38,26 @@ class BlogController extends Controller
 
         return redirect()->route('painelBlog');
     }
+
+    public function getPost($id)
+    {
+        $post = Post::find($id);
+
+        return view('blog.editarPost', ['post' => $post]);
+    }
+
+    public function edit(storePost $request)
+    {
+        $request->validated();
+
+        $post = Post::find($request->id);
+
+        $post->title = $request->title;
+        $post->resume = $request->resume;
+        $post->text = $request->text;
+
+        $post->save();
+
+        return redirect()->route('painelBlog');
+    }
 }
