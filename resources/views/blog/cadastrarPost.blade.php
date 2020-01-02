@@ -14,7 +14,7 @@
             <div class="alert alert-danger m-1">{{$error}}</div>
         @endforeach
     @endif
-    <form action="{{route('registrarPost')}}" method="POST" class="m-1">
+    <form action="{{route('registrarPost')}}" method="POST" class="m-1" enctype="multipart/form-data">
         @csrf
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
             <label for="title">Título</label>
@@ -27,6 +27,10 @@
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
             <label for="text">Texto</label>
             <textarea class="form-control" name="text" id="text" placeholder="Corpo do post" rows="3"></textarea>
+        </div>
+        <div class="form-group bg-light p-3 border border-dark rounded shadow">
+            <label for="text">Imagem do Post</label>
+            <input type="file" class="form-control-file" id="image" name="image">
         </div>
         <button type="submit" class="btn btn-primary shadow ml-2">Cadastrar</button>
     </form>

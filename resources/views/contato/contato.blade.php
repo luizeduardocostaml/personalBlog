@@ -15,7 +15,7 @@
         @endforeach
     @endif
 
-    <form action="{{route('registrarMensagem')}}" method="POST">
+    <form action="{{route('registrarMensagem')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
             <label for="name">Nome</label>

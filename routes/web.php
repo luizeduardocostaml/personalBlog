@@ -20,9 +20,10 @@ Route::view('/', 'admin.index');
 Route::get('/painelBlog', 'BlogController@index')->name('painelBlog');
 Route::view('/cadastrarPost', 'blog.cadastrarPost')->name('cadastrarPost');
 Route::post('/cadastrarPost', 'BlogController@store')->name('registrarPost');
-Route::get('/editPost/{id}', 'BlogController@getPost');
+Route::get('/editPost/{id}', 'BlogController@getEditPost');
 Route::post('/editarPost', 'BlogController@edit')->name('editarPost');
 Route::get('/deletePost/{id}', 'BlogController@destroy');
+Route::get('/post/{id}', 'BlogController@getPost');
 
 
 
