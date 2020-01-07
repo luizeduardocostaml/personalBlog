@@ -13,11 +13,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::view('/', 'admin.index')->name('home');
+Route::get('/', 'BlogController@index')->name('home');
 
 
 
-Route::get('/painelBlog', 'BlogController@index')->name('painelBlog')->middleware('auth');
+Route::get('/painelBlog', 'BlogController@blogPanel')->name('painelBlog')->middleware('auth');
 Route::view('/cadastrarPost', 'blog.cadastrarPost')->name('cadastrarPost')->middleware('auth');
 Route::post('/cadastrarPost', 'BlogController@store')->name('registrarPost')->middleware('auth');
 Route::get('/editPost/{id}', 'BlogController@getEditPost')->middleware('auth');

@@ -5,12 +5,22 @@ namespace App\Http\Controllers;
 use App\Http\Requests\editPost;
 use App\Http\Requests\storePost;
 use App\Post;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
     public function index()
+    {
+        $posts = DB::table('posts')->paginate(10);
+
+        foreach ( $posts as $post){
+            $post->image = str_replace('public/', 'storage/', $post->image);
+        }
+
+        return view('blog.index', ['posts'=>$posts]);
+    }
+
+    public function blogPanel()
     {
         $posts = Post::all();
 

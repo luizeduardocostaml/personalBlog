@@ -24,9 +24,9 @@ class editPost extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'resume' => 'required',
-            'text' => 'required',
+            'title' => 'required|max:50',
+            'resume' => 'required|max:300',
+            'text' => 'required|max:4000',
         ];
     }
 
@@ -34,8 +34,11 @@ class editPost extends FormRequest
     {
         return [
             'title.required' => 'O campo Título é obrigatório.',
+            'title.max' => 'O título pode conter no máximo 50 caractéres.',
             'resume.required' => 'O campo Resumo é obrigatório.',
+            'resume.max' => 'O resumeo pode conter no máximo 300 caractéres.',
             'text.required' => 'O campo Texto é obrigatório.',
+            'text.max' => 'O texto pode conter no máximo 4000 caractéres.',
         ];
     }
 }

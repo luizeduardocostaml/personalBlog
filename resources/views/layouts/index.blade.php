@@ -21,10 +21,10 @@
             </a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{route('painelAdmin')}}">Início <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{route('home')}}">Início <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Blog</a>
+                    <a class="nav-link" href="{{route('home')}}">Blog</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route('enviarMensagem')}}">Contato</a>
