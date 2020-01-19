@@ -6,6 +6,7 @@ use App\Http\Requests\editPost;
 use App\Http\Requests\storePost;
 use App\Post;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -24,7 +25,7 @@ class BlogController extends Controller
     {
         $posts = Post::all();
 
-        return view('blog.blogPanel', ['posts' => $posts]);
+        return view('blog.panel', ['posts' => $posts]);
     }
 
     public function store(storePost $request)
@@ -40,21 +41,25 @@ class BlogController extends Controller
 
         $post->save();
 
-        return redirect()->route('painelBlog');
+        return redirect()->route('blogPanel');
     }
 
     public function destroy($id)
     {
+        $post = Post::find($id);
+
+        Storage::delete($post->image);
+
         Post::destroy($id);
 
-        return redirect()->route('painelBlog');
+        return redirect()->route('blogPanel');
     }
 
     public function getEditPost($id)
     {
         $post = Post::find($id);
 
-        return view('blog.editarPost', ['post' => $post]);
+        return view('blog.edit', ['post' => $post]);
     }
 
     public function edit(editPost $request)
@@ -69,7 +74,7 @@ class BlogController extends Controller
 
         $post->save();
 
-        return redirect()->route('painelBlog');
+        return redirect()->route('blogPanel');
     }
 
     public function getPost($id)
@@ -78,6 +83,6 @@ class BlogController extends Controller
 
         $post->image = str_replace('public/', 'storage/', $post->image);
 
-        return view('blog.showPost', ['post' => $post]);
+        return view('blog.show', ['post' => $post]);
     }
 }

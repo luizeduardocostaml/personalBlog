@@ -5,7 +5,7 @@
 @endsection
 
 @section('title')
-    Cadastrar Post
+    Cadastrar Anúncio
 @endsection
 
 @section('content')
@@ -14,23 +14,24 @@
             <div class="alert alert-danger m-1">{{$error}}</div>
         @endforeach
     @endif
-    <form action="{{route('registrarPost')}}" method="POST" class="m-1" enctype="multipart/form-data">
+    <form action="{{route('registerAd')}}" method="POST" class="m-1" enctype="multipart/form-data">
         @csrf
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
-            <label for="title">Título</label>
-            <input type="text" class="form-control" name="title" id="title" placeholder="Título do post">
+            <label for="title">Nome</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="Nome do Anúncio">
         </div>
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
-            <label for="resume">Resumo</label>
-            <input type="text" class="form-control" name="resume" id="resume" placeholder="Resumo do texto">
+            <label for="resume">Link</label>
+            <input type="text" class="form-control" name="link" id="link" placeholder="Link">
         </div>
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
-            <label for="text">Texto</label>
-            <textarea class="form-control" name="text" id="text" placeholder="Corpo do post" rows="3"></textarea>
+            <label for="text">Posição</label>
+            <input type="text" class="form-control" name="position" id="position" placeholder="Posição">
         </div>
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
-            <label for="text">Imagem do Post</label>
+            <label for="text">Imagem do Anúncio</label>
             <input type="file" class="form-control-file" id="image" name="image">
+            <small class="form-text text-muted">Recomendado uma imagem com 175px de largura.</small>
         </div>
         <button type="submit" class="btn btn-primary shadow ml-2">Cadastrar</button>
     </form>

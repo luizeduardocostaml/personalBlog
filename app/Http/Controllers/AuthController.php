@@ -13,6 +13,17 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
 
+    public function loginView()
+    {
+        try{
+            $user = User::findOrFail(1);
+
+            return view('admin.login');
+        }catch (ModelNotFoundException $e){
+            return view('admin.register');
+        }
+    }
+
     public function authenticate(authUser $request)
     {
         $request->validated();
@@ -21,7 +32,7 @@ class AuthController extends Controller
         $password = $request->password;
 
         if(Auth::attempt(['username' => $username, 'password' => $password])){
-            return redirect()->route('painelAdmin');
+            return redirect()->route('adminPanel');
         }else{
             return redirect()->route('login');
         }

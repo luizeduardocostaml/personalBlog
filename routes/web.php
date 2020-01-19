@@ -17,26 +17,32 @@ Route::get('/', 'BlogController@index')->name('home');
 
 
 
-Route::get('/painelBlog', 'BlogController@blogPanel')->name('painelBlog')->middleware('auth');
-Route::view('/cadastrarPost', 'blog.cadastrarPost')->name('cadastrarPost')->middleware('auth');
-Route::post('/cadastrarPost', 'BlogController@store')->name('registrarPost')->middleware('auth');
+Route::get('/blogPanel', 'BlogController@blogPanel')->name('blogPanel')->middleware('auth');
+Route::view('/registerPost', 'blog.register')->name('getRegisterPost')->middleware('auth');
+Route::post('/registerPost', 'BlogController@store')->name('registerPost')->middleware('auth');
 Route::get('/editPost/{id}', 'BlogController@getEditPost')->middleware('auth');
-Route::post('/editarPost', 'BlogController@edit')->name('editarPost')->middleware('auth');
+Route::post('/editPost', 'BlogController@edit')->name('editPost')->middleware('auth');
 Route::get('/deletePost/{id}', 'BlogController@destroy')->middleware('auth');
 Route::get('/post/{id}', 'BlogController@getPost');
 
 
 
-Route::view('/painelAdmin', 'admin.index')->name('painelAdmin')->middleware('auth');
-Route::view('/login', 'admin.login')->name('login');
+Route::view('/adminPanel', 'admin.index')->name('adminPanel')->middleware('auth');
+Route::get('/login', 'AuthController@loginView')->name('login');
 Route::get('/register', 'AuthController@registerView');
 Route::post('/login', 'AuthController@authenticate')->name('authenticate');
 Route::post('/register', 'AuthController@register')->name('register');
+Route::get('/logout', 'AuthController@logout')->name('logout');
 
 
-Route::get('/painelContato', 'ContatoController@index')->name('painelContato')->middleware('auth');
-Route::post('/contato', 'ContatoController@store')->name('registrarMensagem');
-Route::get('/deleteMessage/{id}', 'ContatoController@destroy')->middleware('auth');
-Route::get('/showMessage/{id}', 'ContatoController@getMessage')->middleware('auth');
-Route::view('/contato', 'contato.contato')->name('enviarMensagem');
+Route::get('/contactPanel', 'ContactController@index')->name('contactPanel')->middleware('auth');
+Route::post('/contact', 'ContactController@store')->name('registerMessage');
+Route::get('/deleteMessage/{id}', 'ContactController@destroy')->middleware('auth');
+Route::get('/showMessage/{id}', 'ContactController@getMessage')->middleware('auth');
+Route::view('/contact', 'contact.contact')->name('sendMessage');
+
+
+Route::get('/advertisementPanel', 'AdController@adPanel')->name('adPanel')->middleware('auth');
+Route::view('/registerAdvertisement', 'advertisement.register')->name('getRegisterAd')->middleware('auth');
+Route::post('/registerAdvertisement', 'AdController@store')->name('registerAd')->middleware('auth');
 

@@ -6,7 +6,7 @@
 
 @section('title')
     <div class="row">
-        <a href="{{route('painelContato')}}" class="btn btn-primary"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
+        <a href="{{route('contactPanel')}}" class="btn btn-primary"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
     </div>
     <div class="row">Mensagem de {{$message->name}}</div>
 

@@ -10,6 +10,18 @@
     <title>@yield('pageTitle')</title>
 </head>
 <body>
+    @auth
+        <div class="container bg-dark">
+            <div class="row">
+                <div class="col-9">
+                    <a href="{{route('adminPanel')}}" class="btn text-light rounded m-1">Painel de administração</a>
+                </div>
+                <div class="col-3">
+                    <a href="{{route('logout')}}" class="btn text-danger rounded m-1">Logout</a>
+                </div>
+            </div>
+        </div>
+    @endauth
     <div class="container mb-5 pb-3">
         <div class="jumbotron shadow">
             <h1 class="display-4">Luiz Eduardo Costa</h1>
@@ -20,14 +32,14 @@
                 <i class="fas fa-laptop-code"></i>
             </a>
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="{{route('home')}}">Início <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a class="nav-link" href="{{route('home')}}">Blog</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{route('enviarMensagem')}}">Contato</a>
+                <li class="nav-item ">
+                    <a class="nav-link" href="{{route('sendMessage')}}">Contato</a>
                 </li>
             </ul>
         </nav>
@@ -41,7 +53,11 @@
             </div>
         </div>
     </div>
-    <div class="bg-dark p-1 position-fixed fixed-bottom"><p class="text-white text-center">Todos os direitos reservados.</p></div>
+    <div class="bg-dark p-1 position-fixed fixed-bottom">
+        <p class="text-white text-center">
+            Todos os direitos reservados. <a href="{{route('login')}}" class="text-light"><i class="fas fa-copyright"></i></a>
+        </p>
+    </div>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

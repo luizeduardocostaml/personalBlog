@@ -6,13 +6,13 @@ use App\Http\Requests\storeMessage;
 use App\Message;
 use Illuminate\Http\Request;
 
-class ContatoController extends Controller
+class ContactController extends Controller
 {
     public function index()
     {
         $messages = Message::all();
 
-        return view('contato.index', ['messages' => $messages]);
+        return view('contact.panel', ['messages' => $messages]);
     }
 
     public function store(storeMessage $request)
@@ -29,20 +29,20 @@ class ContatoController extends Controller
 
         $mensagem->save();
 
-        return redirect()->route('enviarMensagem');
+        return redirect()->route('sendMessage');
     }
 
     public function destroy($id)
     {
         Message::destroy($id);
 
-        return redirect()->route('painelContato');
+        return redirect()->route('contactPanel');
     }
 
     public function getMessage($id)
     {
         $message = Message::find($id);
 
-        return view('contato.message', ['message'=> $message]);
+        return view('contact.show', ['message'=> $message]);
     }
 }
