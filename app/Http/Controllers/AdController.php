@@ -2,17 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\AdvertisementTraits;
 use App\Advertisement;
+use App\Http\Requests\editAdvertisement;
 use App\Http\Requests\storeAdvertisement;
-use http\Env\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AdController extends Controller
 {
+    use AdvertisementTraits;
+
     public function adPanel()
     {
         $ads = Advertisement::all();
 
-        return view('advertisement.panel', ['ads' => $ads]);
+        $count = DB::table('advertisements')->count();
+
+        return view('advertisement.panel', ['ads' => $ads, 'count' => $count]);
     }
 
     public function store(storeAdvertisement $request)
@@ -29,5 +36,47 @@ class AdController extends Controller
         $ad->save();
 
         return redirect()->route('adPanel');
+    }
+
+    public function destroy($id)
+    {
+        $ad = Advertisement::find($id);
+
+        Storage::delete($ad->image);
+
+        Advertisement::destroy($id);
+
+        return redirect()->route('adPanel');
+    }
+
+    public function getEditAdvertisement($id)
+    {
+        $ad = Advertisement::find($id);
+
+        return view('advertisement.edit', ['ad' => $ad]);
+    }
+
+    public function edit(editAdvertisement $request)
+    {
+        $request->validated();
+
+        $ad = Advertisement::find($request->id);
+
+        $ad->name = $request->name;
+        $ad->link = $request->link;
+
+        $ad->save();
+
+        return redirect()->route('adPanel');
+    }
+
+    public function upPosition($id)
+    {
+
+    }
+
+    public function downPosition()
+    {
+
     }
 }
