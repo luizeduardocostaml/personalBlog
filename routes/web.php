@@ -30,6 +30,8 @@ Route::get('/post/{id}', 'BlogController@getPost');
 Route::middleware('auth')->group(function (){
     Route::view('/adminPanel', 'admin.index')->name('adminPanel');
     Route::get('/logout', 'AuthController@logout')->name('logout');
+    Route::view('/changePassword', 'admin.changePassword')->name('changePassword');
+    Route::post('/changePassword', 'AuthController@changePassword')->name('changePassword');
 });
 Route::get('/login', 'AuthController@loginView')->name('login');
 Route::get('/register', 'AuthController@registerView');
@@ -53,6 +55,8 @@ Route::middleware('auth')->group(function (){
     Route::get('/editAdvertisement/{id}', 'AdController@getEditAdvertisement');
     Route::post('/editAdvertisement', 'AdController@edit')->name('editAd');
     Route::get('/deleteAdvertisement/{id}', 'AdController@destroy');
+    Route::get('/upAdvertisement/{id}', 'AdController@upPosition');
+    Route::get('/downAdvertisement/{id}', 'AdController@downPosition');
 });
 
 

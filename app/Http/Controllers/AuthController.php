@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\authUser;
+use App\Http\Requests\changePassword;
 use App\Http\Requests\registerUser;
 use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -67,6 +68,24 @@ class AuthController extends Controller
             return redirect()->route('home');
         }catch (ModelNotFoundException $e){
             return view('admin.register');
+        }
+    }
+
+    public function changePassword(changePassword $request)
+    {
+        $oldPassword = $request->oldPassword;
+        $newPassword = $request->newPassword;
+
+        $id = Auth::id();
+        $user = User::find($id);
+
+        if(Hash::check($oldPassword, $user->password)){
+            $user->password = Hash::make($newPassword);
+            $user->save();
+
+            return redirect()->route('adminPanel');
+        }else{
+            return redirect()->route('changePassword');
         }
     }
 }

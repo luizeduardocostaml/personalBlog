@@ -27,13 +27,13 @@
                         </div>
                         <div class="col col-lg-2 border-right d-flex">
                             @if($ad->position > 1)
-                                <a href=""><i class="fas fa-arrow-up m-1"></i></a>
+                                <a href="/upAdvertisement/{{$ad->id}}"><i class="fas fa-arrow-up m-1"></i></a>
                             @else
                                 <div style="width:20px; height: 20px;"></div>
                             @endif
                             <p class="text-justify">{{$ad->position}}</p>
                             @if(!($ad->position == $count))
-                                <a href=""><i class="fas fa-arrow-down m-1"></i></a>
+                                <a href="/downAdvertisement/{{$ad->id}}"><i class="fas fa-arrow-down m-1"></i></a>
                             @else
                                 <div style="width:20px; height: 20px;"></div>
                             @endif

@@ -72,11 +72,39 @@ class AdController extends Controller
 
     public function upPosition($id)
     {
+        $ad = Advertisement::find($id);
 
+        if($ad->position == 1){
+            return redirect()->route('adPanel');
+        }else{
+            $ad->position = $ad->position - 1;
+            $ad2 = DB::select('select * from advertisements where position = :position', ['position' => $ad->position]);
+            $ad2->position = $ad2->position + 1;
+
+            $ad->save();
+            $ad2->save();
+
+            return redirect()->route('adPanel');
+        }
     }
 
-    public function downPosition()
+    public function downPosition($id)
     {
+        $ad = Advertisement::find($id);
 
+        $count = DB::table('advertisements')->count();
+
+        if($ad->position == $count){
+            return redirect()->route('adPanel');
+        }else{
+            $ad->position = $ad->position + 1;
+            $ad2 = DB::select('select * from advertisements where position = :position', ['position' => $ad->position]);
+            $ad2->position = $ad2->position - 1;
+
+            $ad->save();
+            $ad2->save();
+
+            return redirect()->route('adPanel');
+        }
     }
 }

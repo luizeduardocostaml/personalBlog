@@ -13,8 +13,11 @@
     @auth
         <div class="container bg-dark">
             <div class="row">
-                <div class="col-9">
+                <div class="col-7">
                     <a href="{{route('adminPanel')}}" class="btn text-light rounded m-1">Painel de administração</a>
+                </div>
+                <div class="col-2">
+                    <a href="{{route('changePassword')}}" class="btn text-light rounded m-1">Mudar senha</a>
                 </div>
                 <div class="col-3">
                     <a href="{{route('logout')}}" class="btn text-danger rounded m-1">Logout</a>
