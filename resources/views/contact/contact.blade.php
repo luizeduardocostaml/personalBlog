@@ -14,6 +14,11 @@
             <div class="alert alert-danger m-1">{{$error}}</div>
         @endforeach
     @endif
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <form action="{{route('registerMessage')}}" method="POST" enctype="multipart/form-data">
         @csrf

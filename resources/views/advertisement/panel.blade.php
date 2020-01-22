@@ -10,6 +10,11 @@
 
 @section('content')
     <div class="container-fluid mr-0">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <a href="{{route('registerAd')}}" class="btn btn-primary mb-2 shadow"><i class="fas fa-plus mr-1"></i>Novo Anúncio</a>
         <ul class="list-group shadow rounded ">
             <li class="list-group-item list-group-item-secondary">

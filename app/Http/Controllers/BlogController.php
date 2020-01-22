@@ -41,7 +41,7 @@ class BlogController extends Controller
 
         $post->save();
 
-        return redirect()->route('blogPanel');
+        return redirect()->route('blogPanel')->with('success', 'Post criado com sucesso!');
     }
 
     public function destroy($id)
@@ -52,7 +52,7 @@ class BlogController extends Controller
 
         Post::destroy($id);
 
-        return redirect()->route('blogPanel');
+        return redirect()->route('blogPanel')->with('success', 'Post deletado com sucesso!');
     }
 
     public function getEditPost($id)
@@ -74,7 +74,7 @@ class BlogController extends Controller
 
         $post->save();
 
-        return redirect()->route('blogPanel');
+        return redirect()->route('blogPanel')->with('success', 'Post editado com sucesso!');
     }
 
     public function getPost($id)

@@ -25,10 +25,6 @@
             <input type="text" class="form-control" name="link" id="link" placeholder="Link">
         </div>
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
-            <label for="text">Posição</label>
-            <input type="text" class="form-control" name="position" id="position" placeholder="Posição">
-        </div>
-        <div class="form-group bg-light p-3 border border-dark rounded shadow">
             <label for="text">Imagem do Anúncio</label>
             <input type="file" class="form-control-file" id="image" name="image">
             <small class="form-text text-muted">Recomendado uma imagem com 175px de largura.</small>

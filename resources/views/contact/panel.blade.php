@@ -10,6 +10,11 @@
 
 @section('content')
     <div class="container-fluid ">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <ul class="list-group rounded ">
             <li class="list-group-item list-group-item-secondary">
                 <div class="row">

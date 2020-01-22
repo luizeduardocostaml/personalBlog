@@ -27,7 +27,6 @@ class storeAdvertisement extends FormRequest
             'name' => 'required|max:50',
             'link' => 'required|max:256|active_url',
             'image'=> 'required|image|mimes:jpeg,png,jpg|max:4096',
-            'position' => 'required|integer',
         ];
     }
 
@@ -43,8 +42,6 @@ class storeAdvertisement extends FormRequest
             'image.image' => 'O arquivo deve ser uma imagem.',
             'image.mimes' => 'A imagem deve ser do tipo: jpeg, jpg ou png.',
             'image.max' => 'A Imagem pode conter no máximo 4096 bytes.',
-            'position.required' => 'O campo Posição é obrigatório',
-            'position.integer' => 'O campo Posição precisa ser um número inteiro.',
         ];
     }
 }

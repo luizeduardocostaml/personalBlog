@@ -29,14 +29,14 @@ class ContactController extends Controller
 
         $mensagem->save();
 
-        return redirect()->route('sendMessage');
+        return redirect()->route('sendMessage')->with('success', 'A mensagem foi enviada com sucesso!');
     }
 
     public function destroy($id)
     {
         Message::destroy($id);
 
-        return redirect()->route('contactPanel');
+        return redirect()->route('contactPanel')->with('success', 'A mensagem foi deletada com sucesso!');
     }
 
     public function getMessage($id)

@@ -15,7 +15,7 @@ class AdController extends Controller
 
     public function adPanel()
     {
-        $ads = Advertisement::all();
+        $ads = DB::table('advertisements')->orderBy('position')->get();
 
         $count = DB::table('advertisements')->count();
 
@@ -27,15 +27,16 @@ class AdController extends Controller
         $request->validated();
 
         $ad = new Advertisement();
+        $count = DB::table('advertisements')->count();
 
         $ad->name = $request->name;
         $ad->link = $request->link;
-        $ad->position = $request->position;
+        $ad->position = $count + 1;
         $ad->image = $request->image->store('public/img/upload');
 
         $ad->save();
 
-        return redirect()->route('adPanel');
+        return redirect()->route('adPanel')->with('success', 'Anúncio criado com sucesso!');
     }
 
     public function destroy($id)
@@ -46,7 +47,7 @@ class AdController extends Controller
 
         Advertisement::destroy($id);
 
-        return redirect()->route('adPanel');
+        return redirect()->route('adPanel')->with('success', 'Anúncio deletado com sucesso!');
     }
 
     public function getEditAdvertisement($id)
@@ -67,7 +68,7 @@ class AdController extends Controller
 
         $ad->save();
 
-        return redirect()->route('adPanel');
+        return redirect()->route('adPanel')->with('success', 'Anúncio editado com sucesso!');
     }
 
     public function upPosition($id)
@@ -78,7 +79,9 @@ class AdController extends Controller
             return redirect()->route('adPanel');
         }else{
             $ad->position = $ad->position - 1;
-            $ad2 = DB::select('select * from advertisements where position = :position', ['position' => $ad->position]);
+            $ads = DB::select('select * from advertisements where position = ?', [$ad->position]);
+            $id2 = $ads[0]->id;
+            $ad2 = Advertisement::find($id2);
             $ad2->position = $ad2->position + 1;
 
             $ad->save();
@@ -98,7 +101,9 @@ class AdController extends Controller
             return redirect()->route('adPanel');
         }else{
             $ad->position = $ad->position + 1;
-            $ad2 = DB::select('select * from advertisements where position = :position', ['position' => $ad->position]);
+            $ads = DB::select('select * from advertisements where position = ?', [$ad->position]);
+            $id2 = $ads[0]->id;
+            $ad2 = Advertisement::find($id2);
             $ad2->position = $ad2->position - 1;
 
             $ad->save();

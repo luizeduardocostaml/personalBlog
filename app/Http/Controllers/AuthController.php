@@ -83,7 +83,7 @@ class AuthController extends Controller
             $user->password = Hash::make($newPassword);
             $user->save();
 
-            return redirect()->route('adminPanel');
+            return redirect()->route('adminPanel')->with('success', 'A senha foi alterada com sucesso!');
         }else{
             return redirect()->route('changePassword');
         }
