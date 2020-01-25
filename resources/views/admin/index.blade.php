@@ -20,7 +20,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Posts</h5>
                     <p class="card-text">Gerenciar os posts e nóticias</p>
-                    <a href="{{route('blogPanel')}}" class="btn btn-primary">Administrar Posts</a>
+                    <a href="{{route('post.panel')}}" class="btn btn-primary">Administrar Posts</a>
                 </div>
             </div>
         </div>
@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Mensagens</h5>
                     <p class="card-text">Gerenciar as mensagens de contato</p>
-                    <a href="{{route('contactPanel')}}" class="btn btn-primary">Administrar Contato</a>
+                    <a href="{{route('contact.panel')}}" class="btn btn-primary">Administrar Contato</a>
                 </div>
             </div>
         </div>
@@ -40,7 +40,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Anúncios</h5>
                     <p class="card-text">Gerenciar os anúncios da página</p>
-                    <a href="{{route('adPanel')}}" class="btn btn-primary">Administrar Anúncios</a>
+                    <a href="{{route('ad.panel')}}" class="btn btn-primary">Administrar Anúncios</a>
                 </div>
             </div>
         </div>

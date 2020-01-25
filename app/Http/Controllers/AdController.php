@@ -36,7 +36,7 @@ class AdController extends Controller
 
         $ad->save();
 
-        return redirect()->route('adPanel')->with('success', 'Anúncio criado com sucesso!');
+        return redirect()->route('ad.panel')->with('success', 'Anúncio criado com sucesso!');
     }
 
     public function destroy($id)
@@ -47,7 +47,7 @@ class AdController extends Controller
 
         Advertisement::destroy($id);
 
-        return redirect()->route('adPanel')->with('success', 'Anúncio deletado com sucesso!');
+        return redirect()->route('ad.panel')->with('success', 'Anúncio deletado com sucesso!');
     }
 
     public function getEditAdvertisement($id)
@@ -68,7 +68,7 @@ class AdController extends Controller
 
         $ad->save();
 
-        return redirect()->route('adPanel')->with('success', 'Anúncio editado com sucesso!');
+        return redirect()->route('ad.panel')->with('success', 'Anúncio editado com sucesso!');
     }
 
     public function upPosition($id)
@@ -76,7 +76,7 @@ class AdController extends Controller
         $ad = Advertisement::find($id);
 
         if($ad->position == 1){
-            return redirect()->route('adPanel');
+            return redirect()->route('ad.panel');
         }else{
             $ad->position = $ad->position - 1;
             $ads = DB::select('select * from advertisements where position = ?', [$ad->position]);
@@ -87,7 +87,7 @@ class AdController extends Controller
             $ad->save();
             $ad2->save();
 
-            return redirect()->route('adPanel');
+            return redirect()->route('ad.panel');
         }
     }
 
@@ -98,7 +98,7 @@ class AdController extends Controller
         $count = DB::table('advertisements')->count();
 
         if($ad->position == $count){
-            return redirect()->route('adPanel');
+            return redirect()->route('ad.panel');
         }else{
             $ad->position = $ad->position + 1;
             $ads = DB::select('select * from advertisements where position = ?', [$ad->position]);
@@ -109,7 +109,7 @@ class AdController extends Controller
             $ad->save();
             $ad2->save();
 
-            return redirect()->route('adPanel');
+            return redirect()->route('ad.panel');
         }
     }
 }

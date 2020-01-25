@@ -14,7 +14,7 @@
             <div class="alert alert-danger m-1">{{$error}}</div>
         @endforeach
     @endif
-    <form action="{{route('editPost')}}" method="POST" class="m-1">
+    <form action="{{route('post.edit')}}" method="POST" class="m-1">
         @csrf
         <input type="text" name="id" id="id" value="{{$post->id}}" hidden>
         <div class="form-group bg-light p-3 border border-dark rounded shadow">

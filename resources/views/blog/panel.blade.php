@@ -15,7 +15,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        <a href="{{route('getRegisterPost')}}" class="btn btn-primary mb-2 shadow"><i class="fas fa-plus mr-1"></i>Novo Post</a>
+        <a href="{{route('post.getRegister')}}" class="btn btn-primary mb-2 shadow"><i class="fas fa-plus mr-1"></i>Novo Post</a>
         <ul class="list-group shadow rounded ">
             <li class="list-group-item list-group-item-secondary">
                 <div class="row justify-content-between">
@@ -34,9 +34,9 @@
                             <p class="text-justify">{{$post->resume}}</p>
                         </div>
                         <div class="col col-lg-2 d-flex">
-                            <a href="/deletePost/{{$post->id}}" class="btn btn-danger mr-1" title="Apagar Post"><i class="fas fa-trash-alt"></i></a>
-                            <a href="/editPost/{{$post->id}}" class="btn btn-primary mr-1 pr-2" title="Editar Post"><i class="fas fa-edit"></i></a>
-                            <a href="/post/{{$post->id}}" class="btn btn-primary" title="Visualizar Post"><i class="fas fa-eye"></i></a>
+                            <a href="{{route('post.delete', ['id' => $post->id])}}" class="btn btn-danger mr-1" title="Apagar Post"><i class="fas fa-trash-alt"></i></a>
+                            <a href="{{route('post.getEdit', ['id' => $post->id])}}" class="btn btn-primary mr-1 pr-2" title="Editar Post"><i class="fas fa-edit"></i></a>
+                            <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="btn btn-primary" title="Visualizar Post"><i class="fas fa-eye"></i></a>
                         </div>
                     </div>
                 </li>

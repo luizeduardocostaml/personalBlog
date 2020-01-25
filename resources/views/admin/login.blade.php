@@ -21,7 +21,7 @@
                         <div class="alert alert-danger m-1">{{$error}}</div>
                     @endforeach
                 @endif
-                <form action="{{route('authenticate')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.login')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="id">ID</label>

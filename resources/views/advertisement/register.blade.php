@@ -14,7 +14,7 @@
             <div class="alert alert-danger m-1">{{$error}}</div>
         @endforeach
     @endif
-    <form action="{{route('registerAd')}}" method="POST" class="m-1" enctype="multipart/form-data">
+    <form action="{{route('ad.register')}}" method="POST" class="m-1" enctype="multipart/form-data">
         @csrf
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
             <label for="title">Nome</label>

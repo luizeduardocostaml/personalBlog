@@ -6,7 +6,7 @@
 
 @section('title')
     <div class="row">
-        <a href="{{route('contactPanel')}}" class="btn btn-primary"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
+        <a href="{{route('contact.panel')}}" class="btn btn-primary"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
     </div>
     <div class="row">Mensagem de {{$message->name}}</div>
 
@@ -24,7 +24,7 @@
             </div>
             <hr class="w-25 ml-0 mt-0 ">
             <a href="" class="btn btn-primary"><i class="fas fa-reply mr-1"></i>Responder</a>
-            <a href="/deleteMessage/{{$message->id}}" class="btn btn-danger"><i class="fas fa-trash-alt mr-1"></i>Apagar</a>
+            <a href="{{route('contact.delete', ['id' => $message->id])}}" class="btn btn-danger"><i class="fas fa-trash-alt mr-1"></i>Apagar</a>
         </div>
     </div>
 @endsection

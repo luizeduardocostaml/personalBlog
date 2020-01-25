@@ -14,13 +14,13 @@
         <div class="container bg-dark">
             <div class="row">
                 <div class="col-7">
-                    <a href="{{route('adminPanel')}}" class="btn text-light rounded m-1">Painel de administração</a>
+                    <a href="{{route('admin.panel')}}" class="btn text-light rounded m-1">Painel de administração</a>
                 </div>
                 <div class="col-2">
-                    <a href="{{route('changePassword')}}" class="btn text-light rounded m-1">Mudar senha</a>
+                    <a href="{{route('admin.getChangePassword')}}" class="btn text-light rounded m-1">Mudar senha</a>
                 </div>
                 <div class="col-3">
-                    <a href="{{route('logout')}}" class="btn text-danger rounded m-1">Logout</a>
+                    <a href="{{route('admin.logout')}}" class="btn text-danger rounded m-1">Logout</a>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
                     <a class="nav-link" href="{{route('home')}}">Blog</a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{route('sendMessage')}}">Contato</a>
+                    <a class="nav-link" href="{{route('contact.getRegister')}}">Contato</a>
                 </li>
             </ul>
         </nav>
@@ -58,7 +58,7 @@
     </div>
     <div class="bg-dark p-1 position-fixed fixed-bottom">
         <p class="text-white text-center">
-            Todos os direitos reservados. <a href="{{route('login')}}" class="text-light"><i class="fas fa-copyright"></i></a>
+            Todos os direitos reservados. <a href="{{route('admin.getLogin')}}" class="text-light"><i class="fas fa-copyright"></i></a>
         </p>
     </div>
 

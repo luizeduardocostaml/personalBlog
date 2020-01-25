@@ -33,9 +33,9 @@ class AuthController extends Controller
         $password = $request->password;
 
         if(Auth::attempt(['username' => $username, 'password' => $password])){
-            return redirect()->route('adminPanel');
+            return redirect()->route('admin.panel');
         }else{
-            return redirect()->route('login');
+            return redirect()->route('admin.getLogin');
         }
     }
 
@@ -57,7 +57,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return redirect()->route('login');
+        return redirect()->route('admin.getLogin');
     }
 
     public function registerView()
@@ -83,9 +83,9 @@ class AuthController extends Controller
             $user->password = Hash::make($newPassword);
             $user->save();
 
-            return redirect()->route('adminPanel')->with('success', 'A senha foi alterada com sucesso!');
+            return redirect()->route('admin.panel')->with('success', 'A senha foi alterada com sucesso!');
         }else{
-            return redirect()->route('changePassword');
+            return redirect()->route('admin.getChangePassword');
         }
     }
 }

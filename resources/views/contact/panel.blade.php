@@ -33,8 +33,8 @@
                             <p class="text-justify">{{$message->title}}</p>
                         </div>
                         <div class="col col-lg-2">
-                            <a href="/deleteMessage/{{$message->id}}" class="btn btn-danger mr-1" title="Apagar mensagem"><i class="fas fa-trash-alt"></i></a>
-                            <a href="/showMessage/{{$message->id}}" class="btn btn-primary" title="Visualizar mensagem"><i class="fas fa-eye"></i></a>
+                            <a href="{{route('contact.delete', ['id' => $message->id])}}" class="btn btn-danger mr-1" title="Apagar mensagem"><i class="fas fa-trash-alt"></i></a>
+                            <a href="{{route('contact.message', ['id' => $message->id])}}" class="btn btn-primary" title="Visualizar mensagem"><i class="fas fa-eye"></i></a>
                         </div>
                     </div>
                 </li>

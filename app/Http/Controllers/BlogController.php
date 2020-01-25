@@ -13,12 +13,17 @@ class BlogController extends Controller
     public function index()
     {
         $posts = DB::table('posts')->paginate(10);
+        $ads = DB::table('advertisements')->orderBy('position')->get();
 
         foreach ( $posts as $post){
             $post->image = str_replace('public/', 'storage/', $post->image);
         }
 
-        return view('blog.index', ['posts'=>$posts]);
+        foreach ( $ads as $ad){
+            $ad->image = str_replace('public/', 'storage/', $ad->image);
+        }
+
+        return view('blog.index', ['posts' => $posts, 'ads' => $ads]);
     }
 
     public function blogPanel()
@@ -39,9 +44,14 @@ class BlogController extends Controller
         $post->text = $request->text;
         $post->image = $request->image->store('public/img/upload');
 
+        $link = str_replace(' ', '-', $post->title);
+        $link = strtolower($link);
+
+        $post->link = $link;
+
         $post->save();
 
-        return redirect()->route('blogPanel')->with('success', 'Post criado com sucesso!');
+        return redirect()->route('post.panel')->with('success', 'Post criado com sucesso!');
     }
 
     public function destroy($id)
@@ -52,7 +62,7 @@ class BlogController extends Controller
 
         Post::destroy($id);
 
-        return redirect()->route('blogPanel')->with('success', 'Post deletado com sucesso!');
+        return redirect()->route('post.panel')->with('success', 'Post deletado com sucesso!');
     }
 
     public function getEditPost($id)
@@ -72,12 +82,17 @@ class BlogController extends Controller
         $post->resume = $request->resume;
         $post->text = $request->text;
 
+        $link = str_replace(' ', '-', $post->title);
+        $link = strtolower($link);
+
+        $post->link = $link;
+
         $post->save();
 
-        return redirect()->route('blogPanel')->with('success', 'Post editado com sucesso!');
+        return redirect()->route('post.panel')->with('success', 'Post editado com sucesso!');
     }
 
-    public function getPost($id)
+    public function getPost($id, $link)
     {
         $post = Post::find($id);
 

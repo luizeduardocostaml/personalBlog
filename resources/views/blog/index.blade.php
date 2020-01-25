@@ -19,16 +19,16 @@
                     @if($i%2 !== 0 )
                         <div class="row mb-2 border border-dark rounded">
                             <div class="col-3 w-25 mt-1 mb-1">
-                                <a href="/post/{{$post->id}}">
+                                <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}">
                                     <img src="{{asset($post->image)}}" class="img-fluid" style="max-height: 160px;" alt="Foto do post">
                                 </a>
                             </div>
                             <div class="col-9">
-                                <a href="/post/{{$post->id}}" class="text-info">
+                                <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-info">
                                     <h3 style="font-size: 2rem;">{{ $post->title  }}</h3>
                                 </a>
                                 <hr class="m-0">
-                                <a href="/post/{{$post->id}}" class="text-dark">
+                                <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-dark">
                                     <p class="text-justify" style="font-size: 1rem;">{{ $post->resume }}</p>
                                 </a>
                             </div>
@@ -42,24 +42,30 @@
                         @endphp
                         <div class="row mb-2 border border-dark rounded">
                             <div class="col-9">
-                                <a href="/post/{{$post->id}}" class="text-info">
+                                <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-info">
                                     <h3>{{ $post->title  }}</h3>
                                 </a>
                                 <hr class="m-0">
-                                <a href="/post/{{$post->id}}" class="text-dark">
+                                <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-dark">
                                     <p class="text-justify">{{ $post->resume }}</p>
                                 </a>
                             </div>
                             <div class="col-3 w-25 mt-1 mb-1">
-                                <a href="/post/{{$post->id}}">
-                                    <img src="{{asset($post->image)}}" class="img-fluid" style="max-height: 160px;" alt="Foto do post">
+                                <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}">
+                                    <img src="{{asset($post->image)}}" class="img-fluid" style="max-height: 160px;" alt="{{$post->title}}">
                                 </a>
                             </div>
                         </div>
                     @endif
                 @endforeach
             </div>
-            <div class="col-3">Anúncios</div>
+            <div class="col-3">
+                @foreach($ads as $ad)
+                    <div class="row m-1 border rounded">
+                        <a href="{{$ad->link}}"><img src="{{asset($ad->image)}}" class="img-fluid rounded" style="max-height: 160px;" alt="Anúncio {{$ad->name}}"></a>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
     <div class="container">

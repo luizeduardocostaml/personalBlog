@@ -18,6 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('title', 50);
             $table->string('resume',400);
             $table->string('text',4000);
+            $table->string('link', 50);
             $table->string('image',256);
             $table->timestamps();
         });
