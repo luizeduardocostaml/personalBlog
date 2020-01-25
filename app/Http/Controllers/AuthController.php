@@ -16,11 +16,11 @@ class AuthController extends Controller
 
     public function loginView()
     {
-        try{
+        try {
             $user = User::findOrFail(1);
 
             return view('admin.login');
-        }catch (ModelNotFoundException $e){
+        } catch (ModelNotFoundException $e) {
             return view('admin.register');
         }
     }
@@ -32,9 +32,9 @@ class AuthController extends Controller
         $username = $request->username;
         $password = $request->password;
 
-        if(Auth::attempt(['username' => $username, 'password' => $password])){
+        if (Auth::attempt(['username' => $username, 'password' => $password])) {
             return redirect()->route('admin.panel');
-        }else{
+        } else {
             return redirect()->route('admin.getLogin');
         }
     }
@@ -62,11 +62,11 @@ class AuthController extends Controller
 
     public function registerView()
     {
-        try{
+        try {
             $user = User::findOrFail(1);
 
             return redirect()->route('home');
-        }catch (ModelNotFoundException $e){
+        } catch (ModelNotFoundException $e) {
             return view('admin.register');
         }
     }
@@ -79,12 +79,12 @@ class AuthController extends Controller
         $id = Auth::id();
         $user = User::find($id);
 
-        if(Hash::check($oldPassword, $user->password)){
+        if (Hash::check($oldPassword, $user->password)) {
             $user->password = Hash::make($newPassword);
             $user->save();
 
             return redirect()->route('admin.panel')->with('success', 'A senha foi alterada com sucesso!');
-        }else{
+        } else {
             return redirect()->route('admin.getChangePassword');
         }
     }

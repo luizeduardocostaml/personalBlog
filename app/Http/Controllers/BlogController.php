@@ -7,6 +7,7 @@ use App\Http\Requests\storePost;
 use App\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -15,11 +16,11 @@ class BlogController extends Controller
         $posts = DB::table('posts')->paginate(10);
         $ads = DB::table('advertisements')->orderBy('position')->get();
 
-        foreach ( $posts as $post){
+        foreach ($posts as $post) {
             $post->image = str_replace('public/', 'storage/', $post->image);
         }
 
-        foreach ( $ads as $ad){
+        foreach ($ads as $ad) {
             $ad->image = str_replace('public/', 'storage/', $ad->image);
         }
 
@@ -42,12 +43,8 @@ class BlogController extends Controller
         $post->title = $request->title;
         $post->resume = $request->resume;
         $post->text = $request->text;
+        $post->link = Str::slug($post->title, '-');
         $post->image = $request->image->store('public/img/upload');
-
-        $link = str_replace(' ', '-', $post->title);
-        $link = strtolower($link);
-
-        $post->link = $link;
 
         $post->save();
 
@@ -81,11 +78,7 @@ class BlogController extends Controller
         $post->title = $request->title;
         $post->resume = $request->resume;
         $post->text = $request->text;
-
-        $link = str_replace(' ', '-', $post->title);
-        $link = strtolower($link);
-
-        $post->link = $link;
+        $post->link = Str::slug($post->title, '-');
 
         $post->save();
 

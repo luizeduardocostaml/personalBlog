@@ -48,6 +48,7 @@
         </nav>
         <div class="bg-light border rounded-bottom p-3 shadow">
             <div class="container-fluid">
+                <div class="row">@yield('backButton')</div>
                 <h1 class="font-weight-light">@yield('title')</h1>
             </div>
             <div class="dropdown-divider"></div>

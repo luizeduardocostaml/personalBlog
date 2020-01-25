@@ -4,10 +4,13 @@
     Luiz Eduardo Costa - Blog
 @endsection
 
-@section('title')
-    <div class="row">
-        <a href="{{route('contact.panel')}}" class="btn btn-primary"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
+@section('backButton')
+    <div class="container-fluid row">
+        <a href="{{url()->previous()}}" class="btn"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
     </div>
+@endsection
+
+@section('title')
     <div class="row">Mensagem de {{$message->name}}</div>
 
 @endsection

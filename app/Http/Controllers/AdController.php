@@ -75,9 +75,9 @@ class AdController extends Controller
     {
         $ad = Advertisement::find($id);
 
-        if($ad->position == 1){
+        if ($ad->position == 1) {
             return redirect()->route('ad.panel');
-        }else{
+        } else {
             $ad->position = $ad->position - 1;
             $ads = DB::select('select * from advertisements where position = ?', [$ad->position]);
             $id2 = $ads[0]->id;
@@ -97,9 +97,9 @@ class AdController extends Controller
 
         $count = DB::table('advertisements')->count();
 
-        if($ad->position == $count){
+        if ($ad->position == $count) {
             return redirect()->route('ad.panel');
-        }else{
+        } else {
             $ad->position = $ad->position + 1;
             $ads = DB::select('select * from advertisements where position = ?', [$ad->position]);
             $id2 = $ads[0]->id;
