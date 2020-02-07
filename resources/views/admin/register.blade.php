@@ -7,10 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/50ccf59978.js" crossorigin="anonymous"></script>
-    <title>Login</title>
+    <title>Registrar</title>
 </head>
 <body class="bg-dark">
-    <div class="container mt-5 w-25 h-25 border border-primary bg-light shadow rounded">
+    <div class="container mt-5 mb-5 w-50 h-25 border border-primary bg-light shadow rounded">
         <div class="card border-0">
             <div class="card-header">
                 <h3 class="text-center ">Registrar</h3>
@@ -24,14 +24,31 @@
                 <form action="{{route('admin.register')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="id">ID</label>
-                        <input type="text" class="form-control" placeholder="ID" name="username" id="username">
+                        <label for="id">Username</label>
+                        <input type="text" class="form-control" placeholder="Username" name="username" id="username">
                     </div>
                     <div class="form-group">
                         <label for="password">Senha</label>
                         <input type="password" class="form-control" placeholder="Senha" name="password" id="password">
                     </div>
-                    <button type="submit" class="btn btn-primary">Registrar</button>
+                    <div class="form-group">
+                        <label for="password">Email</label>
+                        <input type="email" class="form-control" placeholder="E-mail" name="email" id="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Nome</label>
+                        <input type="text" class="form-control" placeholder="Nome" name="name" id="name">
+                    </div>
+                    <div class="form-group bg-light p-3 border border-dark rounded shadow">
+                        <label for="text">Biografia</label>
+                        <textarea name="biography" id="biography" rows="3" class="form-control" placeholder="Biogafia"></textarea>
+                    </div>
+                    <div class="form-group bg-light p-3 border border-dark rounded shadow">
+                        <label for="text">Foto</label>
+                        <input type="file" class="form-control-file" id="image" name="image">
+                        <small class="form-text text-muted">Recomendado uma foto de perfil.</small>
+                    </div>
+                    <button type="submit" class="btn btn-primary ">Registrar</button>
                 </form>
             </div>
         </div>

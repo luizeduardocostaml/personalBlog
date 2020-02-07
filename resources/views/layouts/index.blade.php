@@ -7,22 +7,23 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/50ccf59978.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <title>@yield('pageTitle')</title>
 </head>
 <body>
     @auth
         <div class="container bg-dark">
-            <div class="row">
-                <div class="col-7">
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
                     <a href="{{route('admin.panel')}}" class="btn text-light rounded m-1">Painel de administração</a>
-                </div>
-                <div class="col-2">
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.getChangePassword')}}" class="btn text-light rounded m-1">Mudar senha</a>
-                </div>
-                <div class="col-3">
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.logout')}}" class="btn text-danger rounded m-1">Logout</a>
-                </div>
-            </div>
+                </li>
+            </ul>
         </div>
     @endauth
     <div class="container mb-5 pb-3">
@@ -57,15 +58,16 @@
             </div>
         </div>
     </div>
-    <div class="bg-dark p-1 position-fixed fixed-bottom">
+    <div class="bg-dark position-fixed fixed-bottom">
         <p class="text-white text-center">
             Todos os direitos reservados. <a href="{{route('admin.getLogin')}}" class="text-light"><i class="fas fa-copyright"></i></a>
         </p>
     </div>
 
-
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="{{asset('js/main.js')}}" type="text/javascript"></script>
+    @yield('javascript')
 </body>
 </html>

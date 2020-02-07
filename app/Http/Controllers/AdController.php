@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EditAdvertisementRequest;
 use App\Traits\AdvertisementTraits;
 use App\Advertisement;
-use App\Http\Requests\editAdvertisement;
-use App\Http\Requests\storeAdvertisement;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,7 +21,7 @@ class AdController extends Controller
         return view('advertisement.panel', ['ads' => $ads, 'count' => $count]);
     }
 
-    public function store(storeAdvertisement $request)
+    public function store(StoreAdvertisementRequest $request)
     {
         $request->validated();
 
@@ -57,7 +56,7 @@ class AdController extends Controller
         return view('advertisement.edit', ['ad' => $ad]);
     }
 
-    public function edit(editAdvertisement $request)
+    public function edit(EditAdvertisementRequest $request)
     {
         $request->validated();
 

@@ -6,7 +6,7 @@
 
 @section('backButton')
     <div class="container-fluid row">
-        <a href="{{url()->previous()}}" class="btn"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
+        <a href="{{url()->previous()}}" class="btn backButton"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
     </div>
 @endsection
 
@@ -24,5 +24,17 @@
             <img src="{{asset($post->image)}}" class="img-fluid" alt="Post image">
         </div>
         {!! $post->text !!}
+    </div>
+
+    <div>
+        <hr class="my-4">
+        <h5>Autor</h5>
+        <div class="row">
+            <div class="col-2"><img src="{{asset($author->image)}}" class="img-fluid" alt="Foto do autor"></div>
+            <div class="col-10">
+                <h4 class="card-title">{{$author->name}}</h4>
+                <p class="card-text">{{$author->biography}}</p>
+            </div>
+        </div>
     </div>
 @endsection

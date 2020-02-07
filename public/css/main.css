@@ -1,0 +1,15 @@
+.backButton{
+    transition: font-size 1s;
+}
+.backButton:hover{
+    color: gray;
+    font-size: 1.5em;
+}
+
+.nav-item{
+    transition: font-size 1s;
+}
+
+.nav-item:hover{
+    font-size: 1.5em;
+}

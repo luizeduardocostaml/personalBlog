@@ -6,7 +6,7 @@
 
 @section('backButton')
     <div class="container-fluid row">
-        <a href="{{route('admin.panel')}}" class="btn"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
+        <a href="{{route('admin.panel')}}" class="btn backButton"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
     </div>
 @endsection
 

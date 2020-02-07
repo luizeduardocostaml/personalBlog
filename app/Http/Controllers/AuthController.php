@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\authUser;
-use App\Http\Requests\changePassword;
-use App\Http\Requests\registerUser;
+use App\Http\Requests\AuthUserRequest;
+use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -25,7 +24,7 @@ class AuthController extends Controller
         }
     }
 
-    public function authenticate(authUser $request)
+    public function authenticate(AuthUserRequest $request)
     {
         $request->validated();
 
@@ -46,7 +45,7 @@ class AuthController extends Controller
         return redirect()->route('home');
     }
 
-    public function register(registerUser $request)
+    public function register(StoreUserRequest $request)
     {
         $request->validated();
 
@@ -54,6 +53,10 @@ class AuthController extends Controller
 
         $user->username = $request->username;
         $user->password = Hash::make($request->password);
+        $user->email = $request->email;
+        $user->name = $request->name;
+        $user->biography = $request->biography;
+        $user->image = $request->image->store('public/img/upload');
 
         $user->save();
 
@@ -71,7 +74,7 @@ class AuthController extends Controller
         }
     }
 
-    public function changePassword(changePassword $request)
+    public function changePassword(ChangePasswordRequest $request)
     {
         $oldPassword = $request->oldPassword;
         $newPassword = $request->newPassword;

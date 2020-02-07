@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\editPost;
-use App\Http\Requests\storePost;
+use App\Http\Requests\EditPostRequest;
+use App\Http\Requests\StorePostRequest;
 use App\Post;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -34,7 +36,7 @@ class BlogController extends Controller
         return view('blog.panel', ['posts' => $posts]);
     }
 
-    public function store(storePost $request)
+    public function store(StorePostRequest $request)
     {
         $request->validated();
 
@@ -45,6 +47,7 @@ class BlogController extends Controller
         $post->text = $request->text;
         $post->link = Str::slug($post->title, '-');
         $post->image = $request->image->store('public/img/upload');
+        $post->author = Auth::id();
 
         $post->save();
 
@@ -69,7 +72,7 @@ class BlogController extends Controller
         return view('blog.edit', ['post' => $post]);
     }
 
-    public function edit(editPost $request)
+    public function edit(EditPostRequest $request)
     {
         $request->validated();
 
@@ -88,9 +91,11 @@ class BlogController extends Controller
     public function getPost($id, $link)
     {
         $post = Post::find($id);
+        $author = User::find($post->author);
 
         $post->image = str_replace('public/', 'storage/', $post->image);
+        $author->image = str_replace('public/', 'storage/', $author->image);
 
-        return view('blog.show', ['post' => $post]);
+        return view('blog.show', ['post' => $post, 'author' => $author]);
     }
 }

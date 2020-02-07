@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class editPost extends FormRequest
+class StorePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class editPost extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:50',
+            'title' => 'required',
             'resume' => 'required|max:400',
             'text' => 'required|max:4000',
+            'image'=> 'required|image|mimes:jpeg,png,jpg|max:4096',
         ];
     }
 
@@ -34,11 +35,14 @@ class editPost extends FormRequest
     {
         return [
             'title.required' => 'O campo Título é obrigatório.',
-            'title.max' => 'O título pode conter no máximo 50 caractéres.',
             'resume.required' => 'O campo Resumo é obrigatório.',
-            'resume.max' => 'O resumeo pode conter no máximo 400 caractéres.',
+            'resume.max' => 'O Resumo pode conter no máximo 400 caractéres.',
             'text.required' => 'O campo Texto é obrigatório.',
             'text.max' => 'O texto pode conter no máximo 4000 caractéres.',
+            'image.required' => 'O campo Imagem é obrigatório.',
+            'image.image' => 'O arquivo deve ser uma imagem.',
+            'image.mimes' => 'A imagem deve ser no formato: .jpeg, .jpg ou .png.',
+            'image.max' => 'A Imagem pode conter no máximo 4096 bytes.',
         ];
     }
 }

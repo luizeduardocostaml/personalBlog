@@ -21,8 +21,8 @@ Route::middleware('auth')->group(function (){
     Route::get('/blogPanel', 'BlogController@blogPanel')->name('post.panel');
     Route::view('/registerPost', 'blog.register')->name('post.getRegister');
     Route::post('/registerPost', 'BlogController@store')->name('post.register');
-    Route::get('/editPost/{id}', 'BlogController@getEditPost')->name('post.getEdit');
-    Route::post('/editPost', 'BlogController@edit')->name('post.edit');
+    Route::get('/editPostRequest/{id}', 'BlogController@getEditPost')->name('post.getEdit');
+    Route::post('/editPostRequest', 'BlogController@edit')->name('post.edit');
     Route::get('/deletePost/{id}', 'BlogController@destroy')->name('post.delete');
 });
 Route::get('/post/{id}/{link}', 'BlogController@getPost')->name('post.get');

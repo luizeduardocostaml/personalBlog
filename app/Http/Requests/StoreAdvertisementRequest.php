@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class editAdvertisement extends FormRequest
+class StoreAdvertisementRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,6 +26,7 @@ class editAdvertisement extends FormRequest
         return [
             'name' => 'required|max:50',
             'link' => 'required|max:256|active_url',
+            'image'=> 'required|image|mimes:jpeg,png,jpg|max:4096',
         ];
     }
 
@@ -37,6 +38,10 @@ class editAdvertisement extends FormRequest
             'link.required' => 'O campo Link é obrigatório.',
             'link.max' => 'O campo Link pode conter no máximo 256 caractéres.',
             'link.active_url' => 'O campo Link deve ser uma URL em funcionamento.',
+            'image.required' => 'O campo Imagem é obrigatório.',
+            'image.image' => 'O arquivo deve ser uma imagem.',
+            'image.mimes' => 'A imagem deve ser do tipo: jpeg, jpg ou png.',
+            'image.max' => 'A Imagem pode conter no máximo 4096 bytes.',
         ];
     }
 }
