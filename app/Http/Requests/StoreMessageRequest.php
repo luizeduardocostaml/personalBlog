@@ -24,10 +24,10 @@ class StoreMessageRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'email' => 'required|email',
-            'title' => 'required',
-            'text' => 'required',
+            'name' => 'required|max:50',
+            'email' => 'required|email|max:50',
+            'title' => 'required|max:50',
+            'text' => 'required|max:1000',
         ];
     }
 
@@ -35,10 +35,14 @@ class StoreMessageRequest extends FormRequest
     {
         return [
             'name.required' => 'O campo Nome é obrigatório.',
+            'name.max' => 'O campo Nome pode conter no máximo 50 caracteres.',
             'email.required' => 'O campo E-mail é obrigatório.',
-            'title.required' => 'O campo Assunto é obrigatório.',
-            'text.required' => 'O campo Mensagem é obrigatório.',
             'email.email' => 'O campo E-mail não está no formato correto.',
+            'email.max' => 'O campo E-mail pode conter no máximo 256 caracteres.',
+            'title.required' => 'O campo Assunto é obrigatório.',
+            'title.max' => 'O campo Assunto pode conter no máximo 50 caracteres.',
+            'text.required' => 'O campo Mensagem é obrigatório.',
+            'text.max' => 'O campo Mensagem pode conter no máximo 1000 caracteres.',
         ];
     }
 }

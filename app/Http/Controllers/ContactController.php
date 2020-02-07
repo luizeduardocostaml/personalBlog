@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMessageRequest;
+use App\Mail\AnswerMessage;
 use App\Message;
 use App\Notifications\NewMessage;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -27,6 +30,7 @@ class ContactController extends Controller
         $message->email = $request->email;
         $message->title = $request->title;
         $message->text = $request->text;
+        $message->answer = ' ';
 
         $message->save();
 
@@ -48,5 +52,19 @@ class ContactController extends Controller
         $message = Message::find($id);
 
         return view('contact.show', ['message'=> $message]);
+    }
+
+    public function answerMessage(Request $request, $id)
+    {
+        $answer = $request->answer;
+        $message = Message::find($id);
+
+        $message->answer = $answer;
+
+        Mail::to($message->email)->send(new AnswerMessage($message, $answer));
+
+        $message->save();
+
+        return redirect()->route('contact.panel')->with('success', 'A resposta foi enviada com sucesso!');
     }
 }

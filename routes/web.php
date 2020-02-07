@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/contactPanel', 'ContactController@index')->name('contact.panel');
     Route::get('/deleteMessage/{id}', 'ContactController@destroy')->name('contact.delete');
     Route::get('/showMessage/{id}', 'ContactController@getMessage')->name('contact.message');
+    Route::post('/answerMessage/{id}', 'ContactController@answerMessage')->name('contact.answer');
 });
 Route::view('/contact', 'contact.contact')->name('contact.getRegister');
 Route::post('/contact', 'ContactController@store')->name('contact.register');

@@ -25,9 +25,30 @@
                 <b>Mensagem</b>
                 <p>{{$message->text}}</p>
             </div>
-            <hr class="w-25 ml-0 mt-0 ">
-            <a href="" class="btn btn-primary"><i class="fas fa-reply mr-1"></i>Responder</a>
-            <a href="{{route('contact.delete', ['id' => $message->id])}}" class="btn btn-danger"><i class="fas fa-trash-alt mr-1"></i>Apagar</a>
+
+            <a href="{{route('contact.delete', ['id' => $message->id])}}" class="btn btn-danger m-1"><i class="fas fa-trash-alt mr-1"></i>Apagar</a>
+            <div class="row">
+                <hr class="w-25 ml-0 mt-0 ">
+            </div>
+            <div class="container">
+                @if($message->answer === ' ')
+                    <form action="{{route('contact.answer', ['id' => $message->id])}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="p-3">
+                            <label for="text">Resposta</label>
+                            <textarea name="answer" id="answer" rows="3" class="form-control" placeholder="Resposta"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-reply mr-1"></i>Responder</button>
+                    </form>
+                @else
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Resposta</h5>
+                            <p class="card-text">{{$message->answer}}</p>
+                        </div>
+                    </div>
+                @endif
+            </div>
         </div>
     </div>
 @endsection

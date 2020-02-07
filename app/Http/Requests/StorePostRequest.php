@@ -24,7 +24,7 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|max:50',
             'resume' => 'required|max:400',
             'text' => 'required|max:4000',
             'image'=> 'required|image|mimes:jpeg,png,jpg|max:4096',
@@ -35,10 +35,11 @@ class StorePostRequest extends FormRequest
     {
         return [
             'title.required' => 'O campo Título é obrigatório.',
+            'title.max' => 'O campo Título pode conter no máximo 50 caracteres.',
             'resume.required' => 'O campo Resumo é obrigatório.',
-            'resume.max' => 'O Resumo pode conter no máximo 400 caractéres.',
+            'resume.max' => 'O Resumo pode conter no máximo 400 caracteres.',
             'text.required' => 'O campo Texto é obrigatório.',
-            'text.max' => 'O texto pode conter no máximo 4000 caractéres.',
+            'text.max' => 'O texto pode conter no máximo 4000 caracteres.',
             'image.required' => 'O campo Imagem é obrigatório.',
             'image.image' => 'O arquivo deve ser uma imagem.',
             'image.mimes' => 'A imagem deve ser no formato: .jpeg, .jpg ou .png.',
