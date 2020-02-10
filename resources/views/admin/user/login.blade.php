@@ -13,7 +13,7 @@
     <div class="container mt-5 w-25 h-25 border border-primary bg-light shadow rounded">
         <div class="card border-0">
             <div class="card-header">
-                <h3 class="text-center ">Mudar a senha</h3>
+                <h3 class="text-center ">Login</h3>
             </div>
             <div class="card-body bg-light">
                 @if($errors->any())
@@ -21,19 +21,15 @@
                         <div class="alert alert-danger m-1">{{$error}}</div>
                     @endforeach
                 @endif
-                <form action="{{route('admin.changePassword')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('user.login')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="id">Senha antiga</label>
-                        <input type="password" class="form-control" placeholder="ID" name="oldPassword" id="oldPassword">
+                        <label for="id">ID</label>
+                        <input type="text" class="form-control" placeholder="ID" name="username" id="username">
                     </div>
                     <div class="form-group">
-                        <label for="password">Senha nova</label>
-                        <input type="password" class="form-control" placeholder="Senha" name="newPassword" id="newPassword">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Confirme a nova senha</label>
-                        <input type="password" class="form-control" placeholder="Senha" name="confirmPassword" id="confirmPassword">
+                        <label for="password">Senha</label>
+                        <input type="password" class="form-control" placeholder="Senha" name="password" id="password">
                     </div>
                     <button type="submit" class="btn btn-primary">Entrar</button>
                 </form>

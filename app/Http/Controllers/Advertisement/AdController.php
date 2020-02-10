@@ -1,25 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Advertisement;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\EditAdvertisementRequest;
-use App\Traits\AdvertisementTraits;
 use App\Advertisement;
+use App\Http\Requests\StoreAdvertisementRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class AdController extends Controller
 {
-    use AdvertisementTraits;
-
-    public function adPanel()
-    {
-        $ads = DB::table('advertisements')->orderBy('position')->get();
-
-        $count = DB::table('advertisements')->count();
-
-        return view('advertisement.panel', ['ads' => $ads, 'count' => $count]);
-    }
 
     public function store(StoreAdvertisementRequest $request)
     {
@@ -47,13 +38,6 @@ class AdController extends Controller
         Advertisement::destroy($id);
 
         return redirect()->route('ad.panel')->with('success', 'Anúncio deletado com sucesso!');
-    }
-
-    public function getEditAdvertisement($id)
-    {
-        $ad = Advertisement::find($id);
-
-        return view('advertisement.edit', ['ad' => $ad]);
     }
 
     public function edit(EditAdvertisementRequest $request)

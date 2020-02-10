@@ -1,17 +1,11 @@
-@extends('layouts.index')
+@extends('layouts.admin')
 
 @section('pageTitle')
     Luiz Eduardo Costa - Blog
 @endsection
 
-@section('backButton')
-    <div class="container-fluid row">
-        <a href="{{route('admin.panel')}}" class="btn backButton"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
-    </div>
-@endsection
-
 @section('title')
-    Painel do Blog
+    Gerenciamento do Blog
 @endsection
 
 @section('content')

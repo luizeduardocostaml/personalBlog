@@ -20,7 +20,7 @@
                         <div class="row mb-2 border border-dark rounded">
                             <div class="col-3 w-25 mt-1 mb-1">
                                 <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}">
-                                    <img src="{{asset($post->image)}}" class="img-fluid" style="max-height: 160px;" alt="Foto do post">
+                                    <img src="{{asset($post->image)}}" class="img-fluid img-thumbnail" style="max-height: 160px;" alt="Foto do post">
                                 </a>
                             </div>
                             <div class="col-9">
@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-3 w-25 mt-1 mb-1">
                                 <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}">
-                                    <img src="{{asset($post->image)}}" class="img-fluid" style="max-height: 160px;" alt="{{$post->title}}">
+                                    <img src="{{asset($post->image)}}" class="img-fluid img-thumbnail" style="max-height: 160px;" alt="{{$post->title}}">
                                 </a>
                             </div>
                         </div>

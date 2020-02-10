@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.admin')
 
 @section('pageTitle')
     Luiz Eduardo Costa - Blog

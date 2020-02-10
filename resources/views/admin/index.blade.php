@@ -1,4 +1,4 @@
-@extends('layouts.index')
+@extends('layouts.admin')
 
 @section('pageTitle')
     Luiz Eduardo Costa - Blog
@@ -15,33 +15,47 @@
         </div>
     @endif
     <div class="row">
-        <div class="col-sm-6">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h5 class="card-title">Posts</h5>
-                    <p class="card-text">Gerenciar os posts e nóticias</p>
-                    <a href="{{route('post.panel')}}" class="btn btn-primary">Administrar Posts</a>
-                </div>
+        <div class="card text-center m-2">
+            <div class="card-header bg-dark text-light">
+                Blog
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Gerenciamento do Blog</h5>
+                <p class="card-text">Criar, editar, e apagar posts.</p>
+                <a href="{{route('post.panel')}}" class="btn btn-primary">Acessar</a>
             </div>
         </div>
-        <div class="col-sm-6">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h5 class="card-title">Mensagens</h5>
-                    <p class="card-text">Gerenciar as mensagens de contato</p>
-                    <a href="{{route('contact.panel')}}" class="btn btn-primary">Administrar Contato</a>
-                </div>
+
+        <div class="card text-center m-2">
+            <div class="card-header bg-dark text-light">
+                Anúncios
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Gerenciamento de Anúncios</h5>
+                <p class="card-text">Criar, editar, e apagar anúncios.</p>
+                <a href="{{route('ad.panel')}}" class="btn btn-primary">Acessar</a>
             </div>
         </div>
-    </div>
-    <div class="row mt-3">
-        <div class="col-sm-6">
-            <div class="card shadow">
-                <div class="card-body">
-                    <h5 class="card-title">Anúncios</h5>
-                    <p class="card-text">Gerenciar os anúncios da página</p>
-                    <a href="{{route('ad.panel')}}" class="btn btn-primary">Administrar Anúncios</a>
-                </div>
+
+        <div class="card text-center m-2">
+            <div class="card-header bg-dark text-light">
+                Contato
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Gerenciamento de Contato</h5>
+                <p class="card-text">Criar, editar, e apagar mensagens.</p>
+                <a href="{{route('contact.panel')}}" class="btn btn-primary">Acessar</a>
+            </div>
+        </div>
+
+        <div class="card text-center m-2">
+            <div class="card-header bg-dark text-light">
+                Usuários
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Gerenciamento de Usuários</h5>
+                <p class="card-text">Criar e apagar usuários.</p>
+                <a href="{{route('contact.panel')}}" class="btn btn-primary">Acessar</a>
             </div>
         </div>
     </div>

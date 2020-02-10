@@ -19,10 +19,8 @@
 @endsection
 
 @section('content')
-    <div class="vh-100">
-        <div class="float-right w-25">
-            <img src="{{asset($post->image)}}" class="img-fluid" alt="Post image">
-        </div>
+    <div class="container min-vh-100" >
+        <img src="{{asset($post->image)}}" class="rounded float-right w-25 img-thumbnail" alt="Post image">
         {!! $post->text !!}
     </div>
 

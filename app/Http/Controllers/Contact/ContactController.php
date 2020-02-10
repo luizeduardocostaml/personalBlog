@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Contact;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMessageRequest;
 use App\Mail\AnswerMessage;
 use App\Message;
@@ -12,12 +13,7 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    public function index()
-    {
-        $messages = Message::all();
 
-        return view('contact.panel', ['messages' => $messages]);
-    }
 
     public function store(StoreMessageRequest $request)
     {
@@ -45,13 +41,6 @@ class ContactController extends Controller
         Message::destroy($id);
 
         return redirect()->route('contact.panel')->with('success', 'A mensagem foi deletada com sucesso!');
-    }
-
-    public function getMessage($id)
-    {
-        $message = Message::find($id);
-
-        return view('contact.show', ['message'=> $message]);
     }
 
     public function answerMessage(Request $request, $id)

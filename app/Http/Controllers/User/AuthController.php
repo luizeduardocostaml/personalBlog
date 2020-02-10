@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthUserRequest;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\StoreUserRequest;
@@ -13,17 +14,6 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
 
-    public function loginView()
-    {
-        try {
-            $user = User::findOrFail(1);
-
-            return view('admin.login');
-        } catch (ModelNotFoundException $e) {
-            return view('admin.register');
-        }
-    }
-
     public function authenticate(AuthUserRequest $request)
     {
         $request->validated();
@@ -34,7 +24,7 @@ class AuthController extends Controller
         if (Auth::attempt(['username' => $username, 'password' => $password])) {
             return redirect()->route('admin.panel');
         } else {
-            return redirect()->route('admin.getLogin');
+            return redirect()->route('user.getLogin');
         }
     }
 
@@ -60,18 +50,7 @@ class AuthController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.getLogin');
-    }
-
-    public function registerView()
-    {
-        try {
-            $user = User::findOrFail(1);
-
-            return redirect()->route('home');
-        } catch (ModelNotFoundException $e) {
-            return view('admin.register');
-        }
+        return redirect()->route('user.getLogin');
     }
 
     public function changePassword(ChangePasswordRequest $request)
@@ -88,7 +67,7 @@ class AuthController extends Controller
 
             return redirect()->route('admin.panel')->with('success', 'A senha foi alterada com sucesso!');
         } else {
-            return redirect()->route('admin.getChangePassword');
+            return redirect()->route('user.getChangePassword');
         }
     }
 }

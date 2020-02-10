@@ -26,7 +26,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|max:50',
             'resume' => 'required|max:400',
-            'text' => 'required|max:4000',
+            'text' => 'required|max:30000',
             'image'=> 'required|image|mimes:jpeg,png,jpg|max:4096',
         ];
     }
@@ -39,7 +39,7 @@ class StorePostRequest extends FormRequest
             'resume.required' => 'O campo Resumo é obrigatório.',
             'resume.max' => 'O Resumo pode conter no máximo 400 caracteres.',
             'text.required' => 'O campo Texto é obrigatório.',
-            'text.max' => 'O texto pode conter no máximo 4000 caracteres.',
+            'text.max' => 'O texto pode conter no máximo 30000 caracteres.',
             'image.required' => 'O campo Imagem é obrigatório.',
             'image.image' => 'O arquivo deve ser uma imagem.',
             'image.mimes' => 'A imagem deve ser no formato: .jpeg, .jpg ou .png.',
