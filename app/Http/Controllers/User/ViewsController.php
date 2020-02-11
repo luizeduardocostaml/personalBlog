@@ -18,7 +18,7 @@ class ViewsController extends Controller
 
             return view('admin.user.login');
         } catch (ModelNotFoundException $e) {
-            return view('admin.user.register');
+            return view('admin.user.firstRegister');
         }
     }
 
@@ -32,7 +32,7 @@ class ViewsController extends Controller
 
                 return redirect()->route('home');
             } catch (ModelNotFoundException $e) {
-                return view('admin.user.register');
+                return view('admin.user.firstRegister');
             }
         }
 

@@ -55,7 +55,7 @@
             <div class="card-body">
                 <h5 class="card-title">Gerenciamento de Usuários</h5>
                 <p class="card-text">Criar e apagar usuários.</p>
-                <a href="{{route('contact.panel')}}" class="btn btn-primary">Acessar</a>
+                <a href="{{route('admin.userPanel')}}" class="btn btn-primary">Acessar</a>
             </div>
         </div>
     </div>

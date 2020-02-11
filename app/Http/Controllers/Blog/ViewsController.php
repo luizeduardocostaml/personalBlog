@@ -36,20 +36,28 @@ class ViewsController extends Controller
 
     public function getEdit($id)
     {
-        $post = Post::find($id);
+        if($post = Post::find($id)){
+            return view('admin.blog.edit', ['post' => $post]);
+        }else{
+            return redirect()->route('post.panel')->with('error', 'Post inválido.');
+        }
 
-        return view('admin.blog.edit', ['post' => $post]);
+
     }
 
     public function getPost($id, $link)
     {
-        $post = Post::find($id);
-        $author = User::find($post->author);
+        if($post = Post::find($id)){
+            $author = User::find($post->author);
 
-        $post->image = str_replace('public/', 'storage/', $post->image);
-        $author->image = str_replace('public/', 'storage/', $author->image);
+            $post->image = str_replace('public/', 'storage/', $post->image);
+            $author->image = str_replace('public/', 'storage/', $author->image);
 
-        return view('blog.show', ['post' => $post, 'author' => $author]);
+            return view('blog.show', ['post' => $post, 'author' => $author]);
+        }else{
+            return redirect()->route('forbiddenRoute');
+        }
+
     }
 
     public function getStore()

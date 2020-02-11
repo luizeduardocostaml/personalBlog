@@ -10,6 +10,7 @@ use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -45,12 +46,17 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->name = $request->name;
+        $user->hole = $request->hole;
         $user->biography = $request->biography;
         $user->image = $request->image->store('public/img/upload');
 
         $user->save();
 
-        return redirect()->route('user.getLogin');
+        if(Auth::check()){
+            return redirect()->route('admin.userPanel')->with('success', 'O usuário foi criado com sucesso!');
+        }else{
+            return redirect()->route('user.getLogin');
+        }
     }
 
     public function changePassword(ChangePasswordRequest $request)
@@ -68,6 +74,22 @@ class AuthController extends Controller
             return redirect()->route('admin.panel')->with('success', 'A senha foi alterada com sucesso!');
         } else {
             return redirect()->route('user.getChangePassword');
+        }
+    }
+
+    public function destroy($id)
+    {
+        if($id === 1){
+            return redirect()->route('admin.userPanel')->with('error', 'Usuário inválido.');
+        }elseif($user = User::find($id)){
+
+            Storage::delete($user->image);
+
+            User::destroy($id);
+
+            return redirect()->route('admin.userPanel')->with('success', 'O usuário foi apagado com sucesso!');
+        }else{
+            return redirect()->route('admin.userPanel')->with('error', 'Usuário inválido.');
         }
     }
 }

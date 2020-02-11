@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="row min-vh-100 vw-100">
-            <div class="col-2 col-lg-2 bg-dark">
+            <div class="col-sm-2 bg-dark">
                 <nav class="navbar navbar-dark flex-column ">
                     <a class="navbar-brand" href="#">
                         <i class="fas fa-laptop-code"></i>
@@ -42,13 +42,17 @@
                         <li class="nav-item ">
                             <a class="nav-link" href="{{route('ad.panel')}}">Anúncios</a>
                         </li>
-                        <li class="nav-item ">
+                        <li class="nav-item mb-0">
                             <a class="nav-link" href="{{route('contact.panel')}}">Contato</a>
+                        </li>
+                        <div class="dropdown-divider"></div>
+                        <li class="nav-item mb-0">
+                            <a class="nav-link text-danger" href="{{route('user.logout')}}">Logout</a>
                         </li>
                     </ul>
                 </nav>
             </div>
-            <div class="col-10">
+            <div class="col-sm-10">
                 @yield('backButton')
                 <div class="card mt-3 mb-1">
                     <div class="card-header">

@@ -17,7 +17,6 @@ class ContactController extends Controller
 
     public function store(StoreMessageRequest $request)
     {
-
         $request->validated();
 
         $message = new Message();
@@ -38,9 +37,11 @@ class ContactController extends Controller
 
     public function destroy($id)
     {
-        Message::destroy($id);
-
-        return redirect()->route('contact.panel')->with('success', 'A mensagem foi deletada com sucesso!');
+        if(Message::destroy($id)){
+            return redirect()->route('contact.panel')->with('success', 'A mensagem foi deletada com sucesso!');
+        }else{
+            return redirect()->route('contact.panel')->with('error', 'Mensagem inválida.');
+        }
     }
 
     public function answerMessage(Request $request, $id)

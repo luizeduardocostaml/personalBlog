@@ -17,9 +17,11 @@ class ViewsController extends Controller
 
     public function getMessage($id)
     {
-        $message = Message::find($id);
-
-        return view('admin.contact.show', ['message'=> $message]);
+        if($message = Message::find($id)){
+            return view('admin.contact.show', ['message'=> $message]);
+        }else{
+            return redirect()->route('contact.panel')->with('error', 'Mensagem inválida.');
+        }
     }
 
     public function getStore()

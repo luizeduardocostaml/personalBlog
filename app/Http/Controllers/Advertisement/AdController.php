@@ -31,13 +31,15 @@ class AdController extends Controller
 
     public function destroy($id)
     {
-        $ad = Advertisement::find($id);
+        if($ad = Advertisement::find($id)){
+            Storage::delete($ad->image);
 
-        Storage::delete($ad->image);
+            Advertisement::destroy($id);
 
-        Advertisement::destroy($id);
-
-        return redirect()->route('ad.panel')->with('success', 'Anúncio deletado com sucesso!');
+            return redirect()->route('ad.panel')->with('success', 'Anúncio deletado com sucesso!');
+        }else{
+            return redirect()->route('ad.panel')->with('error', 'Anúncio inválido.');
+        }
     }
 
     public function edit(EditAdvertisementRequest $request)

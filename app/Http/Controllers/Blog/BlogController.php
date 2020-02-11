@@ -33,13 +33,17 @@ class BlogController extends Controller
 
     public function destroy($id)
     {
-        $post = Post::find($id);
+        if($post = Post::find($id)){
+            Storage::delete($post->image);
 
-        Storage::delete($post->image);
+            Post::destroy($id);
 
-        Post::destroy($id);
+            return redirect()->route('post.panel')->with('success', 'Post deletado com sucesso!');
+        }else{
+            return redirect()->route('post.panel')->with('error', 'Post inválido.');
+        }
 
-        return redirect()->route('post.panel')->with('success', 'Post deletado com sucesso!');
+
     }
 
     public function edit(EditPostRequest $request)

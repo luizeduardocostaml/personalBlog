@@ -14,6 +14,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'Blog\ViewsController@getBlog')->name('home');
+Route::view('/forbidden', 'layouts.forbidden')->name('forbiddenRoute');
 
 // -----------------------------------  Blog Routes ------------------------------------
 
@@ -38,12 +39,12 @@ Route::middleware('auth')->group(function (){
 
 Route::middleware('auth')->group(function (){
     Route::get('/contactPanel', 'Contact\ViewsController@getPanel')->name('contact.panel');
-    Route::get('/deleteMessage/{id}', 'ContactController@destroy')->name('contact.delete');
+    Route::get('/deleteMessage/{id}', 'Contact\ContactController@destroy')->name('contact.delete');
     Route::get('/showMessage/{id}', 'Contact\ViewsController@getMessage')->name('contact.message');
-    Route::post('/answerMessage/{id}', 'ContactController@answerMessage')->name('contact.answer');
+    Route::post('/answerMessage/{id}', 'Contact\ContactController@answerMessage')->name('contact.answer');
 });
 Route::get('/contact', 'Contact\ViewsController@getStore')->name('contact.getRegister');
-Route::post('/contact', 'ContactController@store')->name('contact.register');
+Route::post('/contact', 'Contact\ContactController@store')->name('contact.register');
 
 // -----------------------------------  Advertisement Routes ------------------------------------
 
@@ -64,6 +65,7 @@ Route::middleware('auth')->group(function (){
     Route::get('/logout', 'User\AuthController@logout')->name('user.logout');
     Route::get('/changePassword', 'User\ViewsController@getChangePassword')->name('user.getChangePassword');
     Route::post('/changePassword', 'User\AuthController@changePassword')->name('user.changePassword');
+    Route::get('/deleteUser/{id}', 'User\AuthController@destroy')->name('user.destroy');
 });
 Route::get('/login', 'User\ViewsController@getLogin')->name('user.getLogin');
 Route::post('/login', 'User\AuthController@authenticate')->name('user.login');

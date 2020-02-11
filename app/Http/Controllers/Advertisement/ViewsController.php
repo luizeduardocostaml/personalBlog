@@ -21,9 +21,11 @@ class ViewsController extends Controller
 
     public function getEdit($id)
     {
-        $ad = Advertisement::find($id);
-
-        return view('admin.advertisement.edit', ['ad' => $ad]);
+        if($ad = Advertisement::find($id)){
+            return view('admin.advertisement.edit', ['ad' => $ad]);
+        }else {
+            return redirect()->route('ad.panel')->with('error', 'Anúncio inválido.');
+        }
     }
 
     public function getStore()
