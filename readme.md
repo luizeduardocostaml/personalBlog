@@ -6,4 +6,10 @@ framework Laravel.
 Neste projeto foi utilizado os seguintes pacotes:
 * Bootstrap
 
-DEMO: [Heroku](personalbloglaravel.herokuapp.com).
+
+## Demo
+DEMO: [Heroku](https://personalbloglaravel.herokuapp.com).
+
+Para acessar o painel admin entre na url "/login", ou clique no símbolo de Copyright na footbar.
+
+Usuário: admin Senha: admin123
