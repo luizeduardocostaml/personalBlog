@@ -7,6 +7,7 @@ use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ViewsController extends Controller
 {
@@ -17,11 +18,11 @@ class ViewsController extends Controller
         $ads = DB::table('advertisements')->orderBy('position')->get();
 
         foreach ($posts as $post) {
-            $post->image = str_replace('public/', 'storage/', $post->image);
+            $post->image = Storage::disk('s3')->url($post->image);
         }
 
         foreach ($ads as $ad) {
-            $ad->image = str_replace('public/', 'storage/', $ad->image);
+            $ad->image = Storage::disk('s3')->url($ad->image);
         }
 
         return view('blog.index', ['posts' => $posts, 'ads' => $ads]);
@@ -50,8 +51,8 @@ class ViewsController extends Controller
         if($post = Post::find($id)){
             $author = User::find($post->author);
 
-            $post->image = str_replace('public/', 'storage/', $post->image);
-            $author->image = str_replace('public/', 'storage/', $author->image);
+            $post->image = Storage::disk('s3')->url($post->image);
+            $author->image = Storage::disk('s3')->url($author->image);
 
             return view('blog.show', ['post' => $post, 'author' => $author]);
         }else{

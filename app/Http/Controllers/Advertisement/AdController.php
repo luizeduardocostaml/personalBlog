@@ -22,7 +22,7 @@ class AdController extends Controller
         $ad->name = $request->name;
         $ad->link = $request->link;
         $ad->position = $count + 1;
-        $ad->image = $request->image->store('public/img/upload');
+        $ad->image = $request->image->store('img/upload', 's3');
 
         $ad->save();
 
@@ -32,7 +32,7 @@ class AdController extends Controller
     public function destroy($id)
     {
         if($ad = Advertisement::find($id)){
-            Storage::delete($ad->image);
+            Storage::disk('s3')->delete($ad->image);
 
             Advertisement::destroy($id);
 

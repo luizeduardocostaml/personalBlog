@@ -48,7 +48,7 @@ class AuthController extends Controller
         $user->name = $request->name;
         $user->hole = $request->hole;
         $user->biography = $request->biography;
-        $user->image = $request->image->store('public/img/upload');
+        $user->image = $request->image->store('img/upload', 's3');
 
         $user->save();
 
@@ -83,7 +83,7 @@ class AuthController extends Controller
             return redirect()->route('admin.userPanel')->with('error', 'Usuário inválido.');
         }elseif($user = User::find($id)){
 
-            Storage::delete($user->image);
+            Storage::disk('s3')->delete($user->image);
 
             User::destroy($id);
 

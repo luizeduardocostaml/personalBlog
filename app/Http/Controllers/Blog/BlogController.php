@@ -23,7 +23,7 @@ class BlogController extends Controller
         $post->resume = $request->resume;
         $post->text = $request->text;
         $post->link = Str::slug($post->title, '-');
-        $post->image = $request->image->store('public/img/upload');
+        $post->image = $request->image->store('img/upload', 's3');
         $post->author = Auth::id();
 
         $post->save();
@@ -34,7 +34,7 @@ class BlogController extends Controller
     public function destroy($id)
     {
         if($post = Post::find($id)){
-            Storage::delete($post->image);
+            Storage::disk('s3')->delete($post->image);
 
             Post::destroy($id);
 

@@ -20,7 +20,7 @@
 
 @section('content')
     <div class="container min-vh-100" >
-        <img src="{{asset($post->image)}}" class="rounded float-right w-25 img-thumbnail" alt="Post image">
+        <img src="{{$post->image}}" class="rounded float-right w-25 img-thumbnail" alt="Post image">
         {!! $post->text !!}
     </div>
 
@@ -28,7 +28,7 @@
         <hr class="my-4">
         <h5>Autor</h5>
         <div class="row">
-            <div class="col-2"><img src="{{asset($author->image)}}" class="img-fluid" alt="Foto do autor"></div>
+            <div class="col-2"><img src="{{$author->image}}" class="img-fluid" alt="Foto do autor"></div>
             <div class="col-10">
                 <h4 class="card-title">{{$author->name}}</h4>
                 <p class="card-text">{{$author->biography}}</p>
