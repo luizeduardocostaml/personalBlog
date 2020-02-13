@@ -27,7 +27,7 @@
                             Usuário
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('home')}}">Meu Perfil</a>
+                            <a class="nav-link" href="">Meu Perfil</a>
                         </li>
                         <div class="dropdown-divider"></div>
                         <li class="nav-item text-light">
