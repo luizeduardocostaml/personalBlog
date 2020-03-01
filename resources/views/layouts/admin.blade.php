@@ -39,9 +39,6 @@
                         <li class="nav-item ">
                             <a class="nav-link" href="{{route('admin.userPanel')}}">Usuários</a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link" href="{{route('ad.panel')}}">Anúncios</a>
-                        </li>
                         <li class="nav-item mb-0">
                             <a class="nav-link" href="{{route('contact.panel')}}">Contato</a>
                         </li>

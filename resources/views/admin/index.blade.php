@@ -28,17 +28,6 @@
 
         <div class="card text-center m-2">
             <div class="card-header bg-dark text-light">
-                Anúncios
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">Gerenciamento de Anúncios</h5>
-                <p class="card-text">Criar, editar, e apagar anúncios.</p>
-                <a href="{{route('ad.panel')}}" class="btn btn-primary">Acessar</a>
-            </div>
-        </div>
-
-        <div class="card text-center m-2">
-            <div class="card-header bg-dark text-light">
                 Contato
             </div>
             <div class="card-body">

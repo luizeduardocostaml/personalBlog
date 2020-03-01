@@ -11,7 +11,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-9">
+            <div class="col">
                 @php
                     $i = 1
                 @endphp
@@ -55,13 +55,6 @@
                             </div>
                         </div>
                     @endif
-                @endforeach
-            </div>
-            <div class="col-3">
-                @foreach($ads as $ad)
-                    <div class="row m-1 border rounded">
-                        <a href="{{$ad->link}}"><img src="{{$ad->image}}" class="img-fluid rounded" style="max-height: 160px;" alt="Anúncio {{$ad->name}}"></a>
-                    </div>
                 @endforeach
             </div>
         </div>
