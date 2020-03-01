@@ -27,7 +27,7 @@
                                 <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-info">
                                     <h3 class="mb-0" style="font-size: 2rem;">{{ $post->title  }}</h3>
                                 </a>
-                                <p class="text-muted font-weight-lighter m-0" style="font-size: 0.8rem;">{{date('d-m-Y', strtotime($post->created_at))}}</p>
+                                <p class="text-muted font-weight-lighter m-0" style="font-size: 0.8rem;">Publicado em {{ \Carbon\Carbon::parse($notice->created_at)->format('d/m/Y h:i:s') }} {{ \Carbon\Carbon::parse($notice->created_at)->diffForHumans() }}</p>
                                 <hr class="m-0">
                                 <p class="text-justify" style="font-size: 1rem;">{{ $post->resume }}</p>
                             </div>
@@ -44,7 +44,7 @@
                                 <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-info">
                                     <h3 class="mb-0" style="font-size: 2rem;">{{ $post->title  }}</h3>
                                 </a>
-                                <p class="text-muted font-weight-lighter m-0" style="font-size: 0.8rem;">{{date('d-m-Y', strtotime($post->created_at))}}</p>
+                                <p class="text-muted font-weight-lighter m-0" style="font-size: 0.8rem;">Publicado em {{ \Carbon\Carbon::parse($notice->created_at)->format('d/m/Y h:i:s') }} {{ \Carbon\Carbon::parse($notice->created_at)->diffForHumans() }}</p>
                                 <hr class="m-0">
                                 <p class="text-justify">{{ $post->resume }}</p>
                             </div>

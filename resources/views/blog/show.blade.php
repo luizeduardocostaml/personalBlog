@@ -13,6 +13,7 @@
 @section('title')
 
     <div class="row">{{$post->title}}</div>
+    <p class="text-muted font-weight-lighter m-0" style="font-size: 0.8rem;">Publicado em {{ \Carbon\Carbon::parse($notice->created_at)->format('d/m/Y h:i:s') }} {{ \Carbon\Carbon::parse($notice->created_at)->diffForHumans() }}</p>
     <div class="ml-3 w-50">
         <h6 class="font-weight-lighter text-secondary">{{$post->resume}}</h6>
     </div>
