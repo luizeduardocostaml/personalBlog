@@ -60,19 +60,6 @@ Route::middleware('auth')->group(function (){
 Route::get('/contact', 'Contact\ViewsController@getStore')->name('contact.getRegister');
 Route::post('/contact', 'Contact\ContactController@store')->name('contact.register');
 
-// -----------------------------------  Advertisement Routes ------------------------------------
-
-Route::middleware('auth')->group(function (){
-    Route::get('/advertisementPanel', 'Advertisement\ViewsController@getPanel')->name('ad.panel');
-    Route::get('/registerAdvertisement', 'Advertisement\ViewsController@getStore')->name('ad.getRegister');
-    Route::post('/registerAdvertisement', 'Advertisement\AdController@store')->name('ad.register');
-    Route::get('/editAdvertisement/{id}', 'Advertisement\ViewsController@getEdit')->name('ad.getEdit');
-    Route::post('/editAdvertisement', 'Advertisement\AdController@edit')->name('ad.edit');
-    Route::get('/deleteAdvertisement/{id}', 'Advertisement\AdController@destroy')->name('ad.delete');
-    Route::get('/upAdvertisement/{id}', 'Advertisement\AdController@upPosition')->name('ad.upPosition');
-    Route::get('/downAdvertisement/{id}', 'Advertisement\AdController@downPosition')->name('ad.downPosition');
-});
-
 // -----------------------------------  User Routes ------------------------------------
 
 Route::middleware('auth')->group(function (){

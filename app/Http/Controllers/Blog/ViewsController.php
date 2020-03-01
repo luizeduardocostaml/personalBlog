@@ -15,18 +15,12 @@ class ViewsController extends Controller
     public function getBlog()
     {
         $posts = DB::table('posts')->orderBy('created_at', 'DESC')->paginate(10);
-        $ads = DB::table('advertisements')->orderBy('position')->get();
 
         foreach ($posts as $post) {
             $post->image = Storage::disk('s3')->url($post->image);
         }
 
-        foreach ($ads as $ad) {
-            $ad->image = Storage::disk('s3')->url($ad->image);
-        }
-
-
-        return view('blog.index', ['posts' => $posts, 'ads' => $ads]);
+        return view('blog.index', ['posts' => $posts]);
     }
 
     public function getPanel()
@@ -43,8 +37,6 @@ class ViewsController extends Controller
         }else{
             return redirect()->route('post.panel')->with('error', 'Post inválido.');
         }
-
-
     }
 
     public function getPost($id, $link)
