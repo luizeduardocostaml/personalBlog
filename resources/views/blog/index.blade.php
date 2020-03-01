@@ -25,12 +25,11 @@
                             </div>
                             <div class="col-9">
                                 <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-info">
-                                    <h3 style="font-size: 2rem;">{{ $post->title  }}</h3>
+                                    <h3 class="mb-0" style="font-size: 2rem;">{{ $post->title  }}</h3>
                                 </a>
+                                <p class="text-muted font-weight-lighter m-0" style="font-size: 0.8rem;">{{date('d-m-Y', strtotime($post->created_at))}}</p>
                                 <hr class="m-0">
-                                <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-dark">
-                                    <p class="text-justify" style="font-size: 1rem;">{{ $post->resume }}</p>
-                                </a>
+                                <p class="text-justify" style="font-size: 1rem;">{{ $post->resume }}</p>
                             </div>
                         </div>
                         @php
@@ -43,12 +42,11 @@
                         <div class="row mb-2 border border-dark rounded">
                             <div class="col-9">
                                 <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-info">
-                                    <h3>{{ $post->title  }}</h3>
+                                    <h3 class="mb-0" style="font-size: 2rem;">{{ $post->title  }}</h3>
                                 </a>
+                                <p class="text-muted font-weight-lighter m-0" style="font-size: 0.8rem;">{{date('d-m-Y', strtotime($post->created_at))}}</p>
                                 <hr class="m-0">
-                                <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-dark">
-                                    <p class="text-justify">{{ $post->resume }}</p>
-                                </a>
+                                <p class="text-justify">{{ $post->resume }}</p>
                             </div>
                             <div class="col-3 w-25 mt-1 mb-1">
                                 <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}">

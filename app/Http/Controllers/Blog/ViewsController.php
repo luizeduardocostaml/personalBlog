@@ -14,7 +14,7 @@ class ViewsController extends Controller
 
     public function getBlog()
     {
-        $posts = DB::table('posts')->paginate(10);
+        $posts = DB::table('posts')->orderBy('created_at', 'DESC')->paginate(10);
         $ads = DB::table('advertisements')->orderBy('position')->get();
 
         foreach ($posts as $post) {
@@ -25,12 +25,13 @@ class ViewsController extends Controller
             $ad->image = Storage::disk('s3')->url($ad->image);
         }
 
+
         return view('blog.index', ['posts' => $posts, 'ads' => $ads]);
     }
 
     public function getPanel()
     {
-        $posts = Post::all();
+        $posts = DB::table('posts')->orderBy('created_at', 'DESC')->get();
 
         return view('admin.blog.panel', ['posts' => $posts]);
     }
