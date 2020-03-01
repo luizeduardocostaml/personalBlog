@@ -13,7 +13,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'Blog\ViewsController@getBlog')->name('home');
+Route::get('/', 'News\ViewsController@getNews')->name('home');
 Route::view('/forbidden', 'layouts.forbidden')->name('forbiddenRoute');
 
 // -----------------------------------  Blog Routes ------------------------------------
@@ -26,7 +26,21 @@ Route::middleware('auth')->group(function (){
     Route::post('/editPostRequest', 'Blog\BlogController@edit')->name('post.edit');
     Route::get('/deletePost/{id}', 'Blog\BlogController@destroy')->name('post.delete');
 });
+Route::get('/blog', 'Blog\ViewsController@getBlog')->name('blog');
 Route::get('/post/{id}/{link}', 'Blog\ViewsController@getPost')->name('post.get');
+
+// -----------------------------------  News Routes ------------------------------------
+
+Route::middleware('auth')->group(function (){
+    Route::get('/newsPanel', 'News\ViewsController@getPanel')->name('news.panel');
+    Route::get('/registerNews', 'News\ViewsController@getStore')->name('news.getRegister');
+    Route::post('/registerNews', 'News\NewsController@store')->name('news.register');
+    Route::get('/editNewsRequest/{id}', 'News\ViewsController@getEdit')->name('news.getEdit');
+    Route::post('/editNewsRequest', 'News\NewsController@edit')->name('news.edit');
+    Route::get('/deleteNews/{id}', 'News\NewsController@destroy')->name('news.delete');
+});
+Route::get('/news/{id}/{link}', 'News\ViewsController@getNotice')->name('news.get');
+Route::get('/news', 'News\ViewsController@getNews')->name('news');
 
 // -----------------------------------  Admin Routes ------------------------------------
 

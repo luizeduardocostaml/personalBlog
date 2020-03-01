@@ -34,6 +34,9 @@
                             Gerenciamento
                         </li>
                         <li class="nav-item ">
+                            <a class="nav-link" href="{{route('news.panel')}}">Notícias</a>
+                        </li>
+                        <li class="nav-item ">
                             <a class="nav-link" href="{{route('post.panel')}}">Blog</a>
                         </li>
                         <li class="nav-item ">

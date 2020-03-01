@@ -17,6 +17,17 @@
     <div class="row">
         <div class="card text-center m-2">
             <div class="card-header bg-dark text-light">
+                Notícias
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Gerenciamento de Notícias</h5>
+                <p class="card-text">Criar, editar, e apagar notícias.</p>
+                <a href="{{route('news.panel')}}" class="btn btn-primary">Acessar</a>
+            </div>
+        </div>
+
+        <div class="card text-center m-2">
+            <div class="card-header bg-dark text-light">
                 Blog
             </div>
             <div class="card-body">
