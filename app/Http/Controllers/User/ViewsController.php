@@ -16,6 +16,9 @@ class ViewsController extends Controller
         try {
             $user = User::findOrFail(1);
 
+            if(Auth::check()){
+                return redirect()->route('admin.panel');
+            }
             return view('admin.user.login');
         } catch (ModelNotFoundException $e) {
             return view('admin.user.firstRegister');
