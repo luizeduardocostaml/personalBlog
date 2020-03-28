@@ -12,18 +12,25 @@
     </head>
     <body>
         @auth
-            <div class="container bg-dark">
-                <ul class="nav justify-content-end">
-                    <li class="nav-item">
-                        <a href="{{route('admin.panel')}}" class="btn text-light rounded m-1">Painel de administração</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('user.getChangePassword')}}" class="btn text-light rounded m-1">Mudar senha</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{route('user.logout')}}" class="btn text-danger rounded m-1">Logout</a>
-                    </li>
-                </ul>
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#AdminBar" aria-controls="AdminBar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="AdminBar">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a href="{{route('admin.panel')}}" class="btn text-light rounded m-1">Painel de administração</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('user.getChangePassword')}}" class="btn text-light rounded m-1">Mudar senha</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('user.logout')}}" class="btn text-danger rounded m-1">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
         @endauth
         <div class="container pb-3">

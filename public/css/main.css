@@ -13,3 +13,24 @@
 .nav-link:hover{
     font-size: 1.5em;
 }
+
+.post-image{
+    width: 25%;
+}
+
+@media only screen and (max-width: 600px) {
+    .post-image{
+        width: 100% !important;
+    }
+}
+
+.author-image{
+    width: 15%;
+}
+
+@media only screen and (max-width: 600px) {
+    .author-image{
+        margin: 0 auto !important;
+        width: 75% !important;
+    }
+}
