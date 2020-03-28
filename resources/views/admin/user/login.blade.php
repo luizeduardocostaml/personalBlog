@@ -5,12 +5,13 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <script src="https://kit.fontawesome.com/50ccf59978.js" crossorigin="anonymous"></script>
     <title>Login</title>
 </head>
 <body class="bg-dark">
-    <div class="container mt-5 w-25 h-25 border border-primary bg-light shadow rounded">
+    <div class="container mt-5 login-card h-25 border border-primary bg-light shadow rounded">
         <div class="card border-0">
             <div class="card-header">
                 <h3 class="text-center ">Login</h3>
