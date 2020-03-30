@@ -18,19 +18,37 @@
     width: 25%;
 }
 
-@media only screen and (max-width: 600px) {
-    .post-image{
-        width: 100% !important;
-    }
-}
-
 .author-image{
     width: 15%;
 }
 
+.login-card{
+    max-width: 25% !important;
+}
+
+.register-card{
+    max-width: 50% !important;
+}
+
+/* CSS for responsive layout*/
 @media only screen and (max-width: 600px) {
+    .post-image{
+        width: 100% !important;
+    }
+
     .author-image{
         margin: 0 auto !important;
         width: 75% !important;
     }
+
+    .login-card{
+        max-width: 90% !important;
+    }
+
+    .register-card{
+        max-width: 90% !important;
+    }
 }
+
+
+
