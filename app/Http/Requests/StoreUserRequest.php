@@ -28,7 +28,7 @@ class StoreUserRequest extends FormRequest
             'password' => 'required|min:8|max:256',
             'email' => 'required|email|max:256',
             'name' => 'required|max:256',
-            'hole' => 'required',
+            'role' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:4096',
             'biography' => 'required|max:1000',
         ];
@@ -47,7 +47,7 @@ class StoreUserRequest extends FormRequest
             'email.email' => 'O campo E-mail não está no formato correto.',
             'name.required' => 'O campo Nome é obrigatório',
             'name.max' => 'O campo Nome pode conter no máximo 256 caracteres.',
-            'hole.required' => 'O campo Cargo é obrigatório.',
+            'role.required' => 'O campo Cargo é obrigatório.',
             'image.required' => 'O campo Imagem é obrigatório.',
             'image.image' => 'O campo Imagem deve ser uma imagem.',
             'image.mimes' => 'O campo Imagem deve ser no formato: .jpeg, .png ou .jpg.',
