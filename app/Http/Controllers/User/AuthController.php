@@ -46,7 +46,7 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->email = $request->email;
         $user->name = $request->name;
-        $user->role = $request->hole;
+        $user->role = $request->role;
         $user->biography = $request->biography;
         $user->image = $request->image->store('img/upload', 's3');
 

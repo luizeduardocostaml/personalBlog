@@ -40,7 +40,7 @@
         </div>
         <div class="form-group">
             <label for="hole">Cargo</label>
-            <select class="form-control" name="hole" id="hole" >
+            <select class="form-control" name="role" id="role" >
                 <option value="Admin" selected>Admin</option>
                 <option value="Editor">Editor</option>
             </select>
