@@ -42,6 +42,9 @@ class ViewsController extends Controller
         if($notice = Notice::find($id)){
             $author = User::find($notice->author);
 
+            $notice->views += 1;
+            $notice->save();
+
             $notice->image = Storage::disk('s3')->url($notice->image);
             $author->image = Storage::disk('s3')->url($author->image);
 

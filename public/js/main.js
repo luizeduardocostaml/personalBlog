@@ -8,3 +8,17 @@ function turnVisible(id){
 }
 
 $('.toast').toast('show');
+
+var isActive = 0;
+
+function showMenu(id) {
+    var element = document.getElementById("menu");
+    if(isActive) {
+        element.classList.remove("menu-hamburguer-open");
+        isActive = 0;
+    }
+    else {
+        element.classList.add("menu-hamburguer-open");
+        isActive = 1;
+    }
+}

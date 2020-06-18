@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password',256);
             $table->string('email',256);
             $table->string('name',256);
-            $table->string('hole');
+            $table->string('role', 50);
             $table->string('image',256);
             $table->string('biography', 1000);
             $table->rememberToken();

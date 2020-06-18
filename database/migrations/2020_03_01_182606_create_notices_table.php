@@ -21,6 +21,7 @@ class CreateNoticesTable extends Migration
             $table->string('link', 50);
             $table->string('image',256);
             $table->integer('author');
+            $table->integer('views');
             $table->timestamps();
         });
     }
