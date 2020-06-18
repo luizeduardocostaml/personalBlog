@@ -44,6 +44,9 @@ class ViewsController extends Controller
         if($post = Post::find($id)){
             $author = User::find($post->author);
 
+            $post->views += 1;
+            $post->save();
+
             $post->image = Storage::disk('s3')->url($post->image);
             $author->image = Storage::disk('s3')->url($author->image);
 

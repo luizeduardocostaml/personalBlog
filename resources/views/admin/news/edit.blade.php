@@ -5,7 +5,7 @@
 @endsection
 
 @section('backButton')
-    <div class="container-fluid row">
+    <div class="d-flex flex-row">
         <a href="{{url()->previous()}}" class="btn backButton"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
     </div>
 @endsection

@@ -25,6 +25,7 @@ class BlogController extends Controller
         $post->link = Str::slug($post->title, '-');
         $post->image = $request->image->store('img/upload', 's3');
         $post->author = Auth::id();
+        $post->views = 0;
 
         $post->save();
 
