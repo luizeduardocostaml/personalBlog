@@ -23,7 +23,7 @@
                 <a class="navbar-brand close-mobile" onclick="showMenu()">
                     <i class="fas fa-times"></i>
                 </a>
-                <ul class="navbar-nav">
+                <ul class="navbar-nav w-100">
                     <div class="dropdown-divider close-mobile"></div>
                     <li class="nav-item text-light">
                         <a href="{{route('admin.panel')}}" class="nav-link">Home</a>
@@ -63,8 +63,8 @@
                     <li class="nav-item mb-0">
                         <a class="nav-link" href="{{route('contact.panel')}}">Contato</a>
                     </li>
-                    <div class="dropdown-divider"></div>
-                    <li class="nav-item mb-0">
+                    <div class="dropdown-divider "></div>
+                    <li class="nav-item">
                         <a class="nav-link text-danger" href="{{route('user.logout')}}">Logout</a>
                     </li>
                 </ul>
