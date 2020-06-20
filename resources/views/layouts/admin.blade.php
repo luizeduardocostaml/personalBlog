@@ -14,13 +14,17 @@
 
 <body>
     <nav class="navbar navbar-light bg-dark shadow">
-        <div onclick="showMenu()" class="menu-hamburguer-open">
+        <div onclick="showMenu()" id="closeMenu">
             <i class="fas fa-bars fa-2x"></i>
+        </div>
+        <div class="row">
+            <a class="nav-link text-white mr-0" href="{{route('user.getChangePassword')}}">Mudar senha</a>
+            <a class="nav-link text-danger" href="{{route('user.logout')}}">Logout</a>
         </div>
     </nav>
 
     <div class="container-fluid m-0 p-0 d-flex">
-        <div id="menu" class="menu-hamburguer menu-hamburguer-open bg-dark">
+        <div id="menu" class="menu-hamburguer bg-dark">
             <nav class="navbar navbar-dark bg-dark flex-column">
                 <a class="navbar-brand close-mobile" onclick="showMenu()">
                     <i class="fas fa-times"></i>
@@ -55,10 +59,6 @@
                     </li>
                     <li class="nav-item mb-0">
                         <a class="nav-link" href="{{route('contact.panel')}}">Contato</a>
-                    </li>
-                    <div class="dropdown-divider "></div>
-                    <li class="nav-item">
-                        <a class="nav-link text-danger" href="{{route('user.logout')}}">Logout</a>
                     </li>
                 </ul>
             </nav>

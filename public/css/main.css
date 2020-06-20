@@ -1,11 +1,11 @@
 /* Hamburguer menu admin Panel*/
 
-.menu-hamburguer-open {
+#closeMenu {
     margin: 10px;
     cursor: pointer;
 }
 
-.menu-hamburguer-open:hover {
+#closeMenu:hover {
     color: white;
 }
 
@@ -90,10 +90,6 @@
     width: 25%;
 }
 
-.author-image {
-    width: 15%;
-}
-
 .login-card {
     max-width: 25% !important;
 }
@@ -111,11 +107,6 @@
 @media only screen and (max-width: 600px) {
     .post-image {
         width: 100% !important;
-    }
-
-    .author-image {
-        margin: 0 auto !important;
-        width: 75% !important;
     }
 
     .login-card {
