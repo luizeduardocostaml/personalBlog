@@ -9,7 +9,7 @@ function turnVisible(id) {
 
 $(".toast").toast("show");
 
-var isActive = 1;
+var isActive = 0;
 
 function showMenu(id) {
     var element = document.getElementById("menu");
