@@ -1,114 +1,128 @@
 /* Hamburguer menu admin Panel*/
 
-.menu-hamburguer-open{
+.menu-hamburguer-open {
     margin: 10px;
     cursor: pointer;
 }
 
-.menu-hamburguer-open:hover{
+.menu-hamburguer-open:hover {
     color: white;
 }
 
-.menu-hamburguer{
+.menu-hamburguer {
     overflow: auto;
     position: relative;
     left: 0;
     top: 0;
-    min-height: 20%;
-    max-height: 100%;
+    min-height: 100vh;
+    height: 100%;
     z-index: 1000;
-    min-width: 20%;
-    display: none;
+    min-width: 0;
+    max-width: 0;
+    box-shadow: 0px 3px 3px black;
 
-    transform: translateX(-100%);
-    transition: transform 200ms linear;
+    transition: max-width 200ms, min-width 200ms linear;
 }
 
-.menu-hamburguer-open{
-    display: block;
-    transform: translateX(0) !important;
+.menu-hamburguer-open {
+    min-width: 20vw;
+    max-width: 100vw !important;
+    transition: max-width 200ms, min-width 200ms linear;
     margin: 0;
 }
 
 @media only screen and (max-width: 600px) {
-    .menu-hamburguer{
+    .menu-hamburguer {
         position: fixed;
-        overflow: auto;
+        overflow: hidden;
         top: 0;
         min-height: 100vh;
         max-height: 100vh;
         z-index: 1000;
-        min-width: 100vw;
+        min-width: 0;
+        max-width: 0;
+        text-align: center !important;
 
-        transform: translateX(-100vw);
-        transition: transform 200ms linear;
+        transition: max-width 200ms, min-width 200ms linear;
     }
 }
 
-.close-mobile{
+@media only screen and (max-width: 600px) {
+    .menu-hamburguer-open {
+        min-width: 100vw !important;
+        max-width: 100vw !important;
+        transition: max-width 200ms, min-width 200ms linear;
+        margin: 0;
+    }
+}
+
+.close-mobile {
     display: none;
 }
 
 @media only screen and (max-width: 600px) {
-    .close-mobile{
+    .close-mobile {
+        padding: 2px 5px;
+        margin: 2px 5px;
         display: block;
     }
 }
 
 /* Animations */
-.backButton{
-     transition: font-size 1s;
- }
-.backButton:hover{
+.backButton {
+    transition: font-size 1s;
+}
+.backButton:hover {
     color: gray;
     font-size: 1.1em;
 }
 
-.nav-link{
-    transition: font-size 1s;
+.nav-link {
+    transition: text-shadow 1s;
 }
 
-.nav-link:hover{
-    font-size: 1.2em;
+.nav-link:hover {
+    text-shadow: 3px 3px black;
 }
-
 
 /* PC layouts */
-.post-image{
+.post-image {
     width: 25%;
 }
 
-.author-image{
+.author-image {
     width: 15%;
 }
 
-.login-card{
+.login-card {
     max-width: 25% !important;
 }
 
-.register-card{
+.register-card {
     max-width: 50% !important;
+}
+
+.wh-40 {
+    width: 44px;
+    height: 40px;
 }
 
 /* CSS for responsive layout*/
 @media only screen and (max-width: 600px) {
-    .post-image{
+    .post-image {
         width: 100% !important;
     }
 
-    .author-image{
+    .author-image {
         margin: 0 auto !important;
         width: 75% !important;
     }
 
-    .login-card{
+    .login-card {
         max-width: 90% !important;
     }
 
-    .register-card{
+    .register-card {
         max-width: 90% !important;
     }
 }
-
-
-

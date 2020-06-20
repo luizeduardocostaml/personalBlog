@@ -18,6 +18,6 @@ class ViewsController extends Controller
     {
         $users = User::where('id', '>', 1)->get();
 
-        return view('admin.userPanel', ['users' => $users]);
+        return view('admin.user.panel', ['users' => $users]);
     }
 }
