@@ -7,7 +7,7 @@ use App\Http\Requests\AuthUserRequest;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Http\Requests\EditUserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -54,6 +54,34 @@ class AuthController extends Controller
 
         if(Auth::check()){
             return redirect()->route('admin.userPanel')->with('success', 'O usuário foi criado com sucesso!');
+        }else{
+            return redirect()->route('user.getLogin');
+        }
+    }
+
+    public function edit(EditUserRequest $request)
+    {
+        if(Auth::id() != $request->id){
+            return redirect()->route('admin.panel')->with('error', 'Você não possui autorização para fazer isso!');
+        }
+
+        $request->validated();
+
+        $user = Auth::user();
+
+        $user->username = $request->username;
+        $user->name = $request->name;
+        $user->biography = $request->biography;
+
+        if($request->has('image')){
+            Storage::disk('s3')->delete($user->image);
+            $user->image = $request->image->store('img/upload', 's3');
+        }
+
+        $user->save();
+
+        if(Auth::check()){
+            return redirect()->route('user.getEdit')->with('success', 'Dados alterados com sucesso!');
         }else{
             return redirect()->route('user.getLogin');
         }

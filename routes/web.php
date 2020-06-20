@@ -47,6 +47,7 @@ Route::get('/news', 'News\ViewsController@getNews')->name('news');
 Route::middleware('auth')->group(function (){
     Route::get('/adminPanel', 'Admin\ViewsController@getPanel')->name('admin.panel');
     Route::get('/adminUserPanel', 'Admin\ViewsController@getUserPanel')->name('admin.userPanel');
+    Route::get('/deleteUser/{id}', 'User\AuthController@destroy')->name('user.destroy');
 });
 
 // -----------------------------------  Contact Routes ------------------------------------
@@ -66,7 +67,8 @@ Route::middleware('auth')->group(function (){
     Route::get('/logout', 'User\AuthController@logout')->name('user.logout');
     Route::get('/changePassword', 'User\ViewsController@getChangePassword')->name('user.getChangePassword');
     Route::post('/changePassword', 'User\AuthController@changePassword')->name('user.changePassword');
-    Route::get('/deleteUser/{id}', 'User\AuthController@destroy')->name('user.destroy');
+    Route::get('/editUser', 'User\ViewsController@getEdit')->name('user.getEdit');
+    Route::post('/editUser', 'User\AuthController@edit')->name('user.edit');
 });
 Route::get('/login', 'User\ViewsController@getLogin')->name('user.getLogin');
 Route::post('/login', 'User\AuthController@authenticate')->name('user.login');

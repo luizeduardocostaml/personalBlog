@@ -1,15 +1,17 @@
 <!DOCTYPE HTML>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <script src="https://kit.fontawesome.com/50ccf59978.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <title>@yield('pageTitle')</title>
 </head>
+
 <body>
     <nav class="navbar navbar-light bg-dark shadow">
         <div onclick="showMenu()" class="menu-hamburguer-open">
@@ -36,7 +38,7 @@
                         Usuário
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">Meu Perfil</a>
+                        <a class="nav-link" href="{{route('user.getEdit')}}">Meu Perfil</a>
                     </li>
                     <div class="dropdown-divider"></div>
                     <li class="nav-item text-light">
@@ -81,4 +83,5 @@
 
     @yield('javascript')
 </body>
+
 </html>
