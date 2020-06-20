@@ -5,8 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ViewsController extends Controller
 {
@@ -44,5 +44,14 @@ class ViewsController extends Controller
     public function getChangePassword()
     {
         return view('admin.user.changePassword');
+    }
+
+    public function getEdit()
+    {
+        $user = Auth::user();
+
+        $user->image = Storage::disk('s3')->url($user->image);
+
+        return view('admin.user.edit', ['user' => $user]);
     }
 }
