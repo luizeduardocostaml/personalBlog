@@ -44,7 +44,7 @@ Route::get('/news', 'News\ViewsController@getNews')->name('news');
 
 // -----------------------------------  Admin Routes ------------------------------------
 
-Route::middleware('auth')->group(function (){
+Route::middleware(['auth', 'auth.admin'])->group(function (){
     Route::get('/adminPanel', 'Admin\ViewsController@getPanel')->name('admin.panel');
     Route::get('/adminUserPanel', 'Admin\ViewsController@getUserPanel')->name('admin.userPanel');
     Route::get('/deleteUser/{id}', 'User\AuthController@destroy')->name('user.destroy');

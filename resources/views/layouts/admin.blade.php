@@ -54,9 +54,14 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('post.panel')}}">Blog</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('admin.userPanel')}}">Usuários</a>
-                    </li>
+                    @if (Auth::user()->role == 'admin')
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{route('admin.userPanel')}}">Usuários</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="#">Logs</a>
+                        </li>
+                    @endif
                     <li class="nav-item mb-0">
                         <a class="nav-link" href="{{route('contact.panel')}}">Contato</a>
                     </li>

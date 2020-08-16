@@ -35,8 +35,8 @@
         <div class="form-group">
             <label for="hole">Cargo</label>
             <select class="form-control" name="role" id="role" >
-                <option value="Admin" selected>Admin</option>
-                <option value="Editor">Editor</option>
+                <option value="admin" selected>Admin</option>
+                <option value="editor">Editor</option>
             </select>
         </div>
         <div class="form-group bg-light p-3 border border-dark rounded shadow">

@@ -40,7 +40,7 @@
                         <label for="password">Nome</label>
                         <input type="text" class="form-control" placeholder="Nome" name="name" id="name">
                     </div>
-                    <input type="text" class="form-control" name="role" id="role" value="Admin" hidden>
+                    <input type="text" class="form-control" name="role" id="role" value="admin" hidden>
                     <div class="form-group bg-light p-3 border border-dark rounded shadow">
                         <label for="text">Biografia</label>
                         <textarea name="biography" id="biography" rows="3" class="form-control" placeholder="Biogafia"></textarea>
