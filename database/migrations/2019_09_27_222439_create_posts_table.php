@@ -23,6 +23,7 @@ class CreatePostsTable extends Migration
             $table->integer('author');
             $table->integer('views');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

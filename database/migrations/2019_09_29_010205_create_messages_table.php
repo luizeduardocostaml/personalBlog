@@ -21,6 +21,7 @@ class CreateMessagesTable extends Migration
             $table->string('text', 1000);
             $table->string('answer', 1000);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
