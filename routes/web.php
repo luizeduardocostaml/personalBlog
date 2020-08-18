@@ -18,7 +18,7 @@ Route::view('/forbidden', 'layouts.forbidden')->name('forbiddenRoute');
 
 // -----------------------------------  Blog Routes ------------------------------------
 
-Route::middleware('auth')->group(function (){
+Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('/blogPanel', 'Blog\ViewsController@getPanel')->name('post.panel');
     Route::get('/registerPost', 'Blog\ViewsController@getStore')->name('post.getRegister');
     Route::post('/registerPost', 'Blog\BlogController@store')->name('post.register');
@@ -31,7 +31,7 @@ Route::get('/post/{id}/{link}', 'Blog\ViewsController@getPost')->name('post.get'
 
 // -----------------------------------  News Routes ------------------------------------
 
-Route::middleware('auth')->group(function (){
+Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('/newsPanel', 'News\ViewsController@getPanel')->name('news.panel');
     Route::get('/registerNews', 'News\ViewsController@getStore')->name('news.getRegister');
     Route::post('/registerNews', 'News\NewsController@store')->name('news.register');
@@ -44,7 +44,7 @@ Route::get('/news', 'News\ViewsController@getNews')->name('news');
 
 // -----------------------------------  Admin Routes ------------------------------------
 
-Route::middleware(['auth', 'auth.admin'])->group(function (){
+Route::prefix('admin')->middleware(['auth', 'auth.admin'])->group(function (){
     Route::get('/adminPanel', 'Admin\ViewsController@getPanel')->name('admin.panel');
     Route::get('/adminUserPanel', 'Admin\ViewsController@getUserPanel')->name('admin.userPanel');
     Route::get('/deleteUser/{id}', 'User\AuthController@destroy')->name('user.destroy');
@@ -52,7 +52,7 @@ Route::middleware(['auth', 'auth.admin'])->group(function (){
 
 // -----------------------------------  Contact Routes ------------------------------------
 
-Route::middleware('auth')->group(function (){
+Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('/contactPanel', 'Contact\ViewsController@getPanel')->name('contact.panel');
     Route::get('/deleteMessage/{id}', 'Contact\ContactController@destroy')->name('contact.delete');
     Route::get('/showMessage/{id}', 'Contact\ViewsController@getMessage')->name('contact.message');
@@ -63,7 +63,7 @@ Route::post('/contact', 'Contact\ContactController@store')->name('contact.regist
 
 // -----------------------------------  User Routes ------------------------------------
 
-Route::middleware('auth')->group(function (){
+Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('/logout', 'User\AuthController@logout')->name('user.logout');
     Route::get('/changePassword', 'User\ViewsController@getChangePassword')->name('user.getChangePassword');
     Route::post('/changePassword', 'User\AuthController@changePassword')->name('user.changePassword');
