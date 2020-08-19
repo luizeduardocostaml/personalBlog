@@ -70,6 +70,7 @@ Route::prefix('admin')->middleware('auth')->group(function (){
     Route::get('/editUser', 'User\ViewsController@getEdit')->name('user.getEdit');
     Route::post('/editUser', 'User\AuthController@edit')->name('user.edit');
 });
+Route::get('/user/{id}/{name}', 'User\ViewsController@getPerfil')->name('user.perfil');
 Route::get('/login', 'User\ViewsController@getLogin')->name('user.getLogin');
 Route::post('/login', 'User\AuthController@authenticate')->name('user.login');
 Route::get('/register', 'User\ViewsController@getRegister')->name('user.getRegister');

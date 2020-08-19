@@ -6,7 +6,7 @@ Luiz Eduardo Costa - Blog
 
 @section('title')
 Editar perfil
-<a href="#" class="btn btn-info float-right">Ver perfil</a>
+<a href="{{route('user.perfil', ['id' => $user->id, 'name' => $user->slug])}}" class="btn btn-info float-right">Ver perfil</a>
 @endsection
 
 @section('content')
