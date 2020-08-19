@@ -22,9 +22,8 @@ class BlogController extends Controller
         $post->title = $request->title;
         $post->resume = $request->resume;
         $post->text = $request->text;
-        $post->link = Str::slug($post->title, '-');
         $post->image = $request->image->store('img/upload', 's3');
-        $post->author = Auth::id();
+        $post->author_id = Auth::id();
         $post->views = 0;
 
         $post->save();
@@ -56,7 +55,6 @@ class BlogController extends Controller
         $post->title = $request->title;
         $post->resume = $request->resume;
         $post->text = $request->text;
-        $post->link = Str::slug($post->title, '-');
 
         $post->save();
 

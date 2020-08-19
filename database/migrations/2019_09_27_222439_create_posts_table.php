@@ -18,9 +18,8 @@ class CreatePostsTable extends Migration
             $table->string('title', 50);
             $table->string('resume',400);
             $table->text('text');
-            $table->string('link', 50);
             $table->string('image',256);
-            $table->integer('author');
+            $table->integer('author_id');
             $table->integer('views');
             $table->timestamps();
             $table->softDeletes();

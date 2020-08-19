@@ -4,27 +4,20 @@ namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
 use App\Post;
-use App\User;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 
 class ViewsController extends Controller
 {
 
     public function getBlog()
     {
-        $posts = DB::table('posts')->orderBy('created_at', 'DESC')->paginate(10);
-
-        foreach ($posts as $post) {
-            $post->image = Storage::disk('s3')->url($post->image);
-        }
+        $posts = Post::orderBy('created_at', 'DESC')->paginate(10);
 
         return view('blog.index', ['posts' => $posts]);
     }
 
     public function getPanel()
     {
-        $posts = DB::table('posts')->orderBy('created_at', 'DESC')->get();
+        $posts = Post::orderBy('created_at', 'DESC')->get();
 
         return view('admin.blog.panel', ['posts' => $posts]);
     }
@@ -41,15 +34,10 @@ class ViewsController extends Controller
     public function getPost($id, $link)
     {
         if($post = Post::find($id)){
-            $author = User::find($post->author);
-
             $post->views += 1;
             $post->save();
 
-            $post->image = Storage::disk('s3')->url($post->image);
-            $author->image = Storage::disk('s3')->url($author->image);
-
-            return view('blog.show', ['post' => $post, 'author' => $author]);
+            return view('blog.show', ['post' => $post]);
         }else{
             return redirect()->route('forbiddenRoute');
         }

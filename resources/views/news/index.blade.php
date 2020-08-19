@@ -17,7 +17,7 @@ Notícias
     <div class="row mb-2 border border-dark rounded">
         <div class="col-12 col-md-4 col-lg-2 mt-2 mb-2">
             <a href="{{route('news.get', ['id' => $notice->id, 'link' => $notice->link])}}">
-                <img src="{{$notice->image}}" class="img-fluid img-thumbnail" alt="Foto do post">
+                <img src="{{$notice->image_url}}" class="img-fluid img-thumbnail" alt="Foto do post">
             </a>
         </div>
         <div class="col-12 col-md-8 col-lg-10 mt-1 mb-1">

@@ -17,7 +17,7 @@ Blog
     <div class="row mb-2 border border-dark rounded">
         <div class="col-12 col-md-4 col-lg-2 mt-2 mb-2">
             <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}">
-                <img src="{{$post->image}}" class="img-fluid img-thumbnail" alt="{{$post->title}}">
+                <img src="{{$post->image_url}}" class="img-fluid img-thumbnail" alt="{{$post->title}}">
             </a>
         </div>
         <div class="col-12 col-md-8 col-lg-10 mt-1 mb-1">

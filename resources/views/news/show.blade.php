@@ -24,7 +24,7 @@ Luiz Eduardo Costa - Blog
 
 @section('content')
 <div class="container min-vh-100">
-    <img src="{{$notice->image}}" class="rounded float-right post-image img-thumbnail" alt="Post image">
+    <img src="{{$notice->image_url}}" class="rounded float-right post-image img-thumbnail" alt="Post image">
     {!! $notice->text !!}
 </div>
 
@@ -36,11 +36,11 @@ Luiz Eduardo Costa - Blog
 </div>
 <div class="row">
     <div class="col-12 col-md-4 col-lg-2 mt-2 mb-2">
-        <img src="{{$author->image}}" class="img-fluid" alt="Foto do autor">
+        <img src="{{$notice->author->image_url}}" class="img-fluid" alt="Foto do autor">
     </div>
     <div class="col-12 col-md-8 col-lg-10 mt-1 mb-1">
-        <h4 class="card-title">{{$author->name}}</h4>
-        <p class="card-text">{{$author->biography}}</p>
+        <h4 class="card-title">{{$notice->author->name}}</h4>
+        <p class="card-text">{{$notice->author->biography}}</p>
     </div>
 </div>
 @endsection

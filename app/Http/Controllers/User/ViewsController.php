@@ -10,13 +10,21 @@ use Illuminate\Support\Facades\Storage;
 
 class ViewsController extends Controller
 {
+    public function getPerfil($id)
+    {
+        if($user = User::find($id)){
+            return view('user.perfil', ['user' => $user]);
+        }else{
+            return back()->with('error', 'Usuário não encontrado.');
+        }
+    }
 
     public function getLogin()
     {
         try {
             $user = User::findOrFail(1);
 
-            if(Auth::check()){
+            if (Auth::check()) {
                 return redirect()->route('admin.panel');
             }
             return view('admin.user.login');
@@ -27,9 +35,9 @@ class ViewsController extends Controller
 
     public function getRegister()
     {
-        if(Auth::check()){
+        if (Auth::check()) {
             return view('admin.user.register');
-        }else{
+        } else {
             try {
                 $user = User::findOrFail(1);
 
@@ -38,7 +46,6 @@ class ViewsController extends Controller
                 return view('admin.user.firstRegister');
             }
         }
-
     }
 
     public function getChangePassword()

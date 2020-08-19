@@ -22,9 +22,8 @@ class NewsController extends Controller
         $notice->title = $request->title;
         $notice->resume = $request->resume;
         $notice->text = $request->text;
-        $notice->link = Str::slug($notice->title, '-');
         $notice->image = $request->image->store('img/upload', 's3');
-        $notice->author = Auth::id();
+        $notice->author_id = Auth::id();
         $notice->views = 0;
 
         $notice->save();
@@ -56,7 +55,6 @@ class NewsController extends Controller
         $notice->title = $request->title;
         $notice->resume = $request->resume;
         $notice->text = $request->text;
-        $notice->link = Str::slug($notice->title, '-');
 
         $notice->save();
 
