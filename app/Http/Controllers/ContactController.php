@@ -13,7 +13,10 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-
+    public function create()
+    {
+        return view('contact.form');
+    }
 
     public function store(StoreMessageRequest $request)
     {
@@ -33,28 +36,5 @@ class ContactController extends Controller
         $user->notify(new NewMessage($message));
 
         return redirect()->route('contact.getRegister')->with('success', 'A mensagem foi enviada com sucesso!');
-    }
-
-    public function destroy($id)
-    {
-        if(Message::destroy($id)){
-            return redirect()->route('contact.panel')->with('success', 'A mensagem foi deletada com sucesso!');
-        }else{
-            return redirect()->route('contact.panel')->with('error', 'Mensagem inválida.');
-        }
-    }
-
-    public function answerMessage(Request $request, $id)
-    {
-        $answer = $request->answer;
-        $message = Message::find($id);
-
-        $message->answer = $answer;
-
-        Mail::to($message->email)->send(new AnswerMessage($message, $answer));
-
-        $message->save();
-
-        return redirect()->route('contact.panel')->with('success', 'A resposta foi enviada com sucesso!');
     }
 }

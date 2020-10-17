@@ -15,6 +15,7 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('type', ['blog', 'notice']);
             $table->string('title', 50);
             $table->string('resume',400);
             $table->text('text');

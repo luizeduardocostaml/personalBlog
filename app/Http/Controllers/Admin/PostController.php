@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Blog;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditPostRequest;
@@ -8,17 +8,28 @@ use App\Http\Requests\StorePostRequest;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
-class BlogController extends Controller
+class PostController extends Controller
 {
+    public function index()
+    {
+        $posts = Post::orderBy('created_at', 'DESC')->get();
+
+        return view('admin.post.panel', ['posts' => $posts]);
+    }
+
+    public function create()
+    {
+        return view('admin.post.register');
+    }
 
     public function store(StorePostRequest $request)
     {
         $request->validated();
 
-        $post = new Post;
+        $post = new Post();
 
+        $post->type = $request->type;
         $post->title = $request->title;
         $post->resume = $request->resume;
         $post->text = $request->text;
@@ -30,23 +41,17 @@ class BlogController extends Controller
 
         return redirect()->route('post.panel')->with('success', 'Post criado com sucesso!');
     }
-
-    public function destroy($id)
+    
+    public function edit($id)
     {
         if($post = Post::find($id)){
-            Storage::disk('s3')->delete($post->image);
-
-            Post::destroy($id);
-
-            return redirect()->route('post.panel')->with('success', 'Post deletado com sucesso!');
+            return view('admin.post.edit', ['post' => $post]);
         }else{
             return redirect()->route('post.panel')->with('error', 'Post inválido.');
         }
-
-
     }
-
-    public function edit(EditPostRequest $request)
+    
+    public function update(EditPostRequest $request)
     {
         $request->validated();
 
@@ -61,4 +66,16 @@ class BlogController extends Controller
         return redirect()->route('post.panel')->with('success', 'Post editado com sucesso!');
     }
 
+    public function destroy($id)
+    {
+        if ($post = Post::find($id)) {
+            Storage::disk('s3')->delete($post->image);
+
+            Post::destroy($id);
+
+            return redirect()->route('post.panel')->with('success', 'Post deletado com sucesso!');
+        } else {
+            return redirect()->route('post.panel')->with('error', 'Post inválido.');
+        }
+    }
 }
