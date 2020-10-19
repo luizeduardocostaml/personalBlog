@@ -21,7 +21,7 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('admin.post.register');
+        return view('admin.post.form');
     }
 
     public function store(StorePostRequest $request)
@@ -47,7 +47,7 @@ class PostController extends Controller
     public function edit($id)
     {
         if($post = Post::find($id)){
-            return view('admin.post.edit', ['post' => $post]);
+            return view('admin.post.form', ['post' => $post]);
         }else{
             return redirect()->route('admin.post.index')->with('error', 'Post inválido.');
         }
@@ -63,6 +63,10 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->resume = $request->resume;
         $post->text = $request->text;
+        if ($request->has('image')) {
+            Storage::disk('s3')->delete($post->image);
+            $post->image = $request->image->store('img/upload', 's3');
+        }
 
         $post->save();
 

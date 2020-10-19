@@ -6,7 +6,7 @@ Luiz Eduardo Costa - Blog
 
 @section('backButton')
 <div class="d-flex w-100 justify-content-between">
-    <a href="{{url()->previous()}}" class="btn backButton"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
+    <a href="{{url()->previous()}}" class="btn align-items-center backButton"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
     @auth<div>{{ $post->views }} visualizações</div>@endauth
 </div>
 @endsection

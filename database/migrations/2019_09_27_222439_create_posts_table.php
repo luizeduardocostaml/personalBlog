@@ -21,10 +21,12 @@ class CreatePostsTable extends Migration
             $table->string('resume',400);
             $table->text('text');
             $table->string('image',256);
-            $table->integer('author_id');
+            $table->unsignedBigInteger('author_id');
             $table->integer('views');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('author_id')->references('id')->on('users');
         });
     }
 
