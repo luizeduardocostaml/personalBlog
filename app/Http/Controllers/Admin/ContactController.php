@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Mail\AnswerMessage;
+use App\Message;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -13,24 +14,24 @@ class ContactController extends Controller
     {
         $messages = Message::all();
 
-        return view('admin.contact.panel', ['messages' => $messages]);
+        return view('admin.contact.index', ['messages' => $messages]);
     }
 
     public function show($id)
     {
-        if($message = Message::find($id)){
+        if ($message = Message::find($id)) {
             return view('admin.contact.show', ['message'=> $message]);
-        }else{
-            return redirect()->route('contact.panel')->with('error', 'Mensagem inválida.');
+        } else {
+            return redirect()->route('admin.contact.index')->with('error', 'Mensagem inválida.');
         }
     }
 
     public function destroy($id)
     {
-        if(Message::destroy($id)){
-            return redirect()->route('contact.panel')->with('success', 'A mensagem foi deletada com sucesso!');
-        }else{
-            return redirect()->route('contact.panel')->with('error', 'Mensagem inválida.');
+        if (Message::destroy($id)) {
+            return redirect()->route('admin.contact.index')->with('success', 'A mensagem foi deletada com sucesso!');
+        } else {
+            return redirect()->route('admin.contact.index')->with('error', 'Mensagem inválida.');
         }
     }
 
@@ -45,6 +46,6 @@ class ContactController extends Controller
 
         $message->save();
 
-        return redirect()->route('contact.panel')->with('success', 'A resposta foi enviada com sucesso!');
+        return redirect()->route('admin.contact.index')->with('success', 'A resposta foi enviada com sucesso!');
     }
 }

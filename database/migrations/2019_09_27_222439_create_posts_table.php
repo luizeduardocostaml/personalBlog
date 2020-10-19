@@ -17,6 +17,7 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->enum('type', ['blog', 'notice']);
             $table->string('title', 50);
+            $table->string('slug', 60)->unique();
             $table->string('resume',400);
             $table->text('text');
             $table->string('image',256);

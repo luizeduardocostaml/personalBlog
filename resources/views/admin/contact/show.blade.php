@@ -26,13 +26,13 @@
                 <p>{{$message->text}}</p>
             </div>
 
-            <a href="{{route('contact.delete', ['id' => $message->id])}}" class="btn btn-danger m-1"><i class="fas fa-trash-alt mr-1"></i>Apagar</a>
+            <a href="{{route('admin.contact.destroy', ['id' => $message->id])}}" class="btn btn-danger m-1"><i class="fas fa-trash-alt mr-1"></i>Apagar</a>
             <div class="row">
                 <hr class="w-25 ml-0 mt-0 ">
             </div>
             <div class="container">
                 @if($message->answer === ' ')
-                    <form action="{{route('contact.answer', ['id' => $message->id])}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('admin.contact.answer', ['id' => $message->id])}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="p-3">
                             <label for="text">Resposta</label>

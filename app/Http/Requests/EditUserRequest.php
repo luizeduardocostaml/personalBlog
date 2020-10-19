@@ -24,7 +24,6 @@ class EditUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|unique:users,username,'.$this->id .'|max:256',
             'name' => 'required|max:256',
             'image' => 'image|mimes:jpeg,png,jpg|max:4096',
             'biography' => 'required|max:1000',
@@ -34,9 +33,6 @@ class EditUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'O campo Username é obrigatório.',
-            'username.unique' => 'Este Username já existe, tente outro.',
-            'username.max' => 'O campo Username pode conter no máximo 256 caracteres.',
             'name.max' => 'O campo Nome pode conter no máximo 256 caracteres.',
             'image.image' => 'O campo Imagem deve ser uma imagem.',
             'image.mimes' => 'O campo Imagem deve ser no formato: .jpeg, .png ou .jpg.',

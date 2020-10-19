@@ -6,11 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\EditUserRequest;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -18,7 +17,7 @@ class UserController extends Controller
     {
         $users = User::where('id', '>', 1)->get();
 
-        return view('admin.user.panel', ['users' => $users]);
+        return view('admin.user.index', ['users' => $users]);
     }
 
     public function edit()
@@ -33,15 +32,15 @@ class UserController extends Controller
     public function update(EditUserRequest $request)
     {
         if (Auth::id() !== $request->id && Auth::user()->role !== 'admin') {
-            return redirect()->route('admin.panel')->with('error', 'Você não possui autorização para fazer isso!');
+            return redirect()->route('admin.index')->with('error', 'Você não possui autorização para fazer isso!');
         }
 
         $request->validated();
 
         $user = Auth::user();
 
-        $user->username = $request->username;
         $user->name = $request->name;
+        $user->slug = Str::slug($request->name);
         $user->biography = $request->biography;
 
         if ($request->has('image')) {
@@ -52,24 +51,24 @@ class UserController extends Controller
         $user->save();
 
         if (Auth::check()) {
-            return redirect()->route('user.getEdit')->with('success', 'Dados alterados com sucesso!');
+            return redirect()->route('admin.user.edit')->with('success', 'Dados alterados com sucesso!');
         } else {
-            return redirect()->route('user.getLogin');
+            return redirect()->route('user.login');
         }
     }
 
     public function destroy($id)
     {
         if ($id === 1) {
-            return redirect()->route('admin.userPanel')->with('error', 'Usuário inválido.');
+            return redirect()->route('admin.user.index')->with('error', 'Usuário inválido.');
         } elseif ($user = User::find($id)) {
             Storage::disk('s3')->delete($user->image);
 
             User::destroy($id);
 
-            return redirect()->route('admin.userPanel')->with('success', 'O usuário foi apagado com sucesso!');
+            return redirect()->route('admin.user.index')->with('success', 'O usuário foi apagado com sucesso!');
         } else {
-            return redirect()->route('admin.userPanel')->with('error', 'Usuário inválido.');
+            return redirect()->route('admin.user.index')->with('error', 'Usuário inválido.');
         }
     }
 
@@ -90,9 +89,9 @@ class UserController extends Controller
             $user->password = Hash::make($newPassword);
             $user->save();
 
-            return redirect()->route('admin.panel')->with('success', 'A senha foi alterada com sucesso!');
+            return redirect()->route('admin.user.index')->with('success', 'A senha foi alterada com sucesso!');
         } else {
-            return redirect()->route('user.getChangePassword');
+            return redirect()->route('admin.user.change-password.create');
         }
     }
 }

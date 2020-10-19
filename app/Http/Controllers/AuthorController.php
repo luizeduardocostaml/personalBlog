@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthUserRequest;
@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Storage;
 
 class AuthorController extends Controller
 {
-    public function show($id)
+    public function show($slug)
     {
-        if ($user = User::find($id)) {
+        if ($user = User::where('slug', $slug)->first()) {
             return view('user.perfil', ['user' => $user]);
         } else {
             return back()->with('error', 'Usuário não encontrado.');

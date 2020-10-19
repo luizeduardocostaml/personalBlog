@@ -20,7 +20,7 @@ Gerenciamento do Blog
         {{ session('success') }}
     </div>
     @endif
-    <a href="{{route('post.getRegister')}}" class="btn btn-primary mb-2 shadow"><i class="fas fa-plus mr-1"></i>Novo
+    <a href="{{route('admin.post.create')}}" class="btn btn-primary mb-2 shadow"><i class="fas fa-plus mr-1"></i>Novo
         Post</a>
     <ul class="list-group shadow rounded ">
         <li class="list-group-item list-group-item-secondary">
@@ -40,11 +40,11 @@ Gerenciamento do Blog
                     <p class="text-justify">{{$post->resume}}</p>
                 </div>
                 <div class="col-3 col-md-3 d-flex flex-wrap">
-                    <a href="{{route('post.delete', ['id' => $post->id])}}" class="btn btn-danger mr-1 mb-1 wh-40"
+                    <a href="{{route('admin.post.destroy', ['id' => $post->id])}}" class="btn btn-danger mr-1 mb-1 wh-40"
                         title="Apagar Post"><i class="fas fa-trash-alt"></i></a>
-                    <a href="{{route('post.getEdit', ['id' => $post->id])}}" class="btn btn-primary mr-1 mb-1 wh-40"
+                    <a href="{{route('admin.post.edit', ['id' => $post->id])}}" class="btn btn-primary mr-1 mb-1 wh-40"
                         title="Editar Post"><i class="fas fa-edit"></i></a>
-                    <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}"
+                    <a href="{{route('post.show', ['slug' => $post->slug])}}"
                         class="btn btn-primary wh-40" title="Visualizar Post"><i class="fas fa-eye"></i></a>
                 </div>
             </div>

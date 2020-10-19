@@ -20,7 +20,7 @@ Gerenciamento dos usuários
         {{ session('success') }}
     </div>
     @endif
-    <a href="{{route('user.getRegister')}}" class="btn btn-primary mb-2 shadow"><i class="fas fa-plus mr-1"></i>Novo
+    <a href="{{route('user.create')}}" class="btn btn-primary mb-2 shadow"><i class="fas fa-plus mr-1"></i>Novo
         Usuário</a>
     <ul class="list-group shadow rounded ">
         <li class="list-group-item list-group-item-secondary">
@@ -37,10 +37,10 @@ Gerenciamento dos usuários
                     <p class="text-justify">{{$user->name}}</p>
                 </div>
                 <div class="col-3 col-md-3 border-right">
-                    <p class="text-justify">{{$user->hole}}</p>
+                    <p class="text-justify">{{$user->role}}</p>
                 </div>
                 <div class="col-3 col-md-3 d-flex flex-wrap">
-                    <a href="{{route('user.destroy', ['id' => $user->id])}}" class="btn btn-danger wh-40"
+                    <a href="{{route('admin.user.destroy', ['id' => $user->id])}}" class="btn btn-danger wh-40"
                         title="Apagar Usuário"><i class="fas fa-trash-alt"></i></a>
                 </div>
             </div>

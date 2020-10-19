@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Contact;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreMessageRequest;
@@ -35,6 +35,6 @@ class ContactController extends Controller
         $user = User::find(1);
         $user->notify(new NewMessage($message));
 
-        return redirect()->route('contact.getRegister')->with('success', 'A mensagem foi enviada com sucesso!');
+        return redirect()->route('contact.create')->with('success', 'A mensagem foi enviada com sucesso!');
     }
 }

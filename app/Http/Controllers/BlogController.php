@@ -3,12 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\EditPostRequest;
-use App\Http\Requests\StorePostRequest;
 use App\Post;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -16,12 +11,12 @@ class BlogController extends Controller
     {
         $posts = Post::where('type', 'blog')->orderBy('created_at', 'DESC')->paginate(10);
 
-        return view('post.index', ['posts' => $posts]);
+        return view('post.index', ['posts' => $posts, 'title' => 'Blog']);
     }
 
-    public function show($id, $link)
+    public function show($slug)
     {
-        if ($post = Post::find($id)) {
+        if ($post = Post::where('slug', $slug)->first()) {
             $post->views += 1;
             $post->save();
 

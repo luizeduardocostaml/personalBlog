@@ -38,9 +38,9 @@ Gerenciamento de Mensagens
                     <p class="text-justify">{{$message->title}}</p>
                 </div>
                 <div class="col-3 col-md-3 d-flex flex-wrap">
-                    <a href="{{route('contact.delete', ['id' => $message->id])}}" class="btn btn-danger mr-1 mb-1 wh-40"
+                    <a href="{{route('admin.contact.destroy', ['id' => $message->id])}}" class="btn btn-danger mr-1 mb-1 wh-40"
                         title="Apagar mensagem"><i class="fas fa-trash-alt"></i></a>
-                    <a href="{{route('contact.message', ['id' => $message->id])}}" class="btn btn-primary wh-40"
+                    <a href="{{route('admin.contact.show', ['id' => $message->id])}}" class="btn btn-primary wh-40"
                         title="Visualizar mensagem"><i class="fas fa-eye"></i></a>
                 </div>
             </div>

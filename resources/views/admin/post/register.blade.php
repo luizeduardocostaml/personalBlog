@@ -20,8 +20,15 @@
             <div class="alert alert-danger m-1">{{$error}}</div>
         @endforeach
     @endif
-    <form action="{{route('post.register')}}" method="POST" class="m-1" enctype="multipart/form-data">
+    <form action="{{route('admin.post.store')}}" method="POST" class="m-1" enctype="multipart/form-data">
         @csrf
+        <div class="form-group bg-light p-3 border border-dark rounded shadow">
+            <label for="type">Tipo</label>
+            <select class="form-control" name="type" id="type" >
+                <option value="notice" selected>Notícia</option>
+                <option value="blog">Blog</option>
+            </select>
+        </div>
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
             <label for="title">Título</label>
             <input type="text" class="form-control" name="title" id="title" placeholder="Título do post">

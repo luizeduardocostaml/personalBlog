@@ -20,7 +20,7 @@
         </div>
     @endif
 
-    <form action="{{route('contact.register')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('contact.store')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
             <label for="name">Nome</label>

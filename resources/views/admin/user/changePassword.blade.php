@@ -21,21 +21,21 @@
                         <div class="alert alert-danger m-1">{{$error}}</div>
                     @endforeach
                 @endif
-                <form action="{{route('user.changePassword')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.user.change-password.update')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <label for="id">Senha antiga</label>
-                        <input type="password" class="form-control" placeholder="ID" name="oldPassword" id="oldPassword">
+                        <input type="password" class="form-control" placeholder="Senha antiga" name="oldPassword" id="oldPassword">
                     </div>
                     <div class="form-group">
                         <label for="password">Senha nova</label>
-                        <input type="password" class="form-control" placeholder="Senha" name="newPassword" id="newPassword">
+                        <input type="password" class="form-control" placeholder="Senha nova" name="newPassword" id="newPassword">
                     </div>
                     <div class="form-group">
                         <label for="password">Confirme a nova senha</label>
-                        <input type="password" class="form-control" placeholder="Senha" name="confirmPassword" id="confirmPassword">
+                        <input type="password" class="form-control" placeholder="Repetir senha" name="confirmPassword" id="confirmPassword">
                     </div>
-                    <button type="submit" class="btn btn-primary">Entrar</button>
+                    <button type="submit" class="btn btn-primary">Mudar senha</button>
                 </form>
             </div>
         </div>

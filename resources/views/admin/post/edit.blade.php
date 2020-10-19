@@ -20,9 +20,16 @@
             <div class="alert alert-danger m-1">{{$error}}</div>
         @endforeach
     @endif
-    <form action="{{route('post.edit')}}" method="POST" class="m-1">
+    <form action="{{route('admin.post.update')}}" method="POST" class="m-1">
         @csrf
         <input type="text" name="id" id="id" value="{{$post->id}}" hidden>
+        <div class="form-group bg-light p-3 border border-dark rounded shadow">
+            <label for="type">Tipo</label>
+            <select class="form-control" name="type" id="type" >
+                <option value="notice" selected>Notícia</option>
+                <option value="blog">Blog</option>
+            </select>
+        </div>
         <div class="form-group bg-light p-3 border border-dark rounded shadow">
             <label for="title">Título</label>
             <input type="text" class="form-control" name="title" id="title" value="{{$post->title}}" placeholder="Título do post">

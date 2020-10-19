@@ -19,7 +19,7 @@ class CreateMessagesTable extends Migration
             $table->string('email', 256);
             $table->string('title', 50);
             $table->string('text', 1000);
-            $table->string('answer', 1000);
+            $table->string('answer', 1000)->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

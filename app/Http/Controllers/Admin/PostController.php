@@ -8,6 +8,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -15,7 +16,7 @@ class PostController extends Controller
     {
         $posts = Post::orderBy('created_at', 'DESC')->get();
 
-        return view('admin.post.panel', ['posts' => $posts]);
+        return view('admin.post.index', ['posts' => $posts]);
     }
 
     public function create()
@@ -31,6 +32,7 @@ class PostController extends Controller
 
         $post->type = $request->type;
         $post->title = $request->title;
+        $post->slug = Str::slug($request->title);
         $post->resume = $request->resume;
         $post->text = $request->text;
         $post->image = $request->image->store('img/upload', 's3');
@@ -39,7 +41,7 @@ class PostController extends Controller
 
         $post->save();
 
-        return redirect()->route('post.panel')->with('success', 'Post criado com sucesso!');
+        return redirect()->route('admin.post.index')->with('success', 'Post criado com sucesso!');
     }
     
     public function edit($id)
@@ -47,7 +49,7 @@ class PostController extends Controller
         if($post = Post::find($id)){
             return view('admin.post.edit', ['post' => $post]);
         }else{
-            return redirect()->route('post.panel')->with('error', 'Post inválido.');
+            return redirect()->route('admin.post.index')->with('error', 'Post inválido.');
         }
     }
     
@@ -57,13 +59,14 @@ class PostController extends Controller
 
         $post = Post::find($request->id);
 
+        $post->type = $request->type;
         $post->title = $request->title;
         $post->resume = $request->resume;
         $post->text = $request->text;
 
         $post->save();
 
-        return redirect()->route('post.panel')->with('success', 'Post editado com sucesso!');
+        return redirect()->route('admin.post.index')->with('success', 'Post editado com sucesso!');
     }
 
     public function destroy($id)
@@ -73,9 +76,9 @@ class PostController extends Controller
 
             Post::destroy($id);
 
-            return redirect()->route('post.panel')->with('success', 'Post deletado com sucesso!');
+            return redirect()->route('admin.post.index')->with('success', 'Post deletado com sucesso!');
         } else {
-            return redirect()->route('post.panel')->with('error', 'Post inválido.');
+            return redirect()->route('admin.post.index')->with('error', 'Post inválido.');
         }
     }
 }

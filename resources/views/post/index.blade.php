@@ -5,7 +5,7 @@ Luiz Eduardo Costa - Blog
 @endsection
 
 @section('title')
-Blog
+{{$title}}
 @endsection
 
 @section('content')
@@ -16,12 +16,12 @@ Blog
     @foreach($posts as $post)
     <div class="row mb-2 border border-dark rounded">
         <div class="col-12 col-md-4 col-lg-2 mt-2 mb-2">
-            <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}">
+            <a href="{{route('post.show', ['slug' => $post->slug])}}">
                 <img src="{{$post->image_url}}" class="img-fluid img-thumbnail" alt="{{$post->title}}">
             </a>
         </div>
         <div class="col-12 col-md-8 col-lg-10 mt-1 mb-1">
-            <a href="{{route('post.get', ['id' => $post->id, 'link' => $post->link])}}" class="text-info">
+            <a href="{{route('post.show', ['slug' => $post->slug])}}" class="text-info">
                 <h3 class="mb-0 text-break" style="font-size: 2rem;">{{ $post->title  }}</h3>
             </a>
             <p class="text-muted font-weight-lighter m-0 text-break" style="font-size: 0.8rem;">Publicado

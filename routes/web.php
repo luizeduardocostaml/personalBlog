@@ -20,16 +20,15 @@ Route::get('admin', 'Admin\DashboardController@index')->name('admin.index')->mid
 // -----------------------------------  Post Routes ------------------------------------
 
 Route::prefix('admin/post')->middleware('auth')->group(function (){
-    Route::get('/', 'Admin\PostController@getPanel')->name('admin.post.index');
-    Route::get('create', 'Admin\PostController@getStore')->name('admin.post.create');
+    Route::get('/', 'Admin\PostController@index')->name('admin.post.index');
+    Route::get('create', 'Admin\PostController@create')->name('admin.post.create');
     Route::post('create', 'Admin\PostController@store')->name('admin.post.store');
-    Route::get('edit/{id}', 'Admin\PostController@getEdit')->name('admin.post.edit');
-    Route::post('edit', 'Admin\PostController@edit')->name('admin.post.update');
+    Route::get('edit/{id}', 'Admin\PostController@edit')->name('admin.post.edit');
+    Route::post('edit', 'Admin\PostController@update')->name('admin.post.update');
     Route::get('delete/{id}', 'Admin\PostController@destroy')->name('admin.post.destroy');
 });
 Route::get('blog', 'BlogController@index')->name('blog');
-Route::get('news', 'NoticeController@index')->name('news');
-Route::get('post/{slug}', 'Blog\ViewsController@getPost')->name('post.get');
+Route::get('post/{slug}', 'BlogController@show')->name('post.show');
 
 // -----------------------------------  Contact Routes ------------------------------------
 
@@ -50,14 +49,14 @@ Route::prefix('admin/user')->middleware(['auth', 'auth.admin'])->group(function 
 });
 
 Route::prefix('admin/user')->middleware('auth')->group(function (){
-    Route::get('logout', 'Admin\AuthController@logout')->name('admin.user.logout');
-    Route::get('change-password', 'Admin\AuthController@getChangePassword')->name('admin.user.change-password.create');
-    Route::post('change-password', 'Admin\AuthController@changePassword')->name('admin.user.change-password.store');
-    Route::get('edit', 'Admin\AuthController@edit')->name('admin.user.edit');
-    Route::post('edit', 'Admin\AuthController@update')->name('admin.user.update');
+    Route::get('logout', 'AuthController@logout')->name('admin.user.logout');
+    Route::get('change-password', 'Admin\UserController@getChangePassword')->name('admin.user.change-password.edit');
+    Route::post('change-password', 'Admin\UserController@changePassword')->name('admin.user.change-password.update');
+    Route::get('edit', 'Admin\UserController@edit')->name('admin.user.edit');
+    Route::post('edit', 'Admin\UserController@update')->name('admin.user.update');
 });
 Route::get('login', 'AuthController@login')->name('user.login');
-Route::post('login', 'AuthController@authenticate')->name('user.logged');
+Route::post('login', 'AuthController@authenticate')->name('user.auth');
 Route::get('register', 'AuthController@create')->name('user.create');
 Route::post('register', 'AuthController@store')->name('user.store');
 Route::get('user/{slug}', 'AuthorController@show')->name('user.show');

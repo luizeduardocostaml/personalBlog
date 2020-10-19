@@ -16,8 +16,8 @@
     @auth
     <div class="container">
         <nav class="navbar navbar-light bg-dark shadow">
-            <a href="{{route('admin.panel')}}" class="nav-link text-white pl-0 pr-0">Painel de administração</a>
-            <a href="{{route('user.logout')}}" class="nav-link text-danger pl-0 pr-0">Logout</a>
+            <a href="{{route('admin.index')}}" class="nav-link text-white pl-0 pr-0">Painel de administração</a>
+            <a href="{{route('admin.user.logout')}}" class="nav-link text-danger pl-0 pr-0">Logout</a>
         </nav>
     </div>
     @endauth
@@ -37,13 +37,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('news')}}">Início <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{route('home')}}">Início <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="{{route('blog')}}">Blog</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{route('contact.getRegister')}}">Contato</a>
+                        <a class="nav-link" href="{{route('contact.create')}}">Contato</a>
                     </li>
                 </ul>
             </div>
@@ -61,7 +61,7 @@
     </div>
     <div class="bg-dark position-relative fixed-bottom pb-1">
         <p class="text-white text-center">
-            Todos os direitos reservados. <a href="{{route('user.getLogin')}}" class="text-light"><i
+            Todos os direitos reservados. <a href="{{route('user.login')}}" class="text-light"><i
                     class="fas fa-copyright"></i></a>
         </p>
     </div>

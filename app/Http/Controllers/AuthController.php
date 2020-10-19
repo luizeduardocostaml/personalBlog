@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AuthUserRequest;
-use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\StoreUserRequest;
 use App\User;
-use App\Http\Requests\EditUserRequest;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -48,13 +46,13 @@ class AuthController extends Controller
     {
         $request->validated();
 
-        $username = $request->username;
+        $email = $request->email;
         $password = $request->password;
 
-        if (Auth::attempt(['username' => $username, 'password' => $password])) {
-            return redirect()->route('admin.panel');
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            return redirect()->route('admin.index');
         } else {
-            return redirect()->route('user.getLogin');
+            return redirect()->route('user.auth');
         }
     }
 
@@ -71,10 +69,10 @@ class AuthController extends Controller
 
         $user = new User;
 
-        $user->username = $request->username;
-        $user->password = Hash::make($request->password);
         $user->email = $request->email;
+        $user->password = Hash::make($request->password);
         $user->name = $request->name;
+        $user->slug = Str::slug($request->name);
         $user->role = $request->role;
         $user->biography = $request->biography;
         $user->image = $request->image->store('img/upload', 's3');
@@ -82,9 +80,9 @@ class AuthController extends Controller
         $user->save();
 
         if (Auth::check()) {
-            return redirect()->route('admin.userPanel')->with('success', 'O usuário foi criado com sucesso!');
+            return redirect()->route('admin.user.index')->with('success', 'O usuário foi criado com sucesso!');
         } else {
-            return redirect()->route('user.getLogin');
+            return redirect()->route('user.login');
         }
     }
 }

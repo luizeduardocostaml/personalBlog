@@ -22,11 +22,11 @@
                         <div class="alert alert-danger m-1">{{$error}}</div>
                     @endforeach
                 @endif
-                <form action="{{route('user.login')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('user.auth')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="id">ID</label>
-                        <input type="text" class="form-control" placeholder="ID" name="username" id="username">
+                        <label for="id">E-mail</label>
+                        <input type="text" class="form-control" placeholder="E-mail" name="email" id="email">
                     </div>
                     <div class="form-group">
                         <label for="password">Senha</label>

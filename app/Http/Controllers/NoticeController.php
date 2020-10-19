@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\News;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Post;
@@ -11,6 +11,6 @@ class NoticeController extends Controller
     {
         $notices = Post::where('type', 'notice')->orderBy('created_at', 'DESC')->paginate(10);
 
-        return view('post.index', ['posts' => $notices]);
+        return view('post.index', ['posts' => $notices, 'title' => 'Notícias']);
     }
 }
