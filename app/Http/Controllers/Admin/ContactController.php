@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\CreateLog;
 use App\Mail\AnswerMessage;
 use App\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -29,6 +31,8 @@ class ContactController extends Controller
     public function destroy($id)
     {
         if (Message::destroy($id)) {
+            
+            CreateLog::dispatch('Mensagem', 'delete', $id, Auth::id());
             return redirect()->route('admin.contact.index')->with('success', 'A mensagem foi deletada com sucesso!');
         } else {
             return redirect()->route('admin.contact.index')->with('error', 'Mensagem inválida.');
@@ -45,6 +49,8 @@ class ContactController extends Controller
         Mail::to($message->email)->send(new AnswerMessage($message, $answer));
 
         $message->save();
+
+        CreateLog::dispatch('Mensagem', 'answer', $id, Auth::id());
 
         return redirect()->route('admin.contact.index')->with('success', 'A resposta foi enviada com sucesso!');
     }

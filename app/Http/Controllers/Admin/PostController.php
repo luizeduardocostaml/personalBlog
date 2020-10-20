@@ -9,6 +9,7 @@ use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use App\Jobs\CreateLog;
 
 class PostController extends Controller
 {
@@ -41,6 +42,8 @@ class PostController extends Controller
 
         $post->save();
 
+        CreateLog::dispatch('Post', 'create', $post->id, Auth::id());
+
         return redirect()->route('admin.post.index')->with('success', 'Post criado com sucesso!');
     }
     
@@ -70,6 +73,8 @@ class PostController extends Controller
 
         $post->save();
 
+        CreateLog::dispatch('Post', 'update', $post->id, Auth::id());
+
         return redirect()->route('admin.post.index')->with('success', 'Post editado com sucesso!');
     }
 
@@ -79,6 +84,7 @@ class PostController extends Controller
             Storage::disk('s3')->delete($post->image);
 
             Post::destroy($id);
+            CreateLog::dispatch('Post', 'delete', $id, Auth::id());
 
             return redirect()->route('admin.post.index')->with('success', 'Post deletado com sucesso!');
         } else {

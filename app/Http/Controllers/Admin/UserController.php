@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\EditUserRequest;
+use App\Jobs\CreateLog;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -65,6 +66,7 @@ class UserController extends Controller
             Storage::disk('s3')->delete($user->image);
 
             User::destroy($id);
+            CreateLog::dispatch('Usuário', 'delete', $id, Auth::id());
 
             return redirect()->route('admin.user.index')->with('success', 'O usuário foi apagado com sucesso!');
         } else {

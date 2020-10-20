@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'NoticeController@index')->name('home');
 Route::view('forbidden', 'layouts.forbidden')->name('forbiddenRoute');
 Route::get('admin', 'Admin\DashboardController@index')->name('admin.index')->middleware('auth');
+Route::get('admin/logs', 'Admin\LogsController@index')->name('admin.logs.index')->middleware('auth');
 
 // -----------------------------------  Post Routes ------------------------------------
 

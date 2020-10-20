@@ -56,7 +56,7 @@
                             <a class="nav-link" href="{{route('admin.user.index')}}">Usuários</a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="#">Logs</a>
+                            <a class="nav-link" href="{{ route('admin.logs.index') }}">Logs</a>
                         </li>
                     @endif
                     <li class="nav-item mb-0">
