@@ -10,6 +10,53 @@ Gerenciamento do Blog
 
 @section('content')
 <div class="container-fluid mr-0">
+    <ul class="list-group shadow rounded mb-2 mt-2">
+        <li class="list-group-item list-group-item-light">
+            <form action="{{ route('admin.post.index') }}">
+                <div class="row justify-content-between">
+                    <div class="col-12 col-md-3">
+                        <div class="form-group">
+                            <label for="title">Título</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{ $query->title ?? '' }}" placeholder="Título">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <div class="form-group">
+                            <label for="author">Autor</label>
+                            <input type="text" class="form-control" id="author" name="author"  value="{{ $query->author ?? '' }}" placeholder="Título">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <div class="form-group">
+                            <label for="date_from">A partir de</label>
+                            <input type="date" class="form-control" id="date_from" name="date_from"  value="{{ $query->date_from ?? '' }}" placeholder="Título">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <div class="form-group">
+                            <label for="date_to">Até </label>
+                            <input type="date" class="form-control" id="date_to" name="date_to" value="{{ $query->date_to ?? '' }}" placeholder="Título">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-between">
+                    <div class="col-12 col-md-3">
+                        <div class="form-group">
+                            <label for="type">Tipo</label>
+                            <select id="type" name="type" class="form-control">
+                                <option {{  $query->type ?? '' == '' ? 'selected' : ''}} value="">-</option>
+                                <option {{ $query->type ?? '' == 'blog' ? 'selected' : ''}} value="blog">Blog</option>
+                                <option {{ $query->type ?? '' == 'notice' ? 'selected' : ''}} value="notice">Notícia</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-3 d-flex justify-content-end align-items-end">
+                        <button type="submit" class="btn btn-primary float-right">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </li>
+    </ul>
     @if(session('error'))
     <div class="alert alert-danger">
         {{ session('error') }}
@@ -51,6 +98,9 @@ Gerenciamento do Blog
         </li>
         @endforeach
     </ul>
+    <div class="row justify-content-md-center mt-2">
+        <div class="col-md-auto">{{ $posts->links() }}</div>
+    </div>
 </div>
 
 @endsection

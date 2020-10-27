@@ -10,14 +10,22 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Jobs\CreateLog;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'DESC')->get();
+        $posts = Post::orderBy('created_at', 'DESC');
 
-        return view('admin.post.index', ['posts' => $posts]);
+        $request->query('title') ? $posts->where('title', 'LIKE', '%' . $request->query('title') . '%') : '';
+        $request->query('type') ? $posts->where('type', $request->query('type')) : '';
+        $request->query('date_from') ? $posts->where('created_at','>=', $request->query('date_from')) : '';
+        $request->query('date_to') ? $posts->where('created_at','<=', $request->query('date_to')) : '';
+
+        $posts = $posts->paginate(10);
+
+        return view('admin.post.index', ['posts' => $posts, 'query' => (object) $request->query()]);
     }
 
     public function create()
