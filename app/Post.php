@@ -18,6 +18,12 @@ class Post extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
+    public function getTipoAttribute()
+    {
+        if($this->type == 'blog') return 'Blog';
+        else return "Notícia";
+    }
+
     public function getImageUrlAttribute()
     {
         return Storage::disk('s3')->url($this->image);

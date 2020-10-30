@@ -16,14 +16,15 @@ class PostController extends Controller
 {
     public function index(Request $request)
     {
-        $posts = Post::orderBy('created_at', 'DESC');
+        $posts = new Post;
 
+        $request->query('code') ? $posts->where('id', $request->query('code')) : '';
         $request->query('title') ? $posts->where('title', 'LIKE', '%' . $request->query('title') . '%') : '';
         $request->query('type') ? $posts->where('type', $request->query('type')) : '';
         $request->query('date_from') ? $posts->where('created_at','>=', $request->query('date_from')) : '';
         $request->query('date_to') ? $posts->where('created_at','<=', $request->query('date_to')) : '';
 
-        $posts = $posts->paginate(10);
+        $posts = $posts->orderBy('created_at', 'DESC')->paginate(10);
 
         return view('admin.post.index', ['posts' => $posts, 'query' => (object) $request->query()]);
     }

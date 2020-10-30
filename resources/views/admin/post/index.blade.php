@@ -16,14 +16,14 @@ Gerenciamento do Blog
                 <div class="row justify-content-between">
                     <div class="col-12 col-md-3">
                         <div class="form-group">
-                            <label for="title">Título</label>
-                            <input type="text" class="form-control" id="title" name="title" value="{{ $query->title ?? '' }}" placeholder="Título">
+                            <label for="code">Código</label>
+                            <input type="text" class="form-control" id="code" name="code"  value="{{ $query->code ?? '' }}" placeholder="Código">
                         </div>
                     </div>
                     <div class="col-12 col-md-3">
                         <div class="form-group">
-                            <label for="author">Autor</label>
-                            <input type="text" class="form-control" id="author" name="author"  value="{{ $query->author ?? '' }}" placeholder="Título">
+                            <label for="title">Título</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{ $query->title ?? '' }}" placeholder="Título">
                         </div>
                     </div>
                     <div class="col-12 col-md-3">
@@ -39,7 +39,7 @@ Gerenciamento do Blog
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-between">
+                <div class="row">
                     <div class="col-12 col-md-3">
                         <div class="form-group">
                             <label for="type">Tipo</label>
@@ -50,7 +50,13 @@ Gerenciamento do Blog
                             </select>
                         </div>
                     </div>
-                    <div class="col-12 col-md-3 d-flex justify-content-end align-items-end">
+                    <div class="col-12 col-md-3">
+                        <div class="form-group">
+                            <label for="author">Autor</label>
+                            <input type="text" class="form-control" id="author" name="author"  value="{{ $query->author ?? '' }}" placeholder="Título">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 d-flex justify-content-end align-items-end">
                         <button type="submit" class="btn btn-primary float-right">Buscar</button>
                     </div>
                 </div>
@@ -69,35 +75,40 @@ Gerenciamento do Blog
     @endif
     <a href="{{route('admin.post.create')}}" class="btn btn-primary mb-2 shadow"><i class="fas fa-plus mr-1"></i>Novo
         Post</a>
-    <ul class="list-group shadow rounded ">
-        <li class="list-group-item list-group-item-secondary">
-            <div class="row justify-content-between">
-                <div class="col-3 col-md-3 border-right border-dark">Título</div>
-                <div class="col-6 col-md-6 border-right border-dark">Resumo</div>
-                <div class="col-3 col-md-3">Ações</div>
-            </div>
-        </li>
-        @foreach($posts as $post)
-        <li class="list-group-item d-inline">
-            <div class="row align-items-center">
-                <div class="col-3 col-md-3 border-right">
-                    <p class="text-justify">{{$post->title}}</p>
-                </div>
-                <div class="col-6 col-md-6 border-right">
-                    <p class="text-justify">{{$post->resume}}</p>
-                </div>
-                <div class="col-3 col-md-3 d-flex flex-wrap">
-                    <a href="{{route('admin.post.destroy', ['id' => $post->id])}}" class="btn btn-danger mr-1 mb-1 wh-40"
-                        title="Apagar Post"><i class="fas fa-trash-alt"></i></a>
-                    <a href="{{route('admin.post.edit', ['id' => $post->id])}}" class="btn btn-primary mr-1 mb-1 wh-40"
-                        title="Editar Post"><i class="fas fa-edit"></i></a>
-                    <a href="{{route('post.show', ['slug' => $post->slug])}}"
-                        class="btn btn-primary wh-40" title="Visualizar Post"><i class="fas fa-eye"></i></a>
-                </div>
-            </div>
-        </li>
-        @endforeach
-    </ul>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <caption>Lista de posts</caption>
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Resumo</th>
+                    <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($posts as $post)
+                <tr>
+                    <th>{{$post->id}}</th>
+                    <th>{{$post->tipo}}</th>
+                    <th>{{$post->author->name}}</th>
+                    <th>{{$post->title}}</th>
+                    <th>{{$post->resume}}</th>
+                    <th>
+                        <a href="{{route('admin.post.destroy', ['id' => $post->id])}}" class="btn btn-danger mr-1 mb-1 wh-40"
+                            title="Apagar Post"><i class="fas fa-trash-alt"></i></a>
+                        <a href="{{route('admin.post.edit', ['id' => $post->id])}}" class="btn btn-primary mr-1 mb-1 wh-40"
+                            title="Editar Post"><i class="fas fa-edit"></i></a>
+                        <a href="{{route('post.show', ['slug' => $post->slug])}}"
+                            class="btn btn-primary wh-40" title="Visualizar Post"><i class="fas fa-eye"></i></a>
+                    </th>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
     <div class="row justify-content-md-center mt-2">
         <div class="col-md-auto">{{ $posts->links() }}</div>
     </div>
