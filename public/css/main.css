@@ -3,10 +3,12 @@
 #closeMenu {
     margin: 10px;
     cursor: pointer;
+    color: white;
 }
 
-#closeMenu:hover {
-    color: white;
+#closeMenu i:hover {
+    color: grey;
+    box-shadow: 2px;
 }
 
 .menu-hamburguer {

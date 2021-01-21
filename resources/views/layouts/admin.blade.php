@@ -18,8 +18,8 @@
             <i class="fas fa-bars fa-2x"></i>
         </div>
         <div class="row">
-            <a class="nav-link text-white mr-0" href="{{route('user.getChangePassword')}}">Mudar senha</a>
-            <a class="nav-link text-danger" href="{{route('user.logout')}}">Logout</a>
+            <a class="nav-link text-white mr-0" href="{{route('admin.user.change-password.edit')}}">Mudar senha</a>
+            <a class="nav-link text-danger" href="{{route('admin.user.logout')}}">Logout</a>
         </div>
     </nav>
 
@@ -32,7 +32,7 @@
                 <ul class="navbar-nav w-100">
                     <div class="dropdown-divider close-mobile"></div>
                     <li class="nav-item text-light">
-                        <a href="{{route('admin.panel')}}" class="nav-link">Home</a>
+                        <a href="{{route('admin.index')}}" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item text-light">
                         <a href="{{route('home')}}" class="nav-link">Voltar para o site</a>
@@ -42,23 +42,25 @@
                         Usuário
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('user.getEdit')}}">Meu Perfil</a>
+                        <a class="nav-link" href="{{route('admin.user.edit')}}">Meu Perfil</a>
                     </li>
                     <div class="dropdown-divider"></div>
                     <li class="nav-item text-light">
                         Gerenciamento
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="{{route('news.panel')}}">Notícias</a>
+                        <a class="nav-link" href="{{route('admin.post.index')}}">Posts</a>
                     </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('post.panel')}}">Blog</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{route('admin.userPanel')}}">Usuários</a>
-                    </li>
+                    @if (Auth::user()->role == 'admin')
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{route('admin.user.index')}}">Usuários</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ route('admin.logs.index') }}">Logs</a>
+                        </li>
+                    @endif
                     <li class="nav-item mb-0">
-                        <a class="nav-link" href="{{route('contact.panel')}}">Contato</a>
+                        <a class="nav-link" href="{{route('admin.contact.index')}}">Contato</a>
                     </li>
                 </ul>
             </nav>

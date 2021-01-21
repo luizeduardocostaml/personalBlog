@@ -44,7 +44,7 @@ class NewMessage extends Notification
     {
         return (new MailMessage)
                     ->line('Você tem uma nova mensagem de '. $this->message->name . ' sobre o assunto '. $this->message->title . '.')
-                    ->action('Veja agora', url(route('contact.message', ['id'=> $this->message->id])))
+                    ->action('Veja agora', url(route('admin.contact.show', ['id'=> $this->message->id])))
                     ->line('Obrigado por usar nosso site!');
     }
 

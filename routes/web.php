@@ -13,64 +13,51 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', 'News\ViewsController@getNews')->name('home');
-Route::view('/forbidden', 'layouts.forbidden')->name('forbiddenRoute');
+Route::get('/', 'NoticeController@index')->name('home');
+Route::view('forbidden', 'layouts.forbidden')->name('forbiddenRoute');
+Route::get('admin', 'Admin\DashboardController@index')->name('admin.index')->middleware('auth');
+Route::get('admin/logs', 'Admin\LogsController@index')->name('admin.logs.index')->middleware(['auth', 'auth.admin']);
 
-// -----------------------------------  Blog Routes ------------------------------------
+// -----------------------------------  Post Routes ------------------------------------
 
-Route::middleware('auth')->group(function (){
-    Route::get('/blogPanel', 'Blog\ViewsController@getPanel')->name('post.panel');
-    Route::get('/registerPost', 'Blog\ViewsController@getStore')->name('post.getRegister');
-    Route::post('/registerPost', 'Blog\BlogController@store')->name('post.register');
-    Route::get('/editPostRequest/{id}', 'Blog\ViewsController@getEdit')->name('post.getEdit');
-    Route::post('/editPostRequest', 'Blog\BlogController@edit')->name('post.edit');
-    Route::get('/deletePost/{id}', 'Blog\BlogController@destroy')->name('post.delete');
+Route::prefix('admin/post')->middleware('auth')->group(function (){
+    Route::get('/', 'Admin\PostController@index')->name('admin.post.index');
+    Route::get('create', 'Admin\PostController@create')->name('admin.post.create');
+    Route::post('create', 'Admin\PostController@store')->name('admin.post.store');
+    Route::get('edit/{id}', 'Admin\PostController@edit')->name('admin.post.edit');
+    Route::post('edit', 'Admin\PostController@update')->name('admin.post.update');
+    Route::get('delete/{id}', 'Admin\PostController@destroy')->name('admin.post.destroy');
 });
-Route::get('/blog', 'Blog\ViewsController@getBlog')->name('blog');
-Route::get('/post/{id}/{link}', 'Blog\ViewsController@getPost')->name('post.get');
-
-// -----------------------------------  News Routes ------------------------------------
-
-Route::middleware('auth')->group(function (){
-    Route::get('/newsPanel', 'News\ViewsController@getPanel')->name('news.panel');
-    Route::get('/registerNews', 'News\ViewsController@getStore')->name('news.getRegister');
-    Route::post('/registerNews', 'News\NewsController@store')->name('news.register');
-    Route::get('/editNewsRequest/{id}', 'News\ViewsController@getEdit')->name('news.getEdit');
-    Route::post('/editNewsRequest', 'News\NewsController@edit')->name('news.edit');
-    Route::get('/deleteNews/{id}', 'News\NewsController@destroy')->name('news.delete');
-});
-Route::get('/news/{id}/{link}', 'News\ViewsController@getNotice')->name('news.get');
-Route::get('/news', 'News\ViewsController@getNews')->name('news');
-
-// -----------------------------------  Admin Routes ------------------------------------
-
-Route::middleware('auth')->group(function (){
-    Route::get('/adminPanel', 'Admin\ViewsController@getPanel')->name('admin.panel');
-    Route::get('/adminUserPanel', 'Admin\ViewsController@getUserPanel')->name('admin.userPanel');
-    Route::get('/deleteUser/{id}', 'User\AuthController@destroy')->name('user.destroy');
-});
+Route::get('blog', 'BlogController@index')->name('blog');
+Route::get('post/{slug}', 'BlogController@show')->name('post.show');
 
 // -----------------------------------  Contact Routes ------------------------------------
 
-Route::middleware('auth')->group(function (){
-    Route::get('/contactPanel', 'Contact\ViewsController@getPanel')->name('contact.panel');
-    Route::get('/deleteMessage/{id}', 'Contact\ContactController@destroy')->name('contact.delete');
-    Route::get('/showMessage/{id}', 'Contact\ViewsController@getMessage')->name('contact.message');
-    Route::post('/answerMessage/{id}', 'Contact\ContactController@answerMessage')->name('contact.answer');
+Route::prefix('admin/contact')->middleware('auth')->group(function (){
+    Route::get('/', 'Admin\ContactController@index')->name('admin.contact.index');
+    Route::get('delete/{id}', 'Admin\ContactController@destroy')->name('admin.contact.destroy');
+    Route::get('show/{id}', 'Admin\ContactController@show')->name('admin.contact.show');
+    Route::post('answer/{id}', 'Admin\ContactController@answer')->name('admin.contact.answer');
 });
-Route::get('/contact', 'Contact\ViewsController@getStore')->name('contact.getRegister');
-Route::post('/contact', 'Contact\ContactController@store')->name('contact.register');
+Route::get('contact', 'ContactController@create')->name('contact.create');
+Route::post('contact', 'ContactController@store')->name('contact.store');
 
 // -----------------------------------  User Routes ------------------------------------
 
-Route::middleware('auth')->group(function (){
-    Route::get('/logout', 'User\AuthController@logout')->name('user.logout');
-    Route::get('/changePassword', 'User\ViewsController@getChangePassword')->name('user.getChangePassword');
-    Route::post('/changePassword', 'User\AuthController@changePassword')->name('user.changePassword');
-    Route::get('/editUser', 'User\ViewsController@getEdit')->name('user.getEdit');
-    Route::post('/editUser', 'User\AuthController@edit')->name('user.edit');
+Route::prefix('admin/user')->middleware(['auth', 'auth.admin'])->group(function (){
+    Route::get('/', 'Admin\UserController@index')->name('admin.user.index');
+    Route::get('delete/{id}', 'Admin\UserController@destroy')->name('admin.user.destroy');
 });
-Route::get('/login', 'User\ViewsController@getLogin')->name('user.getLogin');
-Route::post('/login', 'User\AuthController@authenticate')->name('user.login');
-Route::get('/register', 'User\ViewsController@getRegister')->name('user.getRegister');
-Route::post('/register', 'User\AuthController@register')->name('user.register');
+
+Route::prefix('admin/user')->middleware('auth')->group(function (){
+    Route::get('logout', 'AuthController@logout')->name('admin.user.logout');
+    Route::get('change-password', 'Admin\UserController@getChangePassword')->name('admin.user.change-password.edit');
+    Route::post('change-password', 'Admin\UserController@changePassword')->name('admin.user.change-password.update');
+    Route::get('edit', 'Admin\UserController@edit')->name('admin.user.edit');
+    Route::post('edit', 'Admin\UserController@update')->name('admin.user.update');
+});
+Route::get('login', 'AuthController@login')->name('user.login');
+Route::post('login', 'AuthController@authenticate')->name('user.auth');
+Route::get('register', 'AuthController@create')->name('user.create');
+Route::post('register', 'AuthController@store')->name('user.store');
+Route::get('user/{slug}', 'AuthorController@show')->name('user.show');

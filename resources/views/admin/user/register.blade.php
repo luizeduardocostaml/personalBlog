@@ -14,29 +14,25 @@
             <div class="alert alert-danger m-1">{{$error}}</div>
         @endforeach
     @endif
-    <form action="{{route('user.register')}}" method="POST" class="m-1" enctype="multipart/form-data">
+    <form action="{{route('user.store')}}" method="POST" class="m-1" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
-            <label for="id">Username</label>
-            <input type="text" class="form-control" placeholder="Username" name="username" id="username">
+            <label for="password">Email</label>
+            <input type="email" class="form-control" placeholder="E-mail" name="email" id="email">
         </div>
         <div class="form-group">
             <label for="password">Senha</label>
             <input type="password" class="form-control" placeholder="Senha" name="password" id="password">
         </div>
         <div class="form-group">
-            <label for="password">Email</label>
-            <input type="email" class="form-control" placeholder="E-mail" name="email" id="email">
-        </div>
-        <div class="form-group">
             <label for="password">Nome</label>
             <input type="text" class="form-control" placeholder="Nome" name="name" id="name">
         </div>
         <div class="form-group">
-            <label for="hole">Cargo</label>
+            <label for="role">Cargo</label>
             <select class="form-control" name="role" id="role" >
-                <option value="Admin" selected>Admin</option>
-                <option value="Editor">Editor</option>
+                <option value="admin" selected>Admin</option>
+                <option value="editor">Editor</option>
             </select>
         </div>
         <div class="form-group bg-light p-3 border border-dark rounded shadow">

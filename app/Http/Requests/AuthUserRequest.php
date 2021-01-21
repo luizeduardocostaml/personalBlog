@@ -24,7 +24,7 @@ class AuthUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required',
+            'email' => 'required',
             'password' => 'required|min:8',
         ];
     }
@@ -32,7 +32,7 @@ class AuthUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'O campo ID é obrigatório.',
+            'email.required' => 'O campo E-mail é obrigatório.',
             'password.required' => 'O campo Senha é obrigatório.',
             'password.min' => 'O campo Senha deve conter no mínimo 8 dígitos.',
         ];

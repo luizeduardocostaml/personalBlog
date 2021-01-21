@@ -16,27 +16,14 @@ Painel de administração
 @endif
 <div class="row">
     <div class="col-12 col-md-6 col-lg-3">
-        <div class="card text-center mb-2" style="height: 90%;">
-            <div class="card-header bg-dark text-light">
-                Notícias
-            </div>
-            <div class="card-body d-flex justify-content-center flex-column">
-                <h5 class="card-title">Gerenciamento de Notícias</h5>
-                <p class="card-text">Criar, editar, e apagar notícias.</p>
-                <a href="{{route('news.panel')}}" class="btn btn-primary mt-auto">Acessar</a>
-            </div>
-        </div>
-    </div>
-
-    <div class="col-12 col-md-6 col-lg-3">
         <div class="card text-center mb-2 " style="height: 90%;">
             <div class="card-header bg-dark text-light">
-                Blog
+                Posts
             </div>
             <div class="card-body d-flex justify-content-center flex-column">
-                <h5 class="card-title">Gerenciamento do Blog</h5>
+                <h5 class="card-title">Gerenciamento dos posts</h5>
                 <p class="card-text">Criar, editar, e apagar posts.</p>
-                <a href="{{route('post.panel')}}" class="btn btn-primary mt-auto">Acessar</a>
+                <a href="{{route('admin.post.index')}}" class="btn btn-primary mt-auto">Acessar</a>
             </div>
         </div>
     </div>
@@ -50,7 +37,7 @@ Painel de administração
             <div class="card-body d-flex justify-content-center flex-column">
                 <h5 class="card-title">Gerenciamento de Contato</h5>
                 <p class="card-text">Criar, editar, e apagar mensagens.</p>
-                <a href="{{route('contact.panel')}}" class="btn btn-primary mt-auto">Acessar</a>
+                <a href="{{route('admin.contact.index')}}" class="btn btn-primary mt-auto">Acessar</a>
             </div>
         </div>
     </div>
@@ -64,7 +51,7 @@ Painel de administração
             <div class="card-body d-flex justify-content-center flex-column">
                 <h5 class="card-title">Gerenciamento de Usuários</h5>
                 <p class="card-text">Criar e apagar usuários.</p>
-                <a href="{{route('admin.userPanel')}}" class="btn btn-primary mt-auto">Acessar</a>
+                <a href="{{route('admin.user.index')}}" class="btn btn-primary mt-auto">Acessar</a>
             </div>
         </div>
     </div>

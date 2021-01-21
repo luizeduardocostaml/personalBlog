@@ -15,14 +15,18 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->enum('type', ['blog', 'notice']);
             $table->string('title', 50);
+            $table->string('slug', 60)->unique();
             $table->string('resume',400);
             $table->text('text');
-            $table->string('link', 50);
             $table->string('image',256);
-            $table->integer('author');
+            $table->unsignedBigInteger('author_id');
             $table->integer('views');
             $table->timestamps();
+            $table->softDeletes();
+
+            $table->foreign('author_id')->references('id')->on('users');
         });
     }
 

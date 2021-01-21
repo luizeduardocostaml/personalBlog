@@ -24,6 +24,7 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
+            'type' => 'required',
             'title' => 'required|max:50',
             'resume' => 'required|max:400',
             'text' => 'required|max:30000',

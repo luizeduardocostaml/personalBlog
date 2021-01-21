@@ -6,7 +6,7 @@ Luiz Eduardo Costa - Blog
 
 @section('title')
 Editar perfil
-<a href="#" class="btn btn-info float-right">Ver perfil</a>
+<a href="{{route('user.show', ['slug' => $user->slug])}}" class="btn btn-info float-right">Ver perfil</a>
 @endsection
 
 @section('content')
@@ -26,7 +26,7 @@ Editar perfil
             <div class="alert alert-danger m-1">{{$error}}</div>
         @endforeach
     @endif
-    <form action="{{route('user.edit')}}" method="POST" class="m-1" enctype="multipart/form-data">
+    <form action="{{route('admin.user.update')}}" method="POST" class="m-1" enctype="multipart/form-data">
         @csrf
         <div class="row">
             <div class="col-12 col-md-3 mb-2">
@@ -38,12 +38,6 @@ Editar perfil
                 </div>
             </div>
             <div class="col-12 col-md-9">
-                <div class="form-group">
-                    <label for="id">Username</label>
-                    <input type="text" class="form-control shadow" placeholder="Username" name="username" id="username"
-                        value="{{$user->username}}">
-                    <input type="hidden" value="{{$user->id}}" name="id" id="id">
-                </div>
                 <div class="form-group">
                     <label for="password">Nome</label>
                     <input type="text" class="form-control shadow" placeholder="Nome" name="name" id="name"

@@ -22,25 +22,21 @@
                         <div class="alert alert-danger m-1">{{$error}}</div>
                     @endforeach
                 @endif
-                <form action="{{route('user.register')}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('user.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="id">Username</label>
-                        <input type="text" class="form-control" placeholder="Username" name="username" id="username">
+                        <label for="password">Email</label>
+                        <input type="email" class="form-control" placeholder="E-mail" name="email" id="email">
                     </div>
                     <div class="form-group">
                         <label for="password">Senha</label>
                         <input type="password" class="form-control" placeholder="Senha" name="password" id="password">
                     </div>
                     <div class="form-group">
-                        <label for="password">Email</label>
-                        <input type="email" class="form-control" placeholder="E-mail" name="email" id="email">
-                    </div>
-                    <div class="form-group">
                         <label for="password">Nome</label>
                         <input type="text" class="form-control" placeholder="Nome" name="name" id="name">
                     </div>
-                    <input type="text" class="form-control" name="role" id="role" value="Admin" hidden>
+                    <input type="text" class="form-control" name="role" id="role" value="admin" hidden>
                     <div class="form-group bg-light p-3 border border-dark rounded shadow">
                         <label for="text">Biografia</label>
                         <textarea name="biography" id="biography" rows="3" class="form-control" placeholder="Biogafia"></textarea>

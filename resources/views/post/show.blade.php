@@ -6,8 +6,8 @@ Luiz Eduardo Costa - Blog
 
 @section('backButton')
 <div class="d-flex w-100 justify-content-between">
-    <a href="{{url()->previous()}}" class="btn backButton"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
-    @auth<div>{{ $notice->views }} visualizações</div>@endauth
+    <a href="{{url()->previous()}}" class="btn align-items-center backButton"><i class="fas fa-angle-left mr-1"></i>Voltar</a>
+    @auth<div>{{ $post->views }} visualizações</div>@endauth
 </div>
 @endsection
 
@@ -24,7 +24,7 @@ Luiz Eduardo Costa - Blog
 
 @section('content')
 <div class="container min-vh-100">
-    <img src="{{$post->image}}" class="rounded float-right post-image img-thumbnail" alt="Post image">
+    <img src="{{$post->image_url}}" class="rounded float-right post-image img-thumbnail" alt="Post image">
     {!! $post->text !!}
 </div>
 
@@ -37,11 +37,11 @@ Luiz Eduardo Costa - Blog
 </div>
 <div class="row">
     <div class="col-12 col-md-4 col-lg-2 mt-2 mb-2">
-        <img src="{{$author->image}}" class="img-fluid" alt="Foto do autor">
+        <img src="{{$post->author->image_url}}" class="img-fluid" alt="Foto do autor">
     </div>
     <div class="col-12 col-md-8 col-lg-10 mt-1 mb-1">
-        <h4 class="card-title">{{$author->name}}</h4>
-        <p class="card-text">{{$author->biography}}</p>
+        <h4 class="card-title">{{$post->author->name}}</h4>
+        <p class="card-text">{{$post->author->biography}}</p>
     </div>
 </div>
 @endsection

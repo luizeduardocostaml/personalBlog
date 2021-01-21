@@ -3,12 +3,15 @@
 namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -29,4 +32,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function getSlugAttribute()
+    {
+        return Str::slug($this->name);
+    }
+    
+    public function getImageUrlAttribute()
+    {
+        return Storage::disk('s3')->url($this->image);
+    }
 }

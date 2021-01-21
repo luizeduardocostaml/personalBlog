@@ -24,9 +24,8 @@ class StoreUserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|unique:users|max:256',
+            'email' => 'required|email|unique:users|max:256',
             'password' => 'required|min:8|max:256',
-            'email' => 'required|email|max:256',
             'name' => 'required|max:256',
             'role' => 'required',
             'image' => 'required|image|mimes:jpeg,png,jpg|max:4096',
@@ -37,14 +36,11 @@ class StoreUserRequest extends FormRequest
     public function messages()
     {
         return [
-            'username.required' => 'O campo Username é obrigatório.',
-            'username.unique' => 'Este Username já existe, tente outro.',
-            'username.max' => 'O campo Username pode conter no máximo 256 caracteres.',
-            'password.required' => 'O campo Senha é obrigatório.',
+            'email.required' => 'O campo E-mail é obrigatório.',
+            'email.unique' => 'Este E-mail já está cadastrado, tente outro.',
+            'email.email' => 'O campo E-mail não está no formato correto.',
             'password.min' => 'O campo Senha deve conter no mínimo 8 caracteres.',
             'password.max' => 'O campo Senha pode conter no máximo 256 caracteres.',
-            'email.required' => 'O campo E-mail é obrigatório.',
-            'email.email' => 'O campo E-mail não está no formato correto.',
             'name.required' => 'O campo Nome é obrigatório',
             'name.max' => 'O campo Nome pode conter no máximo 256 caracteres.',
             'role.required' => 'O campo Cargo é obrigatório.',
