@@ -21,6 +21,6 @@ A demonstração pode não estar atualizada com as últimas atualizações.
 
 Para acessar o painel admin entre na url "/login", ou clique no símbolo de Copyright na footbar.
 
-> Usuário: admin 
+> Usuário: luizeduardocostaml@gmail.com
 >
 > Senha: admin123
