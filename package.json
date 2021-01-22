@@ -1,8 +1,7 @@
 {
     "private": true,
     "engines": {
-        "node": "12.x",
-        "npm": "6.4.1"
+        "node": "12.x"
     },
     "scripts": {
         "dev": "npm run development",
@@ -13,7 +12,7 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "postinstall": "npm run production",
-        "heroku-prebuild": "npm install -f",
+        "heroku-prebuild": "npm install --no-optional",
         "heroku-postbuild": "npm run production"
     },
     "devDependencies": {
