@@ -37,10 +37,14 @@ Luiz Eduardo Costa - Blog
 </div>
 <div class="row">
     <div class="col-12 col-md-4 col-lg-2 mt-2 mb-2">
-        <img src="{{$post->author->image_url}}" class="img-fluid" alt="Foto do autor">
+        <a href="{{ $post->author->perfil_url }}">
+            <img src="{{$post->author->image_url}}" class="img-fluid" alt="Foto do autor">
+        </a>
     </div>
     <div class="col-12 col-md-8 col-lg-10 mt-1 mb-1">
-        <h4 class="card-title">{{$post->author->name}}</h4>
+        <a href="{{ $post->author->perfil_url }}" class="text-dark">
+            <h4 class="card-title">{{$post->author->name}}</h4>
+        </a>
         <p class="card-text">{{$post->author->biography}}</p>
     </div>
 </div>

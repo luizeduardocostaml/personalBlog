@@ -46,7 +46,7 @@ class PostController extends Controller
         $post->resume = $request->resume;
         $post->text = $request->text;
         $post->image = $request->image->store('img/upload', 's3');
-        $post->author_id = Auth::id();
+        $post->user_id = Auth::id();
         $post->views = 0;
 
         $post->save();

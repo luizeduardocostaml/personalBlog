@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->enum('role', ['admin', 'editor']);
             $table->string('image', 256);
             $table->string('biography', 1000);
+            $table->string('title', 50);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
