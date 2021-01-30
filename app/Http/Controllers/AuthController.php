@@ -34,7 +34,7 @@ class AuthController extends Controller
             $user = User::findOrFail(1);
 
             if (Auth::check()) {
-                return redirect()->route('admin.panel');
+                return redirect()->route('admin.index');
             }
             return view('admin.user.login');
         } catch (ModelNotFoundException $e) {
